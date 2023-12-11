@@ -1,0 +1,10 @@
+#articles {
+    display: flex;
+    width: 1480px;
+    padding: 80px 250px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    background: #F2F4F7;
+}

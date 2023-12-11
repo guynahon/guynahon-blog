@@ -1,0 +1,98 @@
+.news-letter {
+    width: 472px;
+    height: 184px;
+    display: flex;
+    padding: 60px 504px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    background: white;
+}
+
+.news-letter h3 {
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+
+.news-letter-text {
+    width: 472px;
+    height: 102px;
+    display: flex;
+    flex-direction: column;
+}
+
+.news-letter-header {
+    text-align: center;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%; /* 36.4px */
+    background: linear-gradient(97deg, #C41740 4.8%, #EA9C28 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+
+.news-letter-paragraph {
+    width: 472px;
+    color: #475467;
+    text-align: center;
+
+    /* Text lg/Normal */
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px; /* 155.556% */
+}
+
+.news-letter-email-box {
+    width: 400px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0px 8px 8px 0px;
+    border: 1px solid #D0D5DD;
+    background: #FFF;
+    color: #98A2B3;
+
+    /* Text sm/Medium */
+
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 142.857% */
+}
+
+.news-letter-button {
+    width: 136px;
+    height: 50px;
+    border-radius: 0px 8px 8px 0px;
+    background: #1D2939;
+    color: #FFF;
+    text-align: center;
+
+    /* Text sm/Semibold */
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px; /* 142.857% */
+
+}
+
+.news-letter-input {
+    flex :1;
+    width: 400px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 8px 0px 0px 8px;
+
+    background: #FFF;
+}
+
+
+

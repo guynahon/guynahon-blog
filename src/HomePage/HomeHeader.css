@@ -1,0 +1,40 @@
+#home-header {
+    display: flex;
+    padding: 120px 255px 80px 255px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    /*background-color: #FFF;*/
+}
+
+#home-header-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+#home-header-tag {
+    display: flex;
+    padding: 10px 16px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 100px;
+    background-color: #F2F4F7;
+    margin: 10px;
+}
+
+#main-header-button a {
+    color: #1D2939;
+    text-align: center;
+
+    /* Text sm/Semibold */
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px; /* 142.857% */
+}
