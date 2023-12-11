@@ -1,4 +1,4 @@
-import './news-letter-component.css'
+import './NewsLetter.css'
 export function NewsLetter() {
     return (
         <div className="news-letter">

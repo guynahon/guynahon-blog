@@ -1,4 +1,4 @@
-import {HeaderComponent} from "../components/header-component";
+import {HeaderComponent} from "../Few Pages/header-component";
 import './HomeHeader.css'
 export function HomeHeader() {
     return (

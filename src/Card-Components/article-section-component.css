@@ -8,7 +8,13 @@
     border-radius: 8px;
     border: 1px solid #E4E7EC;
     background: #FFF;
+    transition: border 0.3s ease;
 }
+
+.view-all-block:hover{
+    border: 1px solid black;
+}
+
 
 .view-all-block a {
     display: flex;
@@ -23,6 +29,9 @@
     font-weight: 600;
     line-height: 20px; /* 142.857% */
 }
+
+
+
 
 .article-section-header {
     color: #1D2939;
