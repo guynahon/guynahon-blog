@@ -1,4 +1,4 @@
-import './article-card.css'
+import './Card.css'
 export function ArticleCard() {
     return (
         <div className="card">

@@ -1,5 +1,5 @@
-import {ArticleCard} from "./article-card-component";
-import './article-section-component.css'
+import {ArticleCard} from "./Card";
+import './CardSection.css'
 
 export function ArticleSection() {
     return (

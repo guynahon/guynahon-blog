@@ -1,4 +1,4 @@
-import {ArticleSection} from "../Card-Components/article-section-component";
+import {ArticleSection} from "../components/CardSection";
 import './Articles.css'
 
 export function Articles() {

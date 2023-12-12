@@ -1,5 +1,5 @@
-import './header-component.css'
-export function HeaderComponent () {
+import './Header.css'
+export function Header () {
     return (
         <div className="main-header">
             <div className="page-header">Minimal blog template for creative expressions</div>

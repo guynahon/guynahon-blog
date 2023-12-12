@@ -1,4 +1,4 @@
-import './single-article-component.css'
+import './SingleArticle.css'
 
 export function SingleArticle() {
     return (

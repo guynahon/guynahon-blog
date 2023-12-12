@@ -1,4 +1,4 @@
-import {HeaderComponent} from "../Few Pages/header-component";
+import {Header} from "../components/Header";
 import './HomeHeader.css'
 export function HomeHeader() {
     return (
@@ -7,7 +7,7 @@ export function HomeHeader() {
                 <div id="home-header-tag">
                     <a id="main-header-button">👋 Meet Personally</a>
                 </div>
-                <HeaderComponent />
+                <Header />
             </div>
         </div>
     );
