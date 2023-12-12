@@ -1,0 +1,31 @@
+.view-all-block {
+    display: inline-flex;
+    padding: 8px 12px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    border: 1px solid #E4E7EC;
+    background: #FFF;
+    transition: border 0.3s ease;
+}
+
+.view-all-block:hover {
+    border: 1px solid black;
+}
+
+
+.view-all-block a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #1D2939;
+    text-align: center;
+
+    /* Text sm/Semibold */
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px; /* 142.857% */
+}

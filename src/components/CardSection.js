@@ -1,4 +1,5 @@
 import {ArticleCard} from "./Card";
+import {ViewAllButton} from "./ViewAllButton";
 import './CardSection.css'
 
 export function ArticleSection() {
@@ -6,9 +7,7 @@ export function ArticleSection() {
         <div className="article-section">
             <div className="header-view-all">
                 <h3 className="article-section-header">Daily Digest</h3>
-                <div className="view-all-block">
-                    <a className="view-all-button">View all</a>
-                </div>
+                <ViewAllButton />
             </div>
             <ArticleCard/>
             <ArticleCard/>

@@ -28,14 +28,13 @@
 }
 
 .card-date {
-    width: 107px;
+    width: 125px;
     height: 16px;
     font-weight: 400;
     font-size: 13px;
     line-height: 16px;
     text-align: center;
     color: #667085;
-;
 }
 
 .card-text {
@@ -68,4 +67,5 @@
     top: 24px;
     left: 660px;
     border-radius: 10px;
+    margin-right: 20px;
 }

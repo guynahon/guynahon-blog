@@ -1,7 +1,7 @@
 #articles {
     display: flex;
-    width: 1480px;
-    padding: 80px 250px;
+    width: 100%;
+    padding: 80px 0 80px 0;
     flex-direction: column;
     justify-content: center;
     align-items: center;
