@@ -4,7 +4,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+
     /*background-color: #FFF;*/
 }
 
@@ -13,7 +13,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 40px;
+
 }
 
 #home-header-tag {
@@ -26,6 +26,12 @@
     border-radius: 100px;
     background-color: #F2F4F7;
     margin: 10px;
+    border: 1px solid transparent;
+    transition: 0.3s;
+}
+
+#home-header-tag:hover {
+    border: 1px solid black;
 }
 
 #main-header-button a {

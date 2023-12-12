@@ -6,13 +6,17 @@ import {NewsLetter} from "./Pages/NewsLetter";
 import {Articles} from "./Pages/Articles";
 import {Copyright} from "./Pages/Copyright";
 import {SingleArticle} from "./components/SingleArticle";
+import {Subject} from "./components/Subject";
+import {Header} from "./components/Header";
 
 function App() {
   return (
       <div id="container">
         <Navigation />
-        <HomeHeader />
-        <Articles />
+        {/*<HomeHeader />*/}
+        <Header />
+        <Subject/>
+        {/*<Articles />*/}
         {/*<SingleArticle />*/}
         <NewsLetter />
         <Copyright />
