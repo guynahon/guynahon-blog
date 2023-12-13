@@ -1,5 +1,4 @@
 import './Subject-component.css'
-import {ArticleCard} from "../CardComponents/ArticleCard";
 import {useEffect, useState} from "react";
 import {ArticleCardsList} from "../CardComponents/ArticleCardsList";
 
