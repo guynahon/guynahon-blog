@@ -73,4 +73,13 @@
     border-color: #354c6b;
 }
 
+#logo {
+    font-size: 25px;
+}
+
+a {
+    text-decoration: none;
+    color: #1D2939;
+}
+
 

@@ -1,27 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
-import {Navigation} from "./Pages/Navigation";
-import {HomeHeader} from "./Pages/HomeHeader";
-import {NewsLetter} from "./Pages/NewsLetter";
-import {Articles} from "./Pages/Articles";
-import {Copyright} from "./Pages/Copyright";
-import {SingleArticle} from "./components/SingleArticle";
-import {Subject} from "./components/Subject";
-import {Header} from "./components/Header";
+import {Navigation} from "./EveryPageComponents/Navigation";
+import {NewsLetter} from "./EveryPageComponents/NewsLetter";
+import {Copyright} from "./EveryPageComponents/Copyright";
+import {Outlet} from "react-router-dom";
 
 function App() {
-  return (
-      <div id="container">
-        <Navigation />
-        {/*<HomeHeader />*/}
-        <Header />
-        <Subject/>
-        {/*<Articles />*/}
-        {/*<SingleArticle />*/}
-        <NewsLetter />
-        <Copyright />
-      </div>
-  );
+    return (
+        <div id="container">
+            <Navigation/>
+            <Outlet/> {/* THIS IS THE ROUTER*/}
+            <NewsLetter/>
+            <Copyright/>
+        </div>
+    );
 }
 
 export default App;

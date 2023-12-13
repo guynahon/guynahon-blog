@@ -1,8 +1,9 @@
 import './ViewAllButton.css'
+import {Link} from "react-router-dom";
 export function ViewAllButton() {
     return (
         <div className="view-all-block">
-            <a className="view-all-button">View all</a>
+            <Link to="/subject" className="view-all-button">View all</Link>
         </div>
     );
 }

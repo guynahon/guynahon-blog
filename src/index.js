@@ -3,11 +3,41 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {
+    createBrowserRouter,
+    RouterProvider,
+} from "react-router-dom";
+import {HomePage} from "./Pages/HomePage";
+import {ArticleSubjectPage} from "./Pages/ArticleSubjectPage";
+import {SingleArticlePage} from "./Pages/SingleArticlePage";
+
+
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <App />,
+        children: [
+            {
+                path: "/",
+                element: <HomePage/>
+            },
+            {
+                path: "/subject", // => /articles/:category when we learn it (for the navigation)
+                element: <ArticleSubjectPage />,
+            },
+            {
+                path: "/article/:id",
+                element: <SingleArticlePage />,
+            },
+        ]
+    },
+
+]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+      <RouterProvider router={router} />
   </React.StrictMode>
 );
 

@@ -1,4 +1,4 @@
-import {Header} from "../components/Header";
+import {Header} from "./Header";
 import './HomeHeader.css'
 export function HomeHeader() {
     return (
