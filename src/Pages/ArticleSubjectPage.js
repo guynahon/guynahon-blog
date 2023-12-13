@@ -1,5 +1,5 @@
-import {Header} from "../components/Header";
-import {SubjectComponent} from "../components/Subject-component";
+import {Header} from "../Components/Header";
+import {SubjectComponent} from "../SubjectPageComponents/Subject-component";
 
 export function ArticleSubjectPage() {
     return (

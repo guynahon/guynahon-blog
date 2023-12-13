@@ -1,5 +1,4 @@
-import {ArticleCard} from "./ArticleCard";
-import {ViewAllButton} from "../components/ViewAllButton";
+import {ViewAllButton} from "../Components/ViewAllButton";
 import './ThreeCardsSection.css'
 import {ThreeCardsList} from "./ThreeCardsList";
 

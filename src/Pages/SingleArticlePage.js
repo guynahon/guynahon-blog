@@ -1,5 +1,5 @@
-import {SingleArticle} from "../components/SingleArticle";
-import {Header} from "../components/Header";
+import {SingleArticle} from "../SingleArticleComponents/SingleArticle";
+import {Header} from "../Components/Header";
 
 export function SingleArticlePage() {
     return (
