@@ -41,8 +41,9 @@ export function Admin() {
             </form>
             <button className="form-btn" onClick={clearPosts}>Clear Posts</button>
             <div className="remove-post">
-                <input onInput={handleRemoveInput} id="remove-input" value={inputValue} type="text"/>
-                <button className="form-btn" onClick={() => removePost(Number(inputValue))}>remove post</button>
+                <input onInput={handleRemoveInput} id="remove-input" type="text"/>
+                {/*onChange works as well !!!*/}
+                <button className="form-btn" onClick={() => removePost(Number(inputValue))}>Remove post</button>
             </div>
         </div> : <span className="pls-log-in">Please Log in !</span>
     );
