@@ -14,7 +14,7 @@ export function Navigation() {
             </div>
             <div id="nav-options">
                 <div id="nav-buttons">
-                    {user ? `Hello, ${user.userName}` : <button onClick={signIn}>Sign In</button>}
+                    {user ? `Hello, ${user.userName}` : <button className="sign-in-btn" onClick={signIn}>Sign In</button>}
                     <Link to="/subject" className="nav-tag">Daily Digest</Link>
                     <Link to="/subject" className="nav-tag">Design Tools</Link>
                     <Link to="/subject" className="nav-tag">Tutorials</Link>

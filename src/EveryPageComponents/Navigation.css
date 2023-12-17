@@ -62,8 +62,9 @@
 }
 
 .sub-button:hover {
-    background-color: #354c6b;
-    border-color: #354c6b;
+    background-color: #007bb5;
+    border-color: #007bb5;
+    cursor: pointer;
 }
 
 #logo {
@@ -74,6 +75,23 @@
 a {
     text-decoration: none;
     color: #1D2939;
+}
+
+.sign-in-btn {
+    width: 80px;
+    height: 30px;
+    border-radius: 8px;
+    border: 1px solid #1D2939;
+    background-color: #1D2939;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.sign-in-btn:hover {
+    background-color: #007bb5;
+    border: 1px solid #007bb5;
 }
 
 

@@ -17,18 +17,27 @@ export function Admin() {
             title: title.value,
             body: body.value,
             id: posts.length + 1
-        })
+        });
+        title.value = "";
+        body.value = "";
     };
 
     const handleRemoveInput = (event) => {
         setInputValue(event.target.value);
-    }
+    };
+
+    const handleRemovePost = () => {
+        removePost(Number(inputValue));
+        setInputValue("");
+    };
 
 
     return (
         user ?
         <div className="all-admin">
+            <h1>Admin Panel</h1>
             <form className="admin-form" onSubmit={handleAddPost}>
+                <span className="admin-headers">Add a new post</span>
                 <div className="form-title">
                     <label htmlFor="title">Title:</label>
                     <input id="title" name="title" type="text"/>
@@ -39,12 +48,13 @@ export function Admin() {
                 </div>
                 <button className="form-btn submit-form" type="submit">Submit</button>
             </form>
-            <button className="form-btn" onClick={clearPosts}>Clear Posts</button>
             <div className="remove-post">
-                <input onInput={handleRemoveInput} id="remove-input" type="text"/>
+                <span className="admin-headers">Remove a post by ID</span>
+                <input onInput={handleRemoveInput} id="remove-input" type="text" value={inputValue}/>
                 {/*onChange works as well !!!*/}
-                <button className="form-btn" onClick={() => removePost(Number(inputValue))}>Remove post</button>
+                <button className="form-btn" onClick={handleRemovePost}>Remove post</button>
             </div>
+            <button className="form-btn" onClick={clearPosts}>Clear Posts</button>
         </div> : <span className="pls-log-in">Please Log in !</span>
     );
 }
