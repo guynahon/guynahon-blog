@@ -1,15 +1,13 @@
 import './SingleArticle.css'
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
+import {BlogContext} from "../Providers/BlogProvider";
 
 export function SingleArticle() {
     const {id} = useParams();
-    const [post, setPost] = useState(null);
-    useEffect(() => {
-        fetch(`https://jsonplaceholder.typicode.com/posts/${id}`).then(response => response.json())
-            .then(json => setPost(json));
-    }, []);
+    const {posts} = useContext(BlogContext);
 
+    const post = posts.find((element) => element.id === Number(id)); // getPostById
 
     return (
             <div className="single-article-block">

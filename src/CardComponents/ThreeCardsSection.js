@@ -2,7 +2,7 @@ import {ViewAllButton} from "../Components/ViewAllButton";
 import './ThreeCardsSection.css'
 import {ThreeCardsList} from "./ThreeCardsList";
 
-export function ThreeCardsSection({posts}) {
+export function ThreeCardsSection() {
 
 
     return (
@@ -11,7 +11,7 @@ export function ThreeCardsSection({posts}) {
                 <h3 className="article-section-header">Daily Digest</h3>
                 <ViewAllButton />
             </div>
-            <ThreeCardsList posts={posts}/>
+            <ThreeCardsList />
         </div>
 
     );

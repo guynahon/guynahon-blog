@@ -1,0 +1,64 @@
+.all-admin {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.admin-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 70%;
+}
+
+
+.form-btn {
+    background-color: #1D2939;
+    color: white;
+    border-radius: 8px;
+    border: 1px;
+    width: 100px;
+    height: 40px;
+}
+
+.form-btn:hover {
+    background-color: #334d64;
+}
+
+
+.form-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+#title {
+    width: 350px;
+}
+
+.form-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+#body {
+    width: 350px;
+    height: 75px;
+}
+
+.pls-log-in {
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.submit-form {
+    align-self: center;
+}
+
+.remove-post {
+    display: flex;
+    align-self: center;
+}
+
+
