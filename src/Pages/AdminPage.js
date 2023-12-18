@@ -7,7 +7,7 @@ import {useForm} from "react-hook-form";
 export function Admin() {
     const {user} = useContext(AuthContext);
     const {posts, addPost, clearPosts, selectedPost, setSelectedPost} = useContext(BlogContext);
-    const {register, handleSubmit, formState, watch, setValue } = useForm();
+    const {register, handleSubmit, formState, watch} = useForm();
     const dateWatcher = watch("createdAt");
 
     const [panelMounted, setPanelMounted] = useState(true);
@@ -19,7 +19,7 @@ export function Admin() {
                 setSelectedPost(null);
             }
         };
-    }, [panelMounted, setSelectedPost]);
+    }, [panelMounted]);
 
     const day = new Date().getDate();
     const month = new Date().getMonth();
