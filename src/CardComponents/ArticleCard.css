@@ -1,6 +1,6 @@
 .card {
     width: 980px;
-    height: 260px;
+    height: 300px;
     top: 20px;
     left: 20px;
     border-radius: 20px;
@@ -18,11 +18,11 @@
 }
 
 .card-content-frame {
+    display: flex;
+    flex-direction: column;
     width: 610px;
-    height: 178px;
     top: 41px;
     left: 30px;
-    gap: 30px;
     margin-left: 30px;
     margin-bottom: 30px;
 }
@@ -35,13 +35,23 @@
     line-height: 16px;
     text-align: center;
     color: #667085;
+    margin-top: 40px;
+}
+
+.card h5 {
+    margin-top: 40px;
+    margin-bottom: 0;
 }
 
 .card-text {
     width: 610px;
-    height: 132px;
     gap: 10px;
 }
+
+.card-text p{
+    margin-top: 0;
+}
+
 
 .card-header {
     color: #1D2939;
@@ -49,7 +59,6 @@
     font-size: 26px;
     line-height: 34px;
     width: 610px;
-    height: 68px;
 }
 
 .card-paragraph {
@@ -58,7 +67,7 @@
     font-size: 18px;
     line-height: 27px;
     width: 610px;
-    height: 54px;
+
 }
 
 .card img {
@@ -69,3 +78,72 @@
     border-radius: 10px;
     margin-right: 20px;
 }
+
+.card-footer {
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+
+.card-edit-btn button{
+    width: 100%;
+    height: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #1D2939;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.card-edit-btn button:hover {
+    opacity: 80%;
+}
+
+
+.read-more a {
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #2ba553;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.read-more a:hover {
+    opacity: 80%;
+}
+
+.card-edit-btn {
+    margin-left: auto;
+}
+
+.card-remove-btn button {
+    padding: 10px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.card-remove-btn button:hover {
+    opacity: 80%;
+}
+

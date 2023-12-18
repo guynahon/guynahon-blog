@@ -13,9 +13,10 @@ export function SubjectComponent() {
         setInputValue(event.target.value);
     };
 
+    const lowerInput = inputValue.toLowerCase();
 
     const filterPosts = (value) => {
-        return posts.filter((post)=> post.title.includes(value));
+        return posts.filter((post)=> post.title.toLowerCase().includes(value.toLowerCase()));
     }
 
     return (
