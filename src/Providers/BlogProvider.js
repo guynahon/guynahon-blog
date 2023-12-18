@@ -4,7 +4,6 @@ export const BlogContext = createContext(null);
 
 export function BlogProvider({children}) {
     const [posts, setPosts] = useState([]);
-    const [selectedPost, setSelectedPosts] = useState(null);
 
  // useEffect(() => {
  //     fetch("https://jsonplaceholder.typicode.com/posts").then(response => response.json())
@@ -23,12 +22,8 @@ const removePost = (postId) => {
      setPosts([]);
  };
 
- const editPost = (post) => {
-     setSelectedPost(post);
- }
 
-
- const value = {posts, selectedPost, addPost, removePost, clearPosts, editPost}
+ const value = {posts, addPost, removePost, clearPosts}
  return (
      <BlogContext.Provider value = {value}>
          {children}

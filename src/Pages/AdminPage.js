@@ -5,11 +5,9 @@ import {BlogContext} from "../Providers/BlogProvider";
 import {useForm} from "react-hook-form";
 
 export function Admin() {
-    const [inputValue, setInputValue] = useState("");
     const {user} = useContext(AuthContext);
-    const {posts, addPost, clearPosts, selectedPost} = useContext(BlogContext);
+    const {posts, addPost, clearPosts} = useContext(BlogContext);
     const {register, handleSubmit, formState, watch} = useForm();
-    const [dateInput, setDateInput] = useState(null);
     const dateWatcher = watch("createdAt");
 
     const day = new Date().getDate();
@@ -33,7 +31,7 @@ export function Admin() {
         <div className="all-admin">
             <h1>Admin Panel</h1>
             <form className="admin-form" onSubmit={handleSubmit(handleAddPost)}>
-                <span className="admin-headers">{selectedPost ? "Edit" : "Add"} a post</span>
+                <span className="admin-headers">Add a new post</span>
 
                 <div className="form-title">
                     <label htmlFor="title">Title:</label>

@@ -6,7 +6,7 @@ import {AuthContext} from "../Providers/AuthProvider";
 export function ArticleCard({singlePost}) {
     const id = singlePost.id;
     const route = `/article/${id}`
-    const {removePost, editPost} = useContext(BlogContext);
+    const {removePost} = useContext(BlogContext);
     const {user} = useContext(AuthContext);
     const scrollToTop = () => {
         window.scrollTo({
@@ -21,6 +21,7 @@ export function ArticleCard({singlePost}) {
     const year = currentDate[0];
 
 
+
     return (
             <div className="card">
                 <div className="card-content-frame">
@@ -29,16 +30,11 @@ export function ArticleCard({singlePost}) {
                         <h3 className="card-header">{singlePost.title}</h3>
                         <p className="card-paragraph">{singlePost.body}</p>
                         <div className="card-footer">
-                            <div className="read-more"><Link to={route}>Read More</Link></div>
+                            <div className="read-more" onClick={scrollToTop}><Link to={route}>Read More</Link></div>
                             {user && (
                                 <>
                                     <div className="card-edit-btn">
-                                        <button onClick={() => editPost({
-                                            title: singlePost.title,
-                                            body: singlePost.body,
-                                            id: singlePost.id,
-                                            date: currentDate})}
-                                        >Edit Post</button>
+                                        <button>Edit Post</button>
                                     </div>
                                     <div className="card-remove-btn">
                                         <button onClick={() => removePost(id)}>X</button>
