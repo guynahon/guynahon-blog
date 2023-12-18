@@ -5,8 +5,8 @@ import {BlogContext} from "../Providers/BlogProvider";
 import {AuthContext} from "../Providers/AuthProvider";
 export function ArticleCard({singlePost}) {
     const id = singlePost.id;
-    const route = `/article/${id}`
-    const {removePost} = useContext(BlogContext);
+    const route = `/article/${id}`;
+    const {removePost, editPost, selectedPost} = useContext(BlogContext);
     const {user} = useContext(AuthContext);
     const scrollToTop = () => {
         window.scrollTo({
@@ -19,6 +19,15 @@ export function ArticleCard({singlePost}) {
     const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     const month = monthNames[Number(currentDate[1]-1)];
     const year = currentDate[0];
+
+    const handlePostEdit = () => {
+        editPost(singlePost);
+    }
+
+    const handlePostEditClick = () => {
+        handlePostEdit();
+        scrollToTop();
+    };
 
 
 
@@ -34,7 +43,7 @@ export function ArticleCard({singlePost}) {
                             {user && (
                                 <>
                                     <div className="card-edit-btn">
-                                        <button>Edit Post</button>
+                                        <Link to="/admin" onClick={handlePostEditClick}>Edit Post</Link>
                                     </div>
                                     <div className="card-remove-btn">
                                         <button onClick={() => removePost(id)}>X</button>
