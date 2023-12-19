@@ -4,7 +4,6 @@ import {BlogContext} from "../Providers/BlogProvider";
 
 export function ThreeCardsList() {
     const {posts} = useContext(BlogContext);
-
     const threePosts = posts.slice(0, 3);
     return (
         <>

@@ -6,7 +6,7 @@ import {useForm} from "react-hook-form";
 
 export function Admin() {
     const {user} = useContext(AuthContext);
-    const {posts, addPost, clearPosts, selectedPost, setSelectedPost} = useContext(BlogContext);
+    const {posts, addPost, clearPosts, selectedPost, setSelectedPost, updatePost} = useContext(BlogContext);
     const {register, handleSubmit, formState, watch} = useForm();
     const dateWatcher = watch("createdAt");
     const day = new Date().getDate();
@@ -21,10 +21,7 @@ export function Admin() {
 
     const handleAddPost = (data, event) => {
         if (selectedPost) {
-            const i = posts.findIndex(post => post.id === selectedPost.id);
-            posts[i].title = data.title;
-            posts[i].body = data.body;
-            posts[i].date = data.createdAt;
+            updatePost(selectedPost, data);
             event.target.reset();
             setSelectedPost(null);
         } else {
@@ -46,7 +43,7 @@ export function Admin() {
 
                 <div className="form-title">
                     <label htmlFor="title">Title:</label>
-                    <textarea type="text" {...register("title", {
+                    <textarea {...register("title", {
                         required: true,
                         pattern: /[A-Za-z\d.,!?;:'"\s\t-]/,
                         minLength: 5,
@@ -59,7 +56,7 @@ export function Admin() {
 
                 <div className="form-content">
                     <label htmlFor="body">Content:</label>
-                    <textarea type="text" {...register("body", {
+                    <textarea {...register("body", {
                         required: true,
                         minLength: 5})} defaultValue={selectedPost ? selectedPost.body : ""}/>
                     {formState.errors.body?.type === "required" && <span className="error-msg">a body is required!</span>}

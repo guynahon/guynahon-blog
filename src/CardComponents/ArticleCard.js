@@ -6,7 +6,7 @@ import {AuthContext} from "../Providers/AuthProvider";
 export function ArticleCard({singlePost}) {
     const id = singlePost.id;
     const route = `/article/${id}`;
-    const {removePost, editPost, selectedPost} = useContext(BlogContext);
+    const {removePost, editPost} = useContext(BlogContext);
     const {user} = useContext(AuthContext);
     const scrollToTop = () => {
         window.scrollTo({
@@ -53,7 +53,7 @@ export function ArticleCard({singlePost}) {
                         )}
                     </div>
                 </div>
-                <img src="../article-pic2.jpeg" alt="logo"/>
+                <img src={`https://picsum.photos/300/300?${singlePost.id}`} alt="random-picture"/>
             </div>
     );
 }
