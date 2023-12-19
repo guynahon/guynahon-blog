@@ -1,5 +1,5 @@
 import './AdminPage.css'
-import {useContext, useEffect, useState} from "react";
+import {useContext, useEffect} from "react";
 import {AuthContext} from "../Providers/AuthProvider";
 import {BlogContext} from "../Providers/BlogProvider";
 import {useForm} from "react-hook-form";
@@ -9,22 +9,15 @@ export function Admin() {
     const {posts, addPost, clearPosts, selectedPost, setSelectedPost} = useContext(BlogContext);
     const {register, handleSubmit, formState, watch} = useForm();
     const dateWatcher = watch("createdAt");
-
-    const [panelMounted, setPanelMounted] = useState(true);
-
-    useEffect(() => {
-        return () => {
-            setPanelMounted(false);
-            if (!panelMounted) {
-                setSelectedPost(null);
-            }
-        };
-    }, [panelMounted]);
-
     const day = new Date().getDate();
     const month = new Date().getMonth();
     const year = new Date().getFullYear();
 
+    useEffect(() => {
+        return () => {
+            setSelectedPost(null)
+        }
+    }, [selectedPost]);
 
     const handleAddPost = (data, event) => {
         if (selectedPost) {
@@ -41,7 +34,6 @@ export function Admin() {
                 id: posts.length + 1,
                 date: data.createdAt
             });
-            setSelectedPost(null);
             event.target.reset();
         }
     };
@@ -50,16 +42,15 @@ export function Admin() {
     return (
         user ?
         <div className="all-admin">
-            <h1>Admin Panel</h1>
             <form className="admin-form" onSubmit={handleSubmit(handleAddPost)}>
-                <span className="admin-headers">{selectedPost? "Edit" : "Add"} a post</span>
+                <span className="admin-headers">{selectedPost ? "Edit" : "Add"} a post</span>
 
                 <div className="form-title">
                     <label htmlFor="title">Title:</label>
                     <input type="text" {...register("title", {
                         required: true,
                         pattern: /[A-Za-z\d.,!?;:'"\s\t-]/,
-                        minLength: 5})} defaultValue={selectedPost? selectedPost.title : ""}/>
+                        minLength: 5})} defaultValue={selectedPost ? selectedPost.title : ""}/>
                     {formState.errors.title?.type === "required" && <span className="error-msg">Title is required</span>}
                     {formState.errors.title?.type === "pattern" && <span className="error-msg">must contain only english letters!</span>}
                     {formState.errors.title?.type === "minLength" && <span className="error-msg">minimum 5 characters</span>}
@@ -69,7 +60,7 @@ export function Admin() {
                     <label htmlFor="body">Content:</label>
                     <input type="text" {...register("body", {
                         required: true,
-                        minLength: 5})} defaultValue={selectedPost? selectedPost.body : ""}/>
+                        minLength: 5})} defaultValue={selectedPost ? selectedPost.body : ""}/>
                     {formState.errors.body?.type === "required" && <span className="error-msg">a body is required!</span>}
                     {formState.errors.body?.type === "minLength" && <span className="error-msg">minimum 5 characters</span>}
                 </div>
@@ -78,7 +69,7 @@ export function Admin() {
                     <label htmlFor="date">Date:</label>
                     <input type="date" {...register("createdAt", {
                         required: true
-                    })} defaultValue={selectedPost? selectedPost.date : ""} />
+                    })} defaultValue={selectedPost ? selectedPost.date : ""} />
                     {(new Date(dateWatcher) < new Date(year, month, day)) && (<span className="error-msg">Date is invalid!</span>)}
                 </div>
 

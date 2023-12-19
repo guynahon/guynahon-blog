@@ -16,7 +16,7 @@ export function BlogProvider({children}) {
  };
 
 const removePost = (postId) => {
-    setPosts(prevPosts => prevPosts.filter(post => post.id !== postId));
+    setPosts(posts.filter(post => post.id !== postId));
 };
 
  const clearPosts = () => {
