@@ -25,6 +25,8 @@
     left: 30px;
     margin-left: 30px;
     margin-bottom: 30px;
+    height: 100%;
+    justify-content: space-between;
 }
 
 .card-date {
@@ -36,6 +38,7 @@
     text-align: center;
     color: #667085;
     margin-top: 40px;
+    /*padding-top: 20px;*/
 }
 
 .card h5 {
@@ -46,6 +49,7 @@
 .card-text {
     width: 610px;
     gap: 10px;
+    text-overflow: ellipsis;
 }
 
 .card-text p{
@@ -59,6 +63,9 @@
     font-size: 26px;
     line-height: 34px;
     width: 610px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-height: 70px;
 }
 
 .card-paragraph {
@@ -68,11 +75,18 @@
     line-height: 27px;
     width: 610px;
 
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
+    text-overflow: ellipsis;
 }
 
 .card img {
     width: 300px;
     height: 212px;
+    object-fit: cover;
     top: 24px;
     left: 660px;
     border-radius: 10px;
@@ -84,6 +98,7 @@
     gap: 10px;
     align-items: baseline;
     justify-content: space-between;
+    padding-bottom: 50px;
 }
 
 

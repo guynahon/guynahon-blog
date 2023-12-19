@@ -38,7 +38,6 @@ export function Admin() {
         }
     };
 
-
     return (
         user ?
         <div className="all-admin">
@@ -47,18 +46,20 @@ export function Admin() {
 
                 <div className="form-title">
                     <label htmlFor="title">Title:</label>
-                    <input type="text" {...register("title", {
+                    <textarea type="text" {...register("title", {
                         required: true,
                         pattern: /[A-Za-z\d.,!?;:'"\s\t-]/,
-                        minLength: 5})} defaultValue={selectedPost ? selectedPost.title : ""}/>
+                        minLength: 5,
+                        maxLength: 100})} defaultValue={selectedPost ? selectedPost.title : ""}/>
                     {formState.errors.title?.type === "required" && <span className="error-msg">Title is required</span>}
                     {formState.errors.title?.type === "pattern" && <span className="error-msg">must contain only english letters!</span>}
                     {formState.errors.title?.type === "minLength" && <span className="error-msg">minimum 5 characters</span>}
+                    {formState.errors.title?.type === "maxLength" && <span className="error-msg">maximum 100 characters</span>}
                 </div>
 
                 <div className="form-content">
                     <label htmlFor="body">Content:</label>
-                    <input type="text" {...register("body", {
+                    <textarea type="text" {...register("body", {
                         required: true,
                         minLength: 5})} defaultValue={selectedPost ? selectedPost.body : ""}/>
                     {formState.errors.body?.type === "required" && <span className="error-msg">a body is required!</span>}
@@ -75,7 +76,7 @@ export function Admin() {
 
                 <button className="form-btn submit-form" type="submit">Submit</button>
             </form>
-            <button className="form-btn" onClick={clearPosts}>Clear Posts</button>
+            {!selectedPost && <button className="form-btn" onClick={clearPosts}>Clear Posts</button>}
         </div> : <span className="pls-log-in">Please Log in !</span>
     );
 }

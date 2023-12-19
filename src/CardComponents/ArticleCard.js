@@ -38,19 +38,19 @@ export function ArticleCard({singlePost}) {
                     <div className="card-text">
                         <h3 className="card-header">{singlePost.title}</h3>
                         <p className="card-paragraph">{singlePost.body}</p>
-                        <div className="card-footer">
-                            <div className="read-more" onClick={scrollToTop}><Link to={route}>Read More</Link></div>
-                            {user && (
-                                <>
-                                    <div className="card-edit-btn">
-                                        <Link to="/admin" onClick={handlePostEditClick}>Edit Post</Link>
-                                    </div>
-                                    <div className="card-remove-btn">
-                                        <button onClick={() => removePost(id)}>X</button>
-                                    </div>
-                                </>
-                            )}
-                        </div>
+                    </div>
+                    <div className="card-footer">
+                        <div className="read-more" onClick={scrollToTop}><Link to={route}>Read More</Link></div>
+                        {user && (
+                            <>
+                                <div className="card-edit-btn">
+                                    <Link to="/admin" onClick={handlePostEditClick}>Edit Post</Link>
+                                </div>
+                                <div className="card-remove-btn">
+                                    <button onClick={() => removePost(id)}>X</button>
+                                </div>
+                            </>
+                        )}
                     </div>
                 </div>
                 <img src="../article-pic2.jpeg" alt="logo"/>

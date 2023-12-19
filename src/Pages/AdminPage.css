@@ -22,11 +22,21 @@
     margin-bottom: 5px;
 }
 
-.all-admin input {
+.all-admin .form-title textarea {
     width: 100%;
     padding: 8px;
     box-sizing: border-box;
     margin-top: 5px;
+    resize: none;
+}
+
+.all-admin .form-content textarea {
+    width: 100% !important;
+    height: 350px !important;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    resize: none;
 }
 
 .form-btn {
