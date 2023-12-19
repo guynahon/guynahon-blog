@@ -94,4 +94,8 @@ a {
     border: 1px solid #007bb5;
 }
 
+a.active {
+    color: #C41740;
+}
+
 

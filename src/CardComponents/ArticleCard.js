@@ -1,5 +1,5 @@
 import './ArticleCard.css'
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import {useContext} from "react";
 import {BlogContext} from "../Providers/BlogProvider";
 import {AuthContext} from "../Providers/AuthProvider";
@@ -40,11 +40,11 @@ export function ArticleCard({singlePost}) {
                         <p className="card-paragraph">{singlePost.body}</p>
                     </div>
                     <div className="card-footer">
-                        <div className="read-more" onClick={scrollToTop}><Link to={route}>Read More</Link></div>
+                        <div className="read-more" onClick={scrollToTop}><NavLink to={route}>Read More</NavLink></div>
                         {user && (
                             <>
                                 <div className="card-edit-btn">
-                                    <Link to="/admin" onClick={handlePostEditClick}>Edit Post</Link>
+                                    <NavLink to="/admin" onClick={handlePostEditClick}>Edit Post</NavLink>
                                 </div>
                                 <div className="card-remove-btn">
                                     <button onClick={() => removePost(id)}>X</button>

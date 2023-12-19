@@ -1,5 +1,5 @@
 import './Navigation.css'
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import {useContext} from "react";
 import {AuthContext} from "../Providers/AuthProvider";
 
@@ -10,16 +10,16 @@ export function Navigation() {
     return (
         <div id="navigation">
             <div id="logo">
-                <h1><Link to="/" className="blog-logo">Guy's Blog</Link></h1>
+                <h1><NavLink to="/" className="blog-logo">Guy's Blog</NavLink></h1>
             </div>
             <div id="nav-options">
                 <div id="nav-buttons">
                     {user ? `Hello, ${user.userName}` : <button className="sign-in-btn" onClick={signIn}>Sign In</button>}
-                    <Link to="/subject" className="nav-tag">Daily Digest</Link>
-                    <Link to="/subject" className="nav-tag">Design Tools</Link>
-                    <Link to="/subject" className="nav-tag">Tutorials</Link>
+                    <NavLink to="/subject" className="nav-tag">Daily Digest</NavLink>
+                    <NavLink to="/subject" className="nav-tag">Design Tools</NavLink>
+                    <NavLink to="/subject" className="nav-tag">Tutorials</NavLink>
                     {/* I will change the links once i will have the option to route them correctly*/}
-                    {user && <Link to="/admin" className="nav-tag">Admin</Link>}
+                    {user && <NavLink to="/admin" className="nav-tag">Admin</NavLink>}
                 </div>
                 <a className="sub-button">Subscribe</a>
             </div>

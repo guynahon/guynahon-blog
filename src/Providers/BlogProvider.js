@@ -36,8 +36,10 @@ export function BlogProvider({children}) {
     }
 
     useEffect(() => {
-        const postsString = localStorage.getItem("posts");
-        setPosts(JSON.parse(postsString));
+        const postsString = localStorage.getItem("posts"); // checking if the local storage is null before settingPosts
+        if (postsString) {
+            setPosts(JSON.parse(postsString));
+        }
     }, []);
 
 
