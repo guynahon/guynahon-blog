@@ -5,7 +5,7 @@ import {BlogContext} from "../Providers/BlogProvider";
 import {AuthContext} from "../Providers/AuthProvider";
 export function ArticleCard({singlePost}) {
     const id = singlePost.id;
-    const route = `/article/${id}`;
+    const route = `/subject/${id}`;
     const {removePost, editPost} = useContext(BlogContext);
     const {user} = useContext(AuthContext);
     const scrollToTop = () => {

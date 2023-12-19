@@ -23,7 +23,7 @@ export function Header () {
                 setPageParagraph("a very nice paragraph!");
                 break;
 
-            case `/article/${id}`:
+            case `/subject/${id}`:
                 const post = posts.find(p => p.id === Number(id));
                 if (post) {
                     setPageHeader(post.title);

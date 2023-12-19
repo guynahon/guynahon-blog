@@ -20,7 +20,7 @@ export const router = createBrowserRouter([
                 element: <ArticleSubjectPage />,
             },
             {
-                path: "/article/:id", // => /:subject/:id when we learn it (for the navigation)
+                path: "/subject/:id", // => /:subject/:id when we learn it (for the navigation)
                 element: <SingleArticlePage />,
             },
             {
