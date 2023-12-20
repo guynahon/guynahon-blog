@@ -1,13 +1,9 @@
-import './Subject-component.css'
+import './ArticleCardList.css'
 import {useState} from "react";
-import {ArticleCardsList} from "../CardComponents/ArticleCardsList";
+import {ArticleCard} from "../CardComponents/ArticleCard";
 
-
-export function SubjectComponent({subjectPosts}) {
-    // const {posts} = useContext(BlogContext);
+export function ArticleCardList({subjectPosts}) {
     const [inputValue, setInputValue] = useState("");
-    console.log(subjectPosts);
-
 
     const handleInputChange = (event) => {
         setInputValue(event.target.value);
@@ -23,7 +19,7 @@ export function SubjectComponent({subjectPosts}) {
             <label className="search-label">Search: </label>
             <input className="search-input" type="text" placeholder="type seach value" onChange={handleInputChange}/>
         </div>
-        <ArticleCardsList posts={filterPosts(inputValue)} />
+        {filterPosts(inputValue).map((post) => <ArticleCard singlePost={post} />)}
         <div className="more-articles-block">
             <a className="more-articles-button">View all</a>
         </div>

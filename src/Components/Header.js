@@ -6,9 +6,9 @@ export function Header () {
     const {posts} = useContext(BlogContext);
     const [pageHeader, setPageHeader] = useState(null);
     const [pageParagraph, setPageParagraph] = useState(null);
-    const {id} = useParams();
+    const {id, subject} = useParams();
 
-    console.log(posts);
+    console.log(subject);
     const location = useLocation().pathname;
 
     useEffect(() => {
@@ -18,12 +18,25 @@ export function Header () {
                 setPageParagraph("The only place you will find happiness!");
                 break;
 
-            case "/subject":
-                setPageHeader("topic 123");
-                setPageParagraph("a very nice paragraph!");
+            case "/dailydigest":
+                setPageHeader("Daily Digest");
+                setPageParagraph("A description of the respective category goes right here." +
+                    " Be as expressive as possible, but in brief.");
                 break;
 
-            case `/subject/${id}`:
+            case "/designtools":
+                setPageHeader("Design Tools");
+                setPageParagraph("A description of the respective category goes right here. " +
+                    "Be as expressive as possible, but in brief.");
+                break;
+
+            case "/tutorials":
+                setPageHeader("Tutorials");
+                setPageParagraph("A description of the respective category goes right here. " +
+                    "Be as expressive as possible, but in brief.");
+                break;
+
+            case `/article/${id}`:
                 const post = posts.find(p => p.id === Number(id));
                 if (post) {
                     setPageHeader(post.title);

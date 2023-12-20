@@ -6,7 +6,7 @@ import {useForm} from "react-hook-form";
 
 export function Admin() {
     const {user} = useContext(AuthContext);
-    const {posts, addPost, clearPosts, selectedPost, setSelectedPost, updatePost} = useContext(BlogContext);
+    const {addPost, clearPosts, selectedPost, setSelectedPost, updatePost} = useContext(BlogContext);
     const {register, handleSubmit, formState, watch} = useForm();
     const dateWatcher = watch("createdAt");
     const day = new Date().getDate();
@@ -29,7 +29,7 @@ export function Admin() {
             addPost({
                 title: data.title,
                 body: data.body,
-                id: posts.length + 1,
+                id: Date.now(),
                 date: data.createdAt,
                 subject: data.subject
             });

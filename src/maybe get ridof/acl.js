@@ -1,6 +1,6 @@
-import {ArticleCard} from "./ArticleCard";
+import {ArticleCard} from "../CardComponents/ArticleCard";
 
-export function ArticleCardsList({posts}) {
+export function Acl({posts}) {
     return (
         <>
             {posts.map((post) => <ArticleCard singlePost={post} />)}

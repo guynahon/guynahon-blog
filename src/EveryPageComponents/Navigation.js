@@ -1,5 +1,5 @@
 import './Navigation.css'
-import {NavLink} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import {useContext} from "react";
 import {AuthContext} from "../Providers/AuthProvider";
 
@@ -10,7 +10,7 @@ export function Navigation() {
     return (
         <div id="navigation">
             <div id="logo">
-                <h1><NavLink to="/" className="blog-logo">Guy's Blog</NavLink></h1>
+                <h1><Link to="/" className="blog-logo">Guy's Blog</Link></h1>
             </div>
             <div id="nav-options">
                 <div id="nav-buttons">

@@ -3,17 +3,18 @@ import {NavLink} from "react-router-dom";
 import {useContext} from "react";
 import {BlogContext} from "../Providers/BlogProvider";
 import {AuthContext} from "../Providers/AuthProvider";
+
 export function ArticleCard({singlePost}) {
     const id = singlePost.id;
-    const route = `/subject/${id}`;
+    const route = `/article/${id}`;
     const {removePost, editPost} = useContext(BlogContext);
     const {user} = useContext(AuthContext);
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
-            // behavior: 'smooth',
         });
     };
+
     const currentDate = singlePost.date.split("-");
     const day = currentDate[2];
     const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -28,8 +29,6 @@ export function ArticleCard({singlePost}) {
         handlePostEdit();
         scrollToTop();
     };
-
-
 
     return (
             <div className="card">

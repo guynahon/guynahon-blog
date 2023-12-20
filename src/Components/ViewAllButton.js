@@ -1,9 +1,13 @@
 import './ViewAllButton.css'
 import {Link} from "react-router-dom";
-export function ViewAllButton() {
+import {scrollToTop} from "../helper-functions/scrollToTop";
+
+export function ViewAllButton({subject}) {
+    const route = `/${subject}`;
+
     return (
         <div className="view-all-block">
-            <Link to="/subject" className="view-all-button">View all</Link>
+            <Link to={route} onClick={scrollToTop} className="view-all-button">View all</Link>
         </div>
     );
 }
