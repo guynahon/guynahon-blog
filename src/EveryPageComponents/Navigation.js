@@ -18,9 +18,9 @@ export function Navigation() {
                 <div id="nav-buttons">
                     {/*if we signed in we will show "Hello "name" else the sign-in button*/}
                     {user ? `Hello, ${user.userName}` : <button className="sign-in-btn" onClick={signIn}>Sign In</button>}
-                    <NavLink to="/dailydigest" className="nav-tag">Daily Digest</NavLink>
-                    <NavLink to="/designtools" className="nav-tag">Design Tools</NavLink>
-                    <NavLink to="/tutorials" className="nav-tag">Tutorials</NavLink>
+                    <NavLink to="/subjects/dailydigest" className="nav-tag">Daily Digest</NavLink>
+                    <NavLink to="/subjects/designtools" className="nav-tag">Design Tools</NavLink>
+                    <NavLink to="/subjects/tutorials" className="nav-tag">Tutorials</NavLink>
                     {/*if we signed in we can now see the admin panel link*/}
                     {user && <NavLink to="/admin" className="nav-tag">Admin</NavLink>}
                 </div>

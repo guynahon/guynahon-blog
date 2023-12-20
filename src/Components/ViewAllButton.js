@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import {scrollToTop} from "../helper-functions/scrollToTop";
 
 export function ViewAllButton({subject}) {
-    const route = `/${subject}`;
+    const route = `/subjects/${subject}`;
 
     return (
         <div className="view-all-block">

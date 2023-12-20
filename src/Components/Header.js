@@ -31,19 +31,19 @@ export function Header () {
                 setPageParagraph("The only place you will find happiness!");
                 break;
 
-            case "/dailydigest":
+            case "/subjects/dailydigest":
                 setPageHeader("Daily Digest");
                 setPageParagraph("A description of the respective category goes right here." +
                     " Be as expressive as possible, but in brief.");
                 break;
 
-            case "/designtools":
+            case "/subjects/designtools":
                 setPageHeader("Design Tools");
                 setPageParagraph("A description of the respective category goes right here. " +
                     "Be as expressive as possible, but in brief.");
                 break;
 
-            case "/tutorials":
+            case "/subjects/tutorials":
                 setPageHeader("Tutorials");
                 setPageParagraph("A description of the respective category goes right here. " +
                     "Be as expressive as possible, but in brief.");

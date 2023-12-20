@@ -17,7 +17,7 @@ export const router = createBrowserRouter([
                 element: <HomePage/>
             },
             {
-                path: "/:subject", // => /:subject when we learn it (for the navigation)
+                path: "/subjects/:subject", // => /:subject when we learn it (for the navigation)
                 element: <ArticleSubjectPage />,
             },
             {
