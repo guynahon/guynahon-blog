@@ -1,22 +1,20 @@
 import './Subject-component.css'
-import {useContext, useEffect, useState} from "react";
+import {useState} from "react";
 import {ArticleCardsList} from "../CardComponents/ArticleCardsList";
-import {BlogContext} from "../Providers/BlogProvider";
 
 
-export function SubjectComponent() {
-    const {posts} = useContext(BlogContext);
+export function SubjectComponent({subjectPosts}) {
+    // const {posts} = useContext(BlogContext);
     const [inputValue, setInputValue] = useState("");
+    console.log(subjectPosts);
 
 
     const handleInputChange = (event) => {
         setInputValue(event.target.value);
     };
 
-    const lowerInput = inputValue.toLowerCase();
-
     const filterPosts = (value) => {
-        return posts.filter((post)=> post.title.toLowerCase().includes(value.toLowerCase()));
+        return subjectPosts.filter((post)=> post.title.toLowerCase().includes(value.toLowerCase()));
     }
 
     return (

@@ -15,9 +15,9 @@ export function Navigation() {
             <div id="nav-options">
                 <div id="nav-buttons">
                     {user ? `Hello, ${user.userName}` : <button className="sign-in-btn" onClick={signIn}>Sign In</button>}
-                    <NavLink to="/subject" className="nav-tag">Daily Digest</NavLink>
-                    <NavLink to="/subject" className="nav-tag">Design Tools</NavLink>
-                    <NavLink to="/subject" className="nav-tag">Tutorials</NavLink>
+                    <NavLink to="/dailydigest" className="nav-tag">Daily Digest</NavLink>
+                    <NavLink to="/designtools" className="nav-tag">Design Tools</NavLink>
+                    <NavLink to="/tutorials" className="nav-tag">Tutorials</NavLink>
                     {/* I will change the links once i will have the option to route them correctly*/}
                     {user && <NavLink to="/admin" className="nav-tag">Admin</NavLink>}
                 </div>

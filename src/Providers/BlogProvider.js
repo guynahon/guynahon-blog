@@ -31,6 +31,7 @@ export function BlogProvider({children}) {
         arr[i].title = data.title;
         arr[i].body = data.body;
         arr[i].date = data.createdAt;
+        arr[i].subject = data.subject;
         setPosts(arr);
         localStorage.setItem("posts", JSON.stringify(arr));
     }

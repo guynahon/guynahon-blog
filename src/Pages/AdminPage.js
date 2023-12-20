@@ -25,11 +25,13 @@ export function Admin() {
             event.target.reset();
             setSelectedPost(null);
         } else {
+            console.log(data);
             addPost({
                 title: data.title,
                 body: data.body,
                 id: posts.length + 1,
-                date: data.createdAt
+                date: data.createdAt,
+                subject: data.subject
             });
             event.target.reset();
         }
@@ -69,6 +71,15 @@ export function Admin() {
                         required: true
                     })} defaultValue={selectedPost ? selectedPost.date : ""} />
                     {(new Date(dateWatcher) < new Date(year, month, day)) && (<span className="error-msg">Date is invalid!</span>)}
+                </div>
+
+                <div className="form-subject">
+                    <label htmlFor="subject">Article Subject:</label>
+                    <select {...register("subject")}>
+                        <option value="dailydigest">Daily Digest</option>
+                        <option value="designtools">Design Tools</option>
+                        <option value="tutorials">Tutorials</option>
+                    </select>
                 </div>
 
                 <button className="form-btn submit-form" type="submit">Submit</button>
