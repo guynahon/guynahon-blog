@@ -1,5 +1,6 @@
 import './NewsLetter.css'
 export function NewsLetter() {
+    // static newsletter component
     return (
         <div className="news-letter">
             <div className="news-letter-text">

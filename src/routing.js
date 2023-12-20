@@ -6,6 +6,7 @@ import {SingleArticlePage} from "./Pages/SingleArticlePage";
 import React from "react";
 import {Admin} from "./Pages/AdminPage";
 
+// routing system for easy navigation the /article/:id path is a dynamic path by id
 export const router = createBrowserRouter([
     {
         path: "/",

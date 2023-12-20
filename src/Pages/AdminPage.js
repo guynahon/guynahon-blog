@@ -25,7 +25,6 @@ export function Admin() {
             event.target.reset();
             setSelectedPost(null);
         } else {
-            console.log(data);
             addPost({
                 title: data.title,
                 body: data.body,
