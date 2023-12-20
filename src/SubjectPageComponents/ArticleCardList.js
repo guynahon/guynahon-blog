@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import {ArticleCard} from "../CardComponents/ArticleCard";
 import {useLocation} from "react-router-dom";
 
-export function ArticleCardList({subjectPosts}) {
+export function ArticleCardList({postsBySubject}) {
     const [inputValue, setInputValue] = useState("");
     const [counter, setCounter] = useState(3);
     const location = useLocation();
@@ -17,7 +17,7 @@ export function ArticleCardList({subjectPosts}) {
     };
 
     const filterPosts = (value) => {
-        return subjectPosts.filter((post)=> post.title.toLowerCase().includes(value.toLowerCase()));
+        return postsBySubject.filter((post)=> post.title.toLowerCase().includes(value.toLowerCase()));
     }
 
     return (
@@ -27,8 +27,8 @@ export function ArticleCardList({subjectPosts}) {
             <input className="search-input" type="text" placeholder="type seach value" onChange={handleInputChange}/>
         </div>
         {inputValue !== "" ? filterPosts(inputValue).map((post) => <ArticleCard singlePost={post} />) :
-            subjectPosts.slice(0,counter).map((post) => <ArticleCard singlePost={post} />)}
-        {counter < subjectPosts.length &&
+            postsBySubject.slice(0,counter).map((post) => <ArticleCard singlePost={post} />)}
+        {counter < postsBySubject.length &&
         <div className="more-articles-block">
             <a className="more-articles-button" onClick={() => setCounter(counter + 3)}>Load More</a>
         </div>}
