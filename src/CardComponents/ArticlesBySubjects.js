@@ -1,7 +1,7 @@
 import {ThreeCardsList} from "./ThreeCardsList";
-import './Articles-divided-to-subjects-component.css'
+import './ArticlesBySubjects.css'
 
-export function ArticlesDividedToSubjectsComponent() {
+export function ArticlesBySubjects() {
     return (
         <div id="articles">
             <ThreeCardsList subject={"dailydigest"} />

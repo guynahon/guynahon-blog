@@ -3,17 +3,13 @@ import {NavLink} from "react-router-dom";
 import {useContext} from "react";
 import {BlogContext} from "../Providers/BlogProvider";
 import {AuthContext} from "../Providers/AuthProvider";
+import {scrollToTop} from "../helper-functions/scrollToTop";
 
 export function ArticleCard({singlePost}) {
     const id = singlePost.id;
     const route = `/article/${id}`;
     const {removePost, editPost} = useContext(BlogContext);
     const {user} = useContext(AuthContext);
-    const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-        });
-    };
 
     const currentDate = singlePost.date.split("-");
     const day = currentDate[2];

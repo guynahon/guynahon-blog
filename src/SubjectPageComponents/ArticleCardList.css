@@ -8,9 +8,9 @@
 }
 
 .more-articles-block {
+    margin: 60px 0 0 0;
     display: inline-flex;
     padding: 8px 12px;
-    margin: 60px 0 0 0;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -22,7 +22,8 @@
 }
 
 .more-articles-block:hover {
-    border: 1px solid black;
+    border: 1px solid #a5a5a5;
+    cursor: pointer;
 }
 
 
@@ -32,12 +33,10 @@
     gap: 8px;
     color: #1D2939;
     text-align: center;
-
-    /* Text sm/Semibold */
     font-size: 14px;
     font-style: normal;
     font-weight: 600;
-    line-height: 20px; /* 142.857% */
+    line-height: 20px;
 }
 
 .search-label {
@@ -48,6 +47,6 @@
 .search-input {
     width: 160px;
     height: 30px;
-    border-radius: 10px;
+    border-radius: 8px;
     border: 1px solid #9b9b9b;
 }

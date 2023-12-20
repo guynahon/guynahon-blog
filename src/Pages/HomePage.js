@@ -1,11 +1,11 @@
 import {HomeHeader} from "../HomePageComponenets/HomeHeader";
-import {ArticlesDividedToSubjectsComponent} from "../CardComponents/Articles-divided-to-subjects-component";
+import {ArticlesBySubjects} from "../CardComponents/ArticlesBySubjects";
 
 export function HomePage() {
     return (
         <>
             <HomeHeader/>
-            <ArticlesDividedToSubjectsComponent/>
+            <ArticlesBySubjects/>
         </>
     );
 }
