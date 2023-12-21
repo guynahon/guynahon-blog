@@ -2,6 +2,7 @@ import './ViewAllButton.css'
 import {Link} from "react-router-dom";
 import {scrollToTop} from "../helper-functions/scrollToTop";
 
+// view all button component - for linking to the subject page
 export function ViewAllButton({subject}) {
     const route = `/subjects/${subject}`;
 

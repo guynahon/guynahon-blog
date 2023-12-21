@@ -9,7 +9,7 @@ export function ArticleCardList({postsBySubject}) {
     const [inputValue, setInputValue] = useState("");
 
     // useState for counter the helps us use the Load More function, which loads 3 posts more on each click
-    const [counter, setCounter] = useState(3);
+    const [loadMoreCounter, setLoadMoreCounter] = useState(3);
 
     // we use useLocation.pathname to get a string with the route we are currently in
     const location = useLocation().pathname;
@@ -17,7 +17,7 @@ export function ArticleCardList({postsBySubject}) {
     // we use the useEffect and track the location meaning we execute that function that resets the counter back
     // to 3 when we leave the route (the make the load more restart)
     useEffect(() => {
-        setCounter(3);
+        setLoadMoreCounter(3);
     }, [location]);
 
     // this function is called on input change and sets the inputValue value to what in the input bar
@@ -40,12 +40,12 @@ export function ArticleCardList({postsBySubject}) {
         {/*if input value is not empty show the filtered posts on the article cards
         else show only the posts you loaded with the load more*/}
         {inputValue !== "" ? filterPosts(inputValue).map((post) => <ArticleCard singlePost={post} />) :
-            postsBySubject.slice(0,counter).map((post) => <ArticleCard singlePost={post} />)}
+            postsBySubject.slice(0,loadMoreCounter).map((post) => <ArticleCard singlePost={post} />)}
         {/*hide the load more button if the counter is larger or equal to the postBySubject length and
         when typing a value in the input bar*/}
-        {(counter < postsBySubject.length && inputValue === "" ) &&
+        {(loadMoreCounter < postsBySubject.length && inputValue === "" ) &&
         <div className="more-articles-block">
-            <a className="more-articles-button" onClick={() => setCounter(counter + 3)}>Load More</a>
+            <a className="more-articles-button" onClick={() => setLoadMoreCounter(loadMoreCounter + 3)}>Load More</a>
         </div>}
     </div>
     );

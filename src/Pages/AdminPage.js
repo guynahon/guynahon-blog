@@ -36,6 +36,10 @@ export function Admin() {
         }
     };
 
+    const handleTransferingBackToSubjectPage = (event) => {
+
+    };
+
     return (
         user ?
         <div className="all-admin">
