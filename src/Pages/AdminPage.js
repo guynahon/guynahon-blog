@@ -74,7 +74,7 @@ export function Admin() {
 
                 <div className="form-subject">
                     <label htmlFor="subject">Article Subject:</label>
-                    <select {...register("subject")}>
+                    <select {...register("subject")} defaultValue={selectedPost ? selectedPost.subject : ""}>
                         <option value="dailydigest">Daily Digest</option>
                         <option value="designtools">Design Tools</option>
                         <option value="tutorials">Tutorials</option>
