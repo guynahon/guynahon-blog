@@ -66,7 +66,7 @@ export function ArticleCard({singlePost}) {
                     </div>
                 </div>
                 {/*an image tag with a src that is api that displays random images*/}
-                <img src={`https://picsum.photos/300/300?${singlePost.id}`} alt="random-picture"/>
+                <img src={`https://picsum.photos/300/300?${singlePost.id}`} alt={"random-picture "+id}/>
             </div>
     );
 }
