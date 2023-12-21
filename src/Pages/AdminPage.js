@@ -3,11 +3,14 @@ import {useContext, useEffect} from "react";
 import {AuthContext} from "../Providers/AuthProvider";
 import {BlogContext} from "../Providers/BlogProvider";
 import {useForm} from "react-hook-form";
+import {useNavigate} from "react-router-dom";
 
 export function Admin() {
     const {user} = useContext(AuthContext);
     const {addPost, clearPosts, selectedPost, setSelectedPost, updatePost} = useContext(BlogContext);
     const {register, handleSubmit, formState, watch} = useForm();
+    const navigate = useNavigate();
+
     const dateWatcher = watch("createdAt");
     const day = new Date().getDate();
     const month = new Date().getMonth();
@@ -24,6 +27,7 @@ export function Admin() {
             updatePost(selectedPost, data);
             event.target.reset();
             setSelectedPost(null);
+            navigate(`/subjects/${data.subject}`);
         } else {
             addPost({
                 title: data.title,
@@ -34,10 +38,6 @@ export function Admin() {
             });
             event.target.reset();
         }
-    };
-
-    const handleTransferingBackToSubjectPage = (event) => {
-
     };
 
     return (
@@ -85,7 +85,8 @@ export function Admin() {
                     </select>
                 </div>
 
-                <button className="form-btn submit-form" type="submit">Submit</button>
+                <button className="form-btn submit-form" type="submit">{selectedPost ? "Edit" : "Add"}</button>
+
             </form>
             {!selectedPost && <button className="form-btn" onClick={clearPosts}>Clear Posts</button>}
         </div> : <span className="pls-log-in">Please Log in !</span>
