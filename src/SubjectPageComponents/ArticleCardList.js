@@ -12,7 +12,7 @@ export function ArticleCardList({postsBySubject}) {
     const [counter, setCounter] = useState(3);
 
     // we use useLocation.pathname to get a string with the route we are currently in
-    const location = useLocation();
+    const location = useLocation().pathname;
 
     // we use the useEffect and track the location meaning we execute that function that resets the counter back
     // to 3 when we leave the route (the make the load more restart)
@@ -22,7 +22,7 @@ export function ArticleCardList({postsBySubject}) {
 
     // this function is called on input change and sets the inputValue value to what in the input bar
     const handleInputChange = (event) => {
-        setInputValue(event.target.value);
+        setInputValue(event.target.value.trim());
     };
 
     // this function helps filter the posts according to the inputValue without
