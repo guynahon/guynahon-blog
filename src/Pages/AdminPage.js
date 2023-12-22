@@ -22,6 +22,10 @@ export function Admin() {
         }
     }, [selectedPost]);
 
+    if (!user) {
+        return (<span className="pls-log-in">Please Log in !</span>);
+    }
+
     const handleAddPost = (data, event) => {
         if (selectedPost) {
             updatePost(selectedPost, data);
@@ -41,7 +45,6 @@ export function Admin() {
     };
 
     return (
-        user ?
         <div className="all-admin">
             <form className="admin-form" onSubmit={handleSubmit(handleAddPost)}>
                 <span className="admin-headers">{selectedPost ? "Edit" : "Add"} a post</span>
@@ -85,10 +88,10 @@ export function Admin() {
                     </select>
                 </div>
 
-                <button className="form-btn submit-form" type="submit">{selectedPost ? "Edit" : "Add"}</button>
+                <button className="form-btn submit-form" type="submit">{selectedPost ? "Save" : "Add"}</button>
 
             </form>
             {!selectedPost && <button className="form-btn" onClick={clearPosts}>Clear Posts</button>}
-        </div> : <span className="pls-log-in">Please Log in !</span>
+        </div>
     );
 }

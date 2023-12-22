@@ -37,7 +37,10 @@
 }
 
 .nav-tag:hover {
-    color: #C41740;
+    background: linear-gradient(97deg, #C41740 4.8%, #EA9C28 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 
@@ -95,7 +98,8 @@ a {
 }
 
 a.active {
-    color: #C41740;
+    background: linear-gradient(97deg, #C41740 4.8%, #EA9C28 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
-
-

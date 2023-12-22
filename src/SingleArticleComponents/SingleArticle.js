@@ -1,13 +1,18 @@
 import './SingleArticle.css'
-import {useContext, useEffect, useState} from "react";
+import {useContext} from "react";
 import {useParams} from "react-router-dom";
 import {BlogContext} from "../Providers/BlogProvider";
 
 export function SingleArticle() {
+
+    // getting the id from the route in order to display the specific post
     const {id} = useParams();
+
+    //getting the posts array to search the post in it
     const {posts} = useContext(BlogContext);
 
-    const post = posts.find((element) => element.id === Number(id)); // getPostById
+    // getting the post by the id
+    const post = posts.find((element) => element.id === Number(id));
 
     return (
             <div className="single-article-block">
