@@ -33,6 +33,7 @@ export function SingleArticle() {
                         </div>
                     </>
                     ) : (
+                        // loading message until the post loads.
                         <span className="loading-msg">Loading...</span>
                     )}
             </div>
