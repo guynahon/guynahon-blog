@@ -1,5 +1,6 @@
 import {createContext, useEffect, useState} from "react";
 
+// create BlogContext as context
 export const BlogContext = createContext(null);
 
 export function BlogProvider({children}) {
@@ -59,7 +60,7 @@ export function BlogProvider({children}) {
         }
     }, []);
 
-    // sending the values as context to every component eho useContext(BlogContext)
+    // the values to pass to BlogProvider's children (useContext(BlogContext))
     const value = {posts, selectedPost, setSelectedPost, addPost, removePost, clearPosts, editPost, updatePost}
     return (
         <BlogContext.Provider value = {value}>
