@@ -18,18 +18,9 @@ export function SingleArticle() {
             <div className="single-article-block">
                 { post ? (
                     <>
-                        <img className="larger-img" src="../large-article.jpeg" alt="large"/>
+                        <img className="larger-img" src={`https://picsum.photos/300/300?${id}`} alt={"random-picture "+id}/>
                         <div className="article-paragraphs">
                             <p className="single-paragraph">{post.body}</p>
-                            <img className="smaller-img" src="../small-article.jpeg" alt="small"/>
-                            <div className="img-caption">
-                                <h5>Image Caption Or Credit</h5>
-                            </div>
-                            <p className="single-paragraph">{post.body}</p>
-                            <div className="middle-header">
-                                <h4>{post.title}</h4>
-                            </div>
-                            <p className="single-paragraph">{post.body} </p>
                         </div>
                     </>
                     ) : (
