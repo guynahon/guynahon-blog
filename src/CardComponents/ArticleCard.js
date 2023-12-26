@@ -53,7 +53,7 @@ export function ArticleCard({singlePost}) {
                     <div className="read-more" onClick={scrollToTop}><NavLink to={route}>Read More</NavLink></div>
                     {/*displays the edit and remove only if user logged in*/}
                     {user && (
-                        <>
+                        <div className="admin-btns">
                             <div className="card-edit-btn">
                                 <NavLink to="/admin" onClick={handlePostEditClick}>Edit Post</NavLink>
                             </div>
@@ -61,7 +61,7 @@ export function ArticleCard({singlePost}) {
                                 {/*calling the remove function onClick with the posts id*/}
                                 <button onClick={() => removePost(id)}>X</button>
                             </div>
-                        </>
+                        </div>
                     )}
                 </div>
             </div>

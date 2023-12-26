@@ -110,14 +110,17 @@
     opacity: 80%;
 }
 
+.read-more a {
+    flex: 1;
+}
+
 .card-edit-btn {
     margin-left: auto;
 }
 
 .card-remove-btn button {
-    padding: 10px;
-    width: 34px;
-    height: 34px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     background-color: #e74c3c;
     color: #fff;
@@ -127,9 +130,75 @@
     font-weight: bold;
     margin-left: 20px;
     transition: opacity 0.3s ease;
+    text-align: center;
+    vertical-align: center;
 }
 
 .card-remove-btn button:hover {
     opacity: 80%;
+}
+
+.admin-btns {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media(max-width: 768px) {
+    .card {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .img-div {
+        min-width: 100%;
+    }
+
+    .card img {
+        object-fit: cover;
+        border-radius: 0 0 10px 10px;
+        height: 100%;
+        width: 100%;
+        flex-shrink: initial;
+    }
+
+    .card-content-frame {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-width: 60%;
+        margin: 0 20px;
+    }
+
+    .card-paragraph {
+        display: none;
+    }
+
+    .card-footer {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .read-more a {
+        margin: 0;
+    }
+
+    .card-edit-btn {
+        margin-left: 0;
+    }
+
+    .card-remove-btn {
+        align-self: flex-end;
+    }
+
+    .admin-btns {
+        width: 100%;
+    }
+
+
+
 }
 

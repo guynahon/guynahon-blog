@@ -1,6 +1,5 @@
 .news-letter {
     width: 100%;
-    height: 184px;
     display: flex;
     padding-bottom: 60px;
     padding-top: 60px;
@@ -19,8 +18,6 @@
 
 
 .news-letter-text {
-    width: 472px;
-    height: 102px;
     display: flex;
     flex-direction: column;
 }
@@ -39,7 +36,6 @@
 }
 
 .news-letter-paragraph {
-    width: 472px;
     color: #475467;
     text-align: center;
 
@@ -51,7 +47,7 @@
 }
 
 .news-letter-email-box {
-    width: 400px;
+    width: 30%;
     height: 50px;
     display: flex;
     flex-direction: row;
@@ -108,5 +104,12 @@
 
 }
 
+
+@media(max-width: 768px) {
+    .news-letter-email-box {
+        width: 70%;
+    }
+
+}
 
 
