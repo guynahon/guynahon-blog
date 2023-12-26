@@ -1,4 +1,4 @@
-import './ac.css'
+import './ArticleCard.css'
 import {NavLink} from "react-router-dom";
 import {useContext} from "react";
 import {BlogContext} from "../Providers/BlogProvider";
