@@ -8,7 +8,7 @@
 }
 
 .page-header {
-    width: 970px;
+    width: 100%;
     min-height: 100px;
     text-align: center;
     font-size: 76px;
@@ -23,7 +23,7 @@
 }
 
 .page-paragraph {
-    width: 690px;
+    /*width: 690px;*/
     color: #475467;
     text-align: center;
     font-size: 28px;

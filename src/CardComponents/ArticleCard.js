@@ -1,4 +1,4 @@
-import './ArticleCard.css'
+import './ac.css'
 import {NavLink} from "react-router-dom";
 import {useContext} from "react";
 import {BlogContext} from "../Providers/BlogProvider";
@@ -66,7 +66,10 @@ export function ArticleCard({singlePost}) {
                 </div>
             </div>
             {/*an image tag with a src that is api that displays random images*/}
-            <img src={`https://picsum.photos/300/300?${singlePost.id}`} alt={"random-picture "+id}/>
+            <div className="img-div">
+                <img src={`https://picsum.photos/300/300?${singlePost.id}`} alt={"random-picture "+id}/>
+            </div>
+
         </div>
     );
 }

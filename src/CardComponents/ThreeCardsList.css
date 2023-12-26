@@ -8,15 +8,18 @@
 }
 
 .header-view-all {
+    width: 68%;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     margin-left: 10px;
     margin-right: 10px;
-
 }
 
 .article-section {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    align-items: center;
+    gap: 20px;
 }
