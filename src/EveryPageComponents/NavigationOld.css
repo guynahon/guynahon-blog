@@ -1,0 +1,103 @@
+#navigation {
+    width: 100%;
+    padding: 20px 0 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    background-color: white;
+    box-shadow: 0 4px 70px 0 rgba(30, 40, 52, 0.08);
+    height: 52px;
+}
+
+#nav-options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    margin-right: 30px;
+}
+
+#nav-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-tag {
+    color: #1D2939;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    transition: 0.3s;
+}
+
+.nav-tag:hover {
+    background: linear-gradient(97deg, #C41740 4.8%, #EA9C28 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+.sub-button {
+    display: flex;
+    height: auto;
+    padding: 12px 14px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    border: 1px solid #1D2939;
+    background: #1D2939;
+    color: #FFF;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    transition: 0.3s;
+}
+
+.sub-button:hover {
+    background-color: #007bb5;
+    border-color: #007bb5;
+    cursor: pointer;
+}
+
+#logo {
+    font-size: 25px;
+    margin-left: 30px;
+}
+
+a {
+    text-decoration: none;
+    color: #1D2939;
+}
+
+.sign-in-btn {
+    width: 80px;
+    height: 30px;
+    border-radius: 8px;
+    border: 1px solid #1D2939;
+    background-color: #1D2939;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.sign-in-btn:hover {
+    background-color: #007bb5;
+    border: 1px solid #007bb5;
+}
+
+a.active {
+    background: linear-gradient(97deg, #C41740 4.8%, #EA9C28 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

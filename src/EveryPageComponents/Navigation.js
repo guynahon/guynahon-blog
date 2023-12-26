@@ -1,4 +1,4 @@
-import './nav.css'
+import './Navigation.css'
 import {Link, NavLink} from "react-router-dom";
 import {useContext, useState} from "react";
 import {AuthContext} from "../Providers/AuthProvider";
@@ -23,7 +23,7 @@ export function Navigation() {
         <div className="navigation">
             <nav className="navbar">
                 <h1><Link to="/" className="blog-logo">Guy's Blog</Link></h1>
-                {user ? `Hello, ${user.userName}` : <button className="sign-in-btn" onClick={signIn}>Sign In</button>}
+                {user ? <span className="sup">{`Hello, ${user.userName}`}</span> : <button className="sign-in-btn" onClick={signIn}>Sign In</button>}
                 <ul className={`nav-menu ${isMenuActive ? "active" : ""}`}>
                     <li className="nav-item">
                         <NavLink to="/subjects/dailydigest" className="nav-link" onClick={closeMenu}>Daily Digest</NavLink>
@@ -39,6 +39,7 @@ export function Navigation() {
                         <NavLink to="/admin" className="nav-link" onClick={closeMenu}>Admin</NavLink>
                     </li>}
                 </ul>
+                <a className="sub-button">Subscribe</a>
                 <div className={`hamburger ${isMenuActive ? "active" : ""}`} onClick={toggleMenu}>
                     <span className="bar"></span>
                     <span className="bar"></span>
@@ -49,4 +50,3 @@ export function Navigation() {
     );
 }
 
-//<a className="sub-button">Subscribe</a>
