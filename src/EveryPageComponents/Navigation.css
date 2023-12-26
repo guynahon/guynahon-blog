@@ -74,10 +74,7 @@
 }
 
 .sup {
-    background: linear-gradient(180deg, #23c417 4.8%, #28a6ea 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #1d2939;
     font-weight: bold;
 }
 
@@ -143,7 +140,7 @@ a.active {
     .nav-menu {
         position: fixed;
         left: -100%;
-        top: 94px;
+        top: 92px;
         gap: 0;
         flex-direction: column;
         background-color: rgba(206, 206, 206, 0.25);
@@ -175,7 +172,7 @@ a.active {
     }
 
     .sup {
-        width: 50%;
+        text-align: center;
     }
 
 }
