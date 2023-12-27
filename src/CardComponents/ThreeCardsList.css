@@ -3,17 +3,17 @@
     font-size: 26px;
     font-style: normal;
     font-weight: 700;
-    line-height: 130%; /* 33.8px */
-    margin-bottom: 10px;
+    line-height: 130%;
+    margin: 0;
 }
 
 .header-view-all {
-    width: 55%;
+    width: 65%;
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
     margin-left: 10px;
     margin-right: 10px;
+    align-items: center;
 }
 
 .article-section {
@@ -22,4 +22,10 @@
     width: 100%;
     align-items: center;
     gap: 20px;
+}
+
+@media(max-width: 768px) {
+    .header-view-all {
+        width: 80%;
+    }
 }

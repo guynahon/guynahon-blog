@@ -1,5 +1,4 @@
 .view-all-button {
-    display: inline-flex;
     padding: 8px 12px;
     flex-direction: column;
     justify-content: center;
@@ -9,8 +8,14 @@
     border: 1px solid #E4E7EC;
     background: #FFF;
     transition: border 0.3s ease;
+    text-decoration: none;
+    color: #1D2939;
 }
 
 .view-all-button:hover {
     border: 1px solid #a5a5a5;
+}
+
+.view-all-button a{
+    text-decoration: none;
 }
