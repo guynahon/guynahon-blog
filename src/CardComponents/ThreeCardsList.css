@@ -29,3 +29,9 @@
         width: 80%;
     }
 }
+
+
+/*Dark Mode*/
+.article-section-header.dark {
+    color: #ffffff;
+}
