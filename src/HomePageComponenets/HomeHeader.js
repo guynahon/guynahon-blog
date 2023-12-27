@@ -1,12 +1,15 @@
 import {Header} from "../Components/Header";
 import './HomeHeader.css'
+import {useContext} from "react";
+import {DarkContext} from "../Providers/DarkProvider";
 export function HomeHeader() {
+    const{isDarkMode} = useContext(DarkContext);
     // the Header of the homepage, built from a Header component and a static mainheader a tag
     return (
-        <div id="home-header">
-            <div id="home-header-block">
-                <div id="home-header-tag">
-                    <a id="main-header-button">👋 Meet Personally</a>
+        <div className={`home-header ${isDarkMode ? "dark" : ""}`}>
+            <div className="home-header-block">
+                <div className={`home-header-tag ${isDarkMode ? "dark" : ""}`}>
+                    <a className="main-header-button">👋 Meet Personally</a>
                 </div>
                 <Header />
             </div>
