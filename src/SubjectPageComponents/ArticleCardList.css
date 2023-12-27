@@ -45,11 +45,20 @@
     font-weight: bold;
 }
 
+.search-input[type="text"] {
+    padding-left: 10px;
+}
+
 .search-input {
     width: 240px;
     height: 30px;
     border-radius: 8px;
     border: 1px solid #9b9b9b;
+    outline: none;
+}
+
+.search-input:focus {
+    border: 1px solid #a4a4a4;
 }
 
 /*Dark Mode*/
@@ -60,6 +69,20 @@
 
 .search-label.dark {
     color: white;
+}
+
+.search-input.dark {
+    border: 1px solid #545454;
+    background: #373737;
+    color: white;
+}
+
+.search-input.dark::placeholder {
+    color: #868686;
+}
+
+.search-input.dark:focus {
+    border: 1px solid #a4a4a4;
 }
 
 .more-articles-block.dark {

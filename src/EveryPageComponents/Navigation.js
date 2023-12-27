@@ -3,6 +3,7 @@ import {Link, NavLink} from "react-router-dom";
 import {useContext, useState} from "react";
 import {AuthContext} from "../Providers/AuthProvider";
 import {DarkContext} from "../Providers/DarkProvider";
+import {scrollToTop} from "../helper-functions/scrollToTop";
 
 // we use this component as the navigation bar in all pages at the top of each page
 export function Navigation() {
@@ -25,27 +26,32 @@ export function Navigation() {
         setIsDarkMode(!isDarkMode);
     }
 
+    const closeMenuAndScrollToTop = () => {
+        closeMenu();
+        scrollToTop();
+    }
+
     return (
         <div className={`navigation ${isDarkMode ? "dark" : ""}`}>
             <nav className="navbar">
-                <h1><Link to="/" className={`blog-logo ${isDarkMode ? "dark" : ""}`}>Guy's Blog</Link></h1>
+                <h1><Link to="/" className={`blog-logo ${isDarkMode ? "dark" : ""}`} onClick={scrollToTop}>Guy's Blog</Link></h1>
                 <div className="dark-user">
                     {user ? <span className={`sup ${isDarkMode ? "dark" : ""}`}>{`Hello, ${user.userName}`}</span> : <button className={`sign-in-btn ${isDarkMode ? "dark" : ""}`} onClick={signIn}>Sign In</button>}
                     <input type="checkbox" onChange={toggleDarkMode}/>
                 </div>
                 <ul className={`nav-menu ${isMenuActive ? "active" : ""}`}>
                     <li className="nav-item">
-                        <NavLink to="/subjects/dailydigest" className={`nav-link ${isDarkMode ? "dark" : ""}`} onClick={closeMenu}>Daily Digest</NavLink>
+                        <NavLink to="/subjects/dailydigest" className={`nav-link ${isDarkMode ? "dark" : ""}`} onClick={closeMenuAndScrollToTop}>Daily Digest</NavLink>
                     </li>
                     <li className="nav-item">
-                        <NavLink to="/subjects/designtools" className={`nav-link ${isDarkMode ? "dark" : ""}`} onClick={closeMenu}>Design Tools</NavLink>
+                        <NavLink to="/subjects/designtools" className={`nav-link ${isDarkMode ? "dark" : ""}`} onClick={closeMenuAndScrollToTop}>Design Tools</NavLink>
                     </li>
                     <li className="nav-item">
-                        <NavLink to="/subjects/tutorials" className={`nav-link ${isDarkMode ? "dark" : ""}`} onClick={closeMenu}>Tutorials</NavLink>
+                        <NavLink to="/subjects/tutorials" className={`nav-link ${isDarkMode ? "dark" : ""}`} onClick={closeMenuAndScrollToTop}>Tutorials</NavLink>
                     </li>
                     {/*if we signed in we can now see the admin panel link*/}
                     {user && <li className="nav-item">
-                        <NavLink to="/admin" className={`nav-link ${isDarkMode ? "dark" : ""}`} onClick={closeMenu}>Admin</NavLink>
+                        <NavLink to="/admin" className={`nav-link ${isDarkMode ? "dark" : ""}`} onClick={closeMenuAndScrollToTop}>Admin</NavLink>
                     </li>}
                 </ul>
                 <a className={`sub-button ${isDarkMode ? "dark" : ""}`}>Subscribe</a>

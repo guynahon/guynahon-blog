@@ -38,7 +38,7 @@ export function ArticleCardList({postsBySubject}) {
     <div className={`subject ${isDarkMode ? "dark" : ""}`}>
         <div className="filter">
             <label className={`search-label ${isDarkMode ? "dark" : ""}`}>Search: </label>
-            <input className="search-input" type="text" placeholder="type seach value" onChange={handleInputChange}/>
+            <input className={`search-input ${isDarkMode ? "dark" : ""}`} type="text" placeholder="type seach value" onChange={handleInputChange}/>
         </div>
         {/*if input value is not empty show the filtered posts on the article cards
         else show only the posts you loaded with the load more*/}
