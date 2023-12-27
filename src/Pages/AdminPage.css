@@ -1,3 +1,10 @@
+.admin {
+    background: white;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 .all-admin {
     width:30%;
     margin: 120px 0 50px 0;
@@ -92,9 +99,89 @@
     -webkit-text-fill-color: transparent;
 }
 
+.admin textarea {
+    outline: none;
+}
+
+.admin textarea:focus {
+    border: 1px solid #a4a4a4;
+}
+
+.admin input {
+    outline: none;
+}
+
+.admin input:focus {
+    border: 1px solid #a4a4a4;
+}
+
 @media(max-width: 768px) {
     .all-admin {
         width: 90%;
     }
+}
+
+
+/*Dark Mode*/
+.admin.dark {
+    background: #121212;
+
+}
+
+.all-admin.dark {
+    background-color: #2f2f2f;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.form-btn.dark {
+    background: linear-gradient(270deg, #b633ff 4.8%, #2eea28 100%);
+    transition: box-shadow 0.5s;
+}
+
+.form-btn:hover.dark {
+    box-shadow: inset 0 0 10px #3e3e3e;
+}
+
+.admin-headers.dark {
+    color: #e5e5e5;
+}
+
+.admin.dark label {
+    color: white;
+}
+
+.admin.dark textarea {
+    border: 1px solid #373737;
+    background: #282828;
+    color: white;
+}
+
+.admin.dark textarea:focus {
+    border: 1px solid #717171;
+}
+
+.admin.dark input {
+    border: 1px solid #373737;
+    background: #282828;
+    color: white;
+}
+
+.admin.dark select {
+    border: 1px solid #373737;
+    background: #282828;
+    color: white;
+}
+
+.pls-log-in-back.dark {
+    width: 100%;
+    background: #121212;
+}
+
+.pls-log-in.dark {
+    background: linear-gradient(290deg, #b633ff 30%, #2eea28 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
