@@ -61,7 +61,7 @@
     width: 80px;
     height: 30px;
     border-radius: 8px;
-    border: 1px solid #1D2939;
+    border: 0 solid transparent;
     background-color: #1D2939;
     color: white;
     font-weight: bold;
@@ -71,7 +71,6 @@
 
 .sign-in-btn:hover {
     background-color: #007bb5;
-    border: 1px solid #007bb5;
 }
 
 .sup {
@@ -114,7 +113,6 @@ a.active {
     border-radius: 8px;
     background: #1D2939;
     color: #FFF;
-    border: 1px solid transparent;
     text-align: center;
     font-size: 14px;
     transition: 0.3s;
@@ -197,12 +195,13 @@ a.active {
 }
 
 .sign-in-btn.dark {
-    background: linear-gradient(97deg, #b633ff 4.8%, #2eea28 100%);
-    color: #ffffff;
+    background: linear-gradient(270deg, #b633ff 4.8%, #2eea28 100%);
+    color: #FFF;
+    transition: box-shadow 0.5s;
 }
 
 .sign-in-btn.dark:hover {
-    border: 1px solid rgba(255, 255, 255, 0.56);
+    box-shadow: inset 0 0 10px #3e3e3e;
 }
 
 .sup.dark {
@@ -229,10 +228,11 @@ a.active.dark {
 }
 
 .sub-button.dark {
-    background: linear-gradient(97deg, #b633ff 4.8%, #2eea28 100%);
-    color: #ffffff;
+    background: linear-gradient(270deg, #b633ff 4.8%, #2eea28 100%);
+    color: #FFF;
+    transition: box-shadow 0.5s;
 }
 
 .sub-button.dark:hover {
-    border: 1px solid rgba(255, 255, 255, 0.56);
+    box-shadow: inset 0 0 10px #3e3e3e;
 }
