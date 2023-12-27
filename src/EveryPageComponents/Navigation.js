@@ -24,6 +24,7 @@ export function Navigation() {
 
     const toggleDarkMode = () => {
         setIsDarkMode(!isDarkMode);
+        localStorage.setItem("darkMode", JSON.stringify(!isDarkMode));
     }
 
     const closeMenuAndScrollToTop = () => {
@@ -37,7 +38,7 @@ export function Navigation() {
                 <h1><Link to="/" className={`blog-logo ${isDarkMode ? "dark" : ""}`} onClick={scrollToTop}>Guy's Blog</Link></h1>
                 <div className="dark-user">
                     {user ? <span className={`sup ${isDarkMode ? "dark" : ""}`}>{`Hello, ${user.userName}`}</span> : <button className={`sign-in-btn ${isDarkMode ? "dark" : ""}`} onClick={signIn}>Sign In</button>}
-                    <input className="dark-mode-btn" type="checkbox" onChange={toggleDarkMode}/>
+                    <input className="dark-mode-btn" type="checkbox" onChange={toggleDarkMode} checked={isDarkMode}/>
                 </div>
                 <ul className={`nav-menu ${isMenuActive ? "active" : ""}`}>
                     <li className="nav-item">
