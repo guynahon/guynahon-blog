@@ -19,6 +19,7 @@
     color: #1D2939;
     text-decoration: none;
     white-space: nowrap;
+    transition: 0.3s;
 }
 
 .nav-link {
@@ -105,6 +106,7 @@ a.active {
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     background-color: #1d2939;
+    border-radius: 10px;
 }
 
 .sub-button {
@@ -112,6 +114,7 @@ a.active {
     border-radius: 8px;
     background: #1D2939;
     color: #FFF;
+    border: 1px solid transparent;
     text-align: center;
     font-size: 14px;
     transition: 0.3s;
@@ -175,4 +178,60 @@ a.active {
         text-align: center;
     }
 
+}
+
+/*Dark Mode*/
+
+.navigation.dark {
+    background-color: #1c1c1c;
+    color: white;
+}
+
+.blog-logo.dark {
+    color: white;
+}
+
+.nav-link.dark {
+    color: white;
+}
+
+.sign-in-btn.dark {
+    background: linear-gradient(97deg, #b633ff 4.8%, #2eea28 100%);
+    color: #ffffff;
+}
+
+.sign-in-btn.dark:hover {
+    border: 1px solid rgba(255, 255, 255, 0.56);
+}
+
+.sup.dark {
+    color: white;
+    background: none;
+}
+
+.nav-link.dark:hover {
+    background: linear-gradient(270deg, #b633ff 4.8%, #2eea28 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+a.active.dark {
+    background: linear-gradient(270deg, #b633ff 4.8%, #2eea28 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.bar.dark {
+    background-color: #ffffff;
+}
+
+.sub-button.dark {
+    background: linear-gradient(97deg, #b633ff 4.8%, #2eea28 100%);
+    color: #ffffff;
+}
+
+.sub-button.dark:hover {
+    border: 1px solid rgba(255, 255, 255, 0.56);
 }

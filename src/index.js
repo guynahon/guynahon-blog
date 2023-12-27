@@ -8,15 +8,18 @@ import {
 import {router} from "./routing";
 import {BlogProvider} from "./Providers/BlogProvider";
 import {AuthProvider} from "./Providers/AuthProvider";
+import {DarkProvider} from "./Providers/DarkProvider";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   //<React.StrictMode>
+    <DarkProvider>
       <AuthProvider>
-          <BlogProvider>
-              <RouterProvider router={router} />
-          </BlogProvider>
+              <BlogProvider>
+                  <RouterProvider router={router} />
+              </BlogProvider>
       </AuthProvider>
+    </DarkProvider>
   //</React.StrictMode>
 );
 

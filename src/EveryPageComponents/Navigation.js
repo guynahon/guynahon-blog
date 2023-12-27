@@ -2,12 +2,14 @@ import './Navigation.css'
 import {Link, NavLink} from "react-router-dom";
 import {useContext, useState} from "react";
 import {AuthContext} from "../Providers/AuthProvider";
+import {DarkContext} from "../Providers/DarkProvider";
 
 // we use this component as the navigation bar in all pages at the top of each page
 export function Navigation() {
     // the user var and signIn fn are taken from the AuthContext in order to preform sign-in
     // that will allow us to view the hidden admin panel/page
     const {user, signIn} = useContext(AuthContext);
+    const {isDarkMode, setIsDarkMode} = useContext(DarkContext);
 
     const [isMenuActive, setIsMenuActive] = useState(false);
 
@@ -19,31 +21,38 @@ export function Navigation() {
         setIsMenuActive(false);
     }
 
+    const toggleDarkMode = () => {
+        setIsDarkMode(!isDarkMode);
+    }
+
     return (
-        <div className="navigation">
+        <div className={`navigation ${isDarkMode ? "dark" : ""}`}>
             <nav className="navbar">
-                <h1><Link to="/" className="blog-logo">Guy's Blog</Link></h1>
-                {user ? <span className="sup">{`Hello, ${user.userName}`}</span> : <button className="sign-in-btn" onClick={signIn}>Sign In</button>}
+                <h1><Link to="/" className={`blog-logo ${isDarkMode ? "dark" : ""}`}>Guy's Blog</Link></h1>
+                <div className="dark-user">
+                    {user ? <span className={`sup ${isDarkMode ? "dark" : ""}`}>{`Hello, ${user.userName}`}</span> : <button className={`sign-in-btn ${isDarkMode ? "dark" : ""}`} onClick={signIn}>Sign In</button>}
+                    <input type="checkbox" onChange={toggleDarkMode}/>
+                </div>
                 <ul className={`nav-menu ${isMenuActive ? "active" : ""}`}>
                     <li className="nav-item">
-                        <NavLink to="/subjects/dailydigest" className="nav-link" onClick={closeMenu}>Daily Digest</NavLink>
+                        <NavLink to="/subjects/dailydigest" className={`nav-link ${isDarkMode ? "dark" : ""}`} onClick={closeMenu}>Daily Digest</NavLink>
                     </li>
                     <li className="nav-item">
-                        <NavLink to="/subjects/designtools" className="nav-link" onClick={closeMenu}>Design Tools</NavLink>
+                        <NavLink to="/subjects/designtools" className={`nav-link ${isDarkMode ? "dark" : ""}`} onClick={closeMenu}>Design Tools</NavLink>
                     </li>
                     <li className="nav-item">
-                        <NavLink to="/subjects/tutorials" className="nav-link" onClick={closeMenu}>Tutorials</NavLink>
+                        <NavLink to="/subjects/tutorials" className={`nav-link ${isDarkMode ? "dark" : ""}`} onClick={closeMenu}>Tutorials</NavLink>
                     </li>
                     {/*if we signed in we can now see the admin panel link*/}
                     {user && <li className="nav-item">
-                        <NavLink to="/admin" className="nav-link" onClick={closeMenu}>Admin</NavLink>
+                        <NavLink to="/admin" className={`nav-link ${isDarkMode ? "dark" : ""}`} onClick={closeMenu}>Admin</NavLink>
                     </li>}
                 </ul>
-                <a className="sub-button">Subscribe</a>
+                <a className={`sub-button ${isDarkMode ? "dark" : ""}`}>Subscribe</a>
                 <div className={`hamburger ${isMenuActive ? "active" : ""}`} onClick={toggleMenu}>
-                    <span className="bar"></span>
-                    <span className="bar"></span>
-                    <span className="bar"></span>
+                    <span className={`bar ${isDarkMode ? "dark" : ""}`}></span>
+                    <span className={`bar ${isDarkMode ? "dark" : ""}`}></span>
+                    <span className={`bar ${isDarkMode ? "dark" : ""}`}></span>
                 </div>
             </nav>
         </div>

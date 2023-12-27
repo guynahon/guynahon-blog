@@ -9,6 +9,7 @@
     /*word-break: keep-all;*/
 }
 
+
 .page-header {
     width: 100%;
     min-height: 100px;
@@ -21,6 +22,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
 
 .page-paragraph {
     /*width: 690px;*/
@@ -36,4 +38,16 @@
     .main-header {
         margin: 0 20px;
     }
+}
+
+
+/*DARK MODE*/
+.main-header {
+    color: white;
+}
+.page-header.dark{
+    background: linear-gradient(97deg, #40f36b 4.8%, #9c28ea 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
