@@ -148,7 +148,7 @@ a.active {
     .nav-menu {
         position: fixed;
         left: -100%;
-        top: 92px;
+        top: 73px;
         gap: 0;
         flex-direction: column;
         background-color: rgba(206, 206, 206, 0.25);
@@ -185,6 +185,11 @@ a.active {
 
     .blog-logo {
         font-size: 1.5rem;
+    }
+
+    /*Dark Mode under 768px*/
+    .nav-menu.dark {
+        background-color: rgba(60, 60, 60, 0.25);
     }
 
 }

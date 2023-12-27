@@ -40,7 +40,7 @@ export function Navigation() {
                     {user ? <span className={`sup ${isDarkMode ? "dark" : ""}`}>{`Hello, ${user.userName}`}</span> : <button className={`sign-in-btn ${isDarkMode ? "dark" : ""}`} onClick={signIn}>Sign In</button>}
                     <input className="dark-mode-btn" type="checkbox" onChange={toggleDarkMode} checked={isDarkMode}/>
                 </div>
-                <ul className={`nav-menu ${isMenuActive ? "active" : ""}`}>
+                <ul className={`nav-menu ${isMenuActive ? "active" : ""} ${isDarkMode ? "dark" : ""}`}>
                     <li className="nav-item">
                         <NavLink to="/subjects/dailydigest" className={`nav-link ${isDarkMode ? "dark" : ""}`} onClick={closeMenuAndScrollToTop}>Daily Digest</NavLink>
                     </li>
