@@ -40,4 +40,23 @@
 }
 
 
+/*Dark Mode*/
 
+.single-article-block.dark {
+    background: #1c1c1c;
+}
+
+.single-paragraph.dark {
+    color: white;
+}
+
+.loading-msg.dark {
+    background: linear-gradient(270deg, #b633ff 4.8%, #2eea28 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.loading-bg.dark {
+    background: #1c1c1c;
+}

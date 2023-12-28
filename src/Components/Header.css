@@ -39,6 +39,7 @@
 @media(max-width: 768px) {
     .main-header {
         margin: 0 20px;
+        padding-top: 90px;
     }
 }
 
@@ -50,7 +51,6 @@
 /*Dark Mode*/
 
 .main-header.dark {
-    padding-top: 90px;
     background-color: #1c1c1c;
 }
 
