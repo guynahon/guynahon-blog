@@ -13,16 +13,49 @@ export function BlogProvider({children}) {
     // is the post we want to edit in the admin panel.
     const [selectedPost, setSelectedPost] = useState(null);
 
-    // this method is responsible for adding a new post to the posts and updating the local storage
-    const addPost = (singlePost) => {
-        setPosts([...posts, singlePost]);
-        localStorage.setItem("posts", JSON.stringify([...posts, singlePost]));
+
+    
+    const addPost = async (singlePost) => {
+        try {
+            const newPost = {
+                "title": singlePost.title,
+                "body": singlePost.body,
+                "subject": singlePost.subject,
+                "date": singlePost.date
+            }
+
+            const response = await fetch(`http://localhost:5000/post/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newPost)
+            });
+
+            if (response.ok) {
+                setPosts([...posts, singlePost]);
+            } else {
+                console.error("Error in adding post");
+            }
+
+        } catch (error) {
+            console.error("error in adding post", error);
+        }
+
     };
 
-    // this method is responsible for removing a post from posts and updating the local storage.
-    const removePost = (postId) => {
-        setPosts(posts.filter(post => post.id !== postId));
-        localStorage.setItem("posts", JSON.stringify(posts.filter(post => post.id !== postId)));
+
+    const removePost = async (postId) => {
+        try {
+            const response = await fetch(`http://localhost:5000/post/${postId}/`, {method: 'DELETE'});
+            if (response.ok) {
+                setPosts(posts.filter(post => post.id !== postId));
+            } else {
+                console.log(`error removing post number ${postId}`);
+            }
+        } catch(error) {
+            console.log(`error removing post number ${postId} : (${error})`);
+        }
     };
 
     // this method is responsible for clearing all the posts from posts and updating the local storage

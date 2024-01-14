@@ -60,14 +60,13 @@ export function Admin() {
             // navigating automatically to the subject the post was added to.
             navigate(`/subjects/${data.subject}`);
         } else {
+            console.log(typeof data.createdAt);
             // calling addPost to add a new post
             addPost({
                 title: data.title,
                 body: data.body,
-                // unique id (milliseconds)
-                id: Date.now(),
-                date: data.createdAt,
-                subject: data.subject
+                subject: data.subject,
+                date: data.createdAt
             });
             // reset all input fields
             event.target.reset();
