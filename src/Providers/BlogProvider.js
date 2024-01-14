@@ -37,26 +37,46 @@ export function BlogProvider({children}) {
         setSelectedPost(post);
     }
 
-    // this method is getting the post to edit and the input data for the posts new values from the handleAddOrEditPost
-    // in the admin panel, and updates the posts array and local storage.
-    const updatePost = (selectedPost, data) => {
-        const newPostsArray = [...posts];
-        const index = posts.findIndex(post => post.id === selectedPost.id);
-        newPostsArray[index].title = data.title;
-        newPostsArray[index].body = data.body;
-        newPostsArray[index].date = data.createdAt;
-        newPostsArray[index].subject = data.subject;
-        setPosts(newPostsArray);
-        localStorage.setItem("posts", JSON.stringify(newPostsArray));
+    const updatePost = async (selectedPost, data) => {
+        try {
+            const dataToUpdate = {
+                "title": data.title,
+                "body": data.body,
+                "subject": data.subject,
+                "date": data.createdAt
+            }
+
+            const response = await fetch(`http://localhost:5000/post/${selectedPost.id}/`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(dataToUpdate)
+            });
+
+            if (response.ok) {
+                const updatedPosts = posts.map (post => post.id === selectedPost.id && { ...post, ...dataToUpdate });
+                setPosts(updatedPosts);
+            } else {
+                console.error("Error in editing");
+            }
+
+        } catch (error) {
+            console.error("error in editing", error);
+        }
+        
     }
 
 
     // this useEffect is getting the posts from the local storage and checks if there are posts in it before setting
     // the posts to its value.
-    useEffect(() => {
-        const postsString = localStorage.getItem("posts");
-        if (postsString) {
-            setPosts(JSON.parse(postsString));
+    useEffect(async () => {
+        try {
+        const fetchData = await fetch('http://localhost:5000/post');
+        const jsonData = await fetchData.json();
+        setPosts(jsonData);
+        } catch (error) {
+            console.error('Error fetching posts:', error);
         }
     }, []);
 
