@@ -14,7 +14,7 @@ export function BlogProvider({children}) {
     const [selectedPost, setSelectedPost] = useState(null);
 
 
-    
+
     const addPost = async (singlePost) => {
         try {
             const newPost = {
@@ -59,9 +59,17 @@ export function BlogProvider({children}) {
     };
 
     // this method is responsible for clearing all the posts from posts and updating the local storage
-    const clearPosts = () => {
-        setPosts([]);
-        localStorage.setItem("posts", []);
+    const clearPosts = async () => {
+        try {
+            const response = await fetch("http://localhost:5000/post/clear/", {method: 'DELETE'});
+            if (response.ok) {
+                setPosts([]);
+            } else {
+                console.log("error clearing all posts");
+            }
+        } catch(error) {
+                console.log("error clearing all posts from DB");
+        }
     };
 
     // this method get as input a post from the ArticleCard by pressing an Edit Button, and sets the selectedPost
