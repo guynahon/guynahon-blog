@@ -36,7 +36,7 @@ export function ThreeCardsList({subject}) {
             </div>
             {/* to display each post in the threePosts, we map each post to an ArticleCard component and sending
              the post as "singlePost" param*/}
-            {threePosts.map((post) => <ArticleCard singlePost={post} />)}
+            {threePosts.map((post) => <ArticleCard singlePost={post} key={post.id} />)}
         </div>
     );
 }

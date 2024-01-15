@@ -42,8 +42,8 @@ export function ArticleCardList({postsBySubject}) {
         </div>
         {/*if input value is not empty show the filtered posts on the article cards
         else show only the posts you loaded with the load more*/}
-        {inputValue !== "" ? filterPosts(inputValue).map((post) => <ArticleCard singlePost={post} />) :
-            postsBySubject.slice(0,loadMoreCounter).map((post) => <ArticleCard singlePost={post} />)}
+        {inputValue !== "" ? filterPosts(inputValue).map((post) => <ArticleCard singlePost={post}  key={post.id} />) :
+            postsBySubject.slice(0,loadMoreCounter).map((post) => <ArticleCard singlePost={post}  key={post.id} />)}
         {/*hide the load more button if the counter is larger or equal to the postBySubject length and
         when typing a value in the input bar*/}
         {(loadMoreCounter < postsBySubject.length && inputValue === "" ) &&
