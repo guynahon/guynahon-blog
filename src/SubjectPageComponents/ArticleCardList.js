@@ -13,47 +13,49 @@ export function ArticleCardList({subject}) {
     const [postsByFilter, setPostsByFilter] = useState([]);
 
 
+
     useEffect(() => {
         setPostsBySubject([]);
     }, [subject]);
+
+
 
     const handleInputChange = (event) => {
         setInputValue(event.target.value.trim());
     };
 
-    const fetchSubjectsPosts = async (clicked) => {
-        
-        const loadCounter = clicked ? (loadMoreCounter + 3) : 3;
+
+
+    const fetchSubjectsPosts = async (clickedLoadMore) => {
+
+        const loadCounter = clickedLoadMore ? (loadMoreCounter + 3) : 3;
         setLoadMoreCounter(loadCounter);
 
         try {
+            const url = `http://localhost:5000/post?subject=${subject}`;
             if (inputValue === "") {
-                const response = await fetch(`http://localhost:5000/post?subject=${subject}&from=${loadCounter-2}&to=${loadCounter}`);
+                const response = await fetch(`${url}&from=${loadCounter-2}&to=${loadCounter}`);
                 const jsonData = await response.json();
                 setPostsBySubject(prevPosts => [...prevPosts, ...jsonData]);
                 setPostsByFilter([]);
             } else {
-                const response = await fetch(`http://localhost:5000/post?subject=${subject}&filterBy=${inputValue}`);
+                const response = await fetch(`${url}&filterBy=${inputValue}`);
                 const jsonData = await response.json();
                 setPostsByFilter(jsonData);
                 setPostsBySubject([]);
-                setLoadMoreCounter(3);
             }
         } catch (error) {
             console.error('Error fetching posts:', error);
         }
     };
 
+
+
     useEffect(() => {
         fetchSubjectsPosts();
-
     }, [subject, inputValue]);
 
-
-
-    const loadNewPosts = async () => {
-        await fetchSubjectsPosts(true);
-    }
+    
 
     return (
     <div className="subject">
@@ -67,7 +69,7 @@ export function ArticleCardList({subject}) {
         
         {(loadMoreCounter <= postsBySubject.length && inputValue === "" ) &&
         <div className="more-articles-block">
-            <a className="more-articles-button" onClick={loadNewPosts}>Load More</a>
+            <a className="more-articles-button" onClick={() => fetchSubjectsPosts(true)}>Load More</a>
         </div>}
     </div>
     );
