@@ -111,19 +111,19 @@ export function BlogProvider({children}) {
 
     // this useEffect is getting the posts from the local storage and checks if there are posts in it before setting
     // the posts to its value.
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch('http://localhost:5000/post');
-                const jsonData = await response.json();
-                setPosts(jsonData);
-            } catch (error) {
-                console.error('Error fetching posts:', error);
-            }
-        };
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             const response = await fetch('http://localhost:5000/post');
+    //             const jsonData = await response.json();
+    //             setPosts(jsonData);
+    //         } catch (error) {
+    //             console.error('Error fetching posts:', error);
+    //         }
+    //     };
 
-        fetchData();
-    }, []);
+    //     fetchData();
+    // }, []);
 
     // the values to pass to BlogProvider's children (useContext(BlogContext))
     const value = {posts, selectedPost, setSelectedPost, addPost, removePost, clearPosts, editPost, updatePost}

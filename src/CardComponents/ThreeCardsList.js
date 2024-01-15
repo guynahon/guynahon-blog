@@ -3,21 +3,26 @@ import './ThreeCardsList.css'
 import {ArticleCard} from "./ArticleCard";
 import {useContext, useEffect, useState} from "react";
 import {BlogContext} from "../Providers/BlogProvider";
-import {filterPostsBySubject} from "../helper-functions/filterPostsBySubject";
-import {DarkContext} from "../Providers/DarkProvider";
 
-// this component gets the subject as param from its father component and based on it
+
 export function ThreeCardsList({subject}) {
-    // posts array from the BlogContext
     const {posts} = useContext(BlogContext);
     const [threePosts, setThreePosts] = useState([]);
 
-    // we run the function if the posts changed, because we are getting them from the local storage,
-    // the small delay can get us an empty array, so we track the change in posts running the function inside
-    // the useEffect on every change. the function inside return an array of posts filtered by subject
-    // and sets its value to the threePost useState.
+    // fetching the first three posts from a subject
     useEffect(() => {
-        setThreePosts(filterPostsBySubject(subject, posts).slice(0,3));
+        const fetchHomePagePosts = async () => {
+            try {
+                const response = await fetch(`http://localhost:5000/post?subject=${subject}&from=1&to=3`);
+                const jsonData = await response.json();
+                setThreePosts(jsonData);
+            } catch (error) {
+                console.error('Error fetching posts:', error);
+            }
+        };
+
+        fetchHomePagePosts();
+
     }, [posts]);
 
     // an object that help us set the article-section-header based on the subject we got as param
