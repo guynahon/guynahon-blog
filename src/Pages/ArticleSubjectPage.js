@@ -8,6 +8,7 @@ export function ArticleSubjectPage() {
     // subject from the route parameters (dynamic routes)
     const {subject} = useParams();
 
+
     return (
         <>
             <Header/>

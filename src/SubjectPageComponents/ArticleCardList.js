@@ -1,7 +1,6 @@
 import './ArticleCardList.css'
-import {useContext, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import {ArticleCard} from "../CardComponents/ArticleCard";
-import {useLocation} from "react-router-dom";
 
 export function ArticleCardList({subject}) {
 
@@ -13,43 +12,48 @@ export function ArticleCardList({subject}) {
     const [postsBySubject, setPostsBySubject] = useState([]);
     const [postsByFilter, setPostsByFilter] = useState([]);
 
-    // we use useLocation.pathname to get a string with the route we are currently in
-    const location = useLocation().pathname;
 
-    // we use the useEffect and track the location meaning we execute that function that resets the counter back
-    // to 3 when we leave the route (the make the load more restart)
     useEffect(() => {
-        setLoadMoreCounter(3);
-    }, [location]);
+        setPostsBySubject([]);
+    }, [subject]);
 
-    // this function is called on input change and sets the inputValue value to what in the input bar
     const handleInputChange = (event) => {
         setInputValue(event.target.value.trim());
     };
 
-    useEffect(() => {
-        const fetchSubjectsPosts = async () => {
-            try {
-                if (inputValue === ""){
-                    const response = await fetch(`http://localhost:5000/post?subject=${subject}&from=${loadMoreCounter-2}&to=${loadMoreCounter}`);
-                    const jsonData = await response.json();
-                    setPostsBySubject([...postsBySubject, ...jsonData]);
-                    setPostsByFilter([]);
-                } else {
-                    const response = await fetch(`http://localhost:5000/post?subject=${subject}&filterBy=${inputValue}`);
-                    const jsonData = await response.json();
-                    setPostsByFilter(jsonData);
-                    setPostsBySubject([]);
-                    setLoadMoreCounter(3);
-                }
-            } catch (error) {
-                console.error('Error fetching posts:', error);
+    const fetchSubjectsPosts = async (clicked) => {
+        
+        const loadCounter = clicked ? (loadMoreCounter + 3) : 3;
+        setLoadMoreCounter(loadCounter);
+
+        try {
+            if (inputValue === "") {
+                const response = await fetch(`http://localhost:5000/post?subject=${subject}&from=${loadCounter-2}&to=${loadCounter}`);
+                const jsonData = await response.json();
+                setPostsBySubject(prevPosts => [...prevPosts, ...jsonData]);
+                setPostsByFilter([]);
+            } else {
+                const response = await fetch(`http://localhost:5000/post?subject=${subject}&filterBy=${inputValue}`);
+                const jsonData = await response.json();
+                setPostsByFilter(jsonData);
+                setPostsBySubject([]);
+                setLoadMoreCounter(3);
             }
-        };
+        } catch (error) {
+            console.error('Error fetching posts:', error);
+        }
+    };
+
+    useEffect(() => {
         fetchSubjectsPosts();
 
-    }, [inputValue, loadMoreCounter]);
+    }, [subject, inputValue]);
 
+
+
+    const loadNewPosts = async () => {
+        await fetchSubjectsPosts(true);
+    }
 
     return (
     <div className="subject">
@@ -63,7 +67,7 @@ export function ArticleCardList({subject}) {
         
         {(loadMoreCounter <= postsBySubject.length && inputValue === "" ) &&
         <div className="more-articles-block">
-            <a className="more-articles-button" onClick={() => setLoadMoreCounter(loadMoreCounter + 3)}>Load More</a>
+            <a className="more-articles-button" onClick={loadNewPosts}>Load More</a>
         </div>}
     </div>
     );

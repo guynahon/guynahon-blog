@@ -7,7 +7,7 @@ export function BlogProvider({children}) {
 
     // posts and a setPosts to change its value - this variable is sent to Components to handle the display
     // of posts in different pages, we initialize its value to an empty array.
-    const [posts, setPosts] = useState([]);
+    // const [posts, setPosts] = useState([]);
 
     // selectedPost - this variable is being sent via useContext to the adminPage. the value in side this variable
     // is the post we want to edit in the admin panel.
@@ -24,7 +24,8 @@ export function BlogProvider({children}) {
                 "date": singlePost.date
             }
 
-            const response = await fetch(`http://localhost:5000/post/`, {
+            // const response =
+            await fetch(`http://localhost:5000/post/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -32,11 +33,11 @@ export function BlogProvider({children}) {
                 body: JSON.stringify(newPost)
             });
 
-            if (response.ok) {
-                setPosts([...posts, singlePost]);
-            } else {
-                console.error("Error in adding post");
-            }
+            // if (response.ok) {
+            //     setPosts([...posts, singlePost]);
+            // } else {
+            //     console.error("Error in adding post");
+            // }
 
         } catch (error) {
             console.error("error in adding post", error);
@@ -47,12 +48,13 @@ export function BlogProvider({children}) {
 
     const removePost = async (postId) => {
         try {
-            const response = await fetch(`http://localhost:5000/post/${postId}/`, {method: 'DELETE'});
-            if (response.ok) {
-                setPosts(posts.filter(post => post.id !== postId));
-            } else {
-                console.log(`error removing post number ${postId}`);
-            }
+            // const response = 
+            await fetch(`http://localhost:5000/post/${postId}/`, {method: 'DELETE'});
+            // if (response.ok) {
+            //     setPosts(posts.filter(post => post.id !== postId));
+            // } else {
+            //     console.log(`error removing post number ${postId}`);
+            // }
         } catch(error) {
             console.log(`error removing post number ${postId} : (${error})`);
         }
@@ -61,12 +63,13 @@ export function BlogProvider({children}) {
     // this method is responsible for clearing all the posts from posts and updating the local storage
     const clearPosts = async () => {
         try {
-            const response = await fetch("http://localhost:5000/post/clear/", {method: 'DELETE'});
-            if (response.ok) {
-                setPosts([]);
-            } else {
-                console.log("error clearing all posts");
-            }
+            // const response = 
+            await fetch("http://localhost:5000/post/clear/", {method: 'DELETE'});
+            // if (response.ok) {
+            //     setPosts([]);
+            // } else {
+            //     console.log("error clearing all posts");
+            // }
         } catch(error) {
                 console.log("error clearing all posts from DB");
         }
@@ -95,12 +98,12 @@ export function BlogProvider({children}) {
                 body: JSON.stringify(dataToUpdate)
             });
 
-            if (response.ok) {
-                const updatedPosts = posts.map (post => post.id === selectedPost.id && { ...post, ...dataToUpdate });
-                setPosts(updatedPosts);
-            } else {
-                console.error("Error in editing");
-            }
+            // if (response.ok) {
+            //     const updatedPosts = posts.map (post => post.id === selectedPost.id && { ...post, ...dataToUpdate });
+            //     setPosts(updatedPosts);
+            // } else {
+            //     console.error("Error in editing");
+            // }
 
         } catch (error) {
             console.error("error in editing", error);
@@ -126,7 +129,7 @@ export function BlogProvider({children}) {
     // }, []);
 
     // the values to pass to BlogProvider's children (useContext(BlogContext))
-    const value = {posts, selectedPost, setSelectedPost, addPost, removePost, clearPosts, editPost, updatePost}
+    const value = {selectedPost, setSelectedPost, addPost, removePost, clearPosts, editPost, updatePost}
     return (
         <BlogContext.Provider value = {value}>
             {children}
