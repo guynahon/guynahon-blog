@@ -4,13 +4,10 @@ import {useContext} from "react";
 import {BlogContext} from "../Providers/BlogProvider";
 import {AuthContext} from "../Providers/AuthProvider";
 import {scrollToTop} from "../helper-functions/scrollToTop";
-import {DarkContext} from "../Providers/DarkProvider";
 
 
 // gets a singlePost param from its father component and displays that posts as a card in the ui
 export function ArticleCard({singlePost}) {
-
-    const {isDarkMode} = useContext(DarkContext);
 
     // to use removePost function later we assign the post id to a const id
     const id = singlePost.id;
@@ -45,22 +42,22 @@ export function ArticleCard({singlePost}) {
     };
 
     return (
-        <div className={`card ${isDarkMode ? "dark" : ""}`}>
+        <div className={"card"}>
             <div className="card-content-frame">
-                <h5 className={`card-date ${isDarkMode ? "dark" : ""}`}>{cardDate}</h5>
+                <h5 className={"card-date"}>{cardDate}</h5>
                 <div className="card-text">
-                    <h3 className={`card-header ${isDarkMode ? "dark" : ""}`}>{singlePost.title}</h3>
-                    <p className={`card-paragraph ${isDarkMode ? "dark" : ""}`}>{singlePost.body}</p>
+                    <h3 className={"card-header"}>{singlePost.title}</h3>
+                    <p className={"card-paragraph"}>{singlePost.body}</p>
                 </div>
                 <div className="card-footer">
-                    <div className={`read-more ${isDarkMode ? "dark" : ""}`} onClick={scrollToTop}><NavLink to={route}>Read More</NavLink></div>
+                    <div className={"read-more"} onClick={scrollToTop}><NavLink to={route}>Read More</NavLink></div>
                     {/*displays the edit and remove only if user logged in*/}
                     {user && (
                         <div className="admin-btns">
-                            <div className={`card-edit-btn ${isDarkMode ? "dark" : ""}`}>
+                            <div className={"card-edit-btn"}>
                                 <NavLink to="/admin" onClick={handlePostEditClick}>Edit Post</NavLink>
                             </div>
-                            <div className={`card-remove-btn ${isDarkMode ? "dark" : ""}`}>
+                            <div className={"card-remove-btn"}>
                                 {/*calling the remove function onClick with the posts id*/}
                                 <button onClick={() => removePost(id)}>X</button>
                             </div>

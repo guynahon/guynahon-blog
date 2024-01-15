@@ -42,21 +42,21 @@
 
 /*Dark Mode*/
 
-.single-article-block.dark {
+.dark .single-article-block {
     background: #1c1c1c;
 }
 
-.single-paragraph.dark {
+.dark .single-paragraph {
     color: white;
 }
 
-.loading-msg.dark {
+.dark .loading-msg {
     background: linear-gradient(270deg, #b633ff 4.8%, #2eea28 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-.loading-bg.dark {
+.dark .loading-bg {
     background: #1c1c1c;
 }

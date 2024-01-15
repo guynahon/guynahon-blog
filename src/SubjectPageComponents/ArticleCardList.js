@@ -2,11 +2,8 @@ import './ArticleCardList.css'
 import {useContext, useEffect, useState} from "react";
 import {ArticleCard} from "../CardComponents/ArticleCard";
 import {useLocation} from "react-router-dom";
-import {DarkContext} from "../Providers/DarkProvider";
 
 export function ArticleCardList({postsBySubject}) {
-
-    const {isDarkMode} = useContext(DarkContext);
 
     // useState for the value from the input bar that update onChange
     const [inputValue, setInputValue] = useState("");
@@ -35,10 +32,10 @@ export function ArticleCardList({postsBySubject}) {
     }
 
     return (
-    <div className={`subject ${isDarkMode ? "dark" : ""}`}>
+    <div className="subject">
         <div className="filter">
-            <label className={`search-label ${isDarkMode ? "dark" : ""}`}>Search: </label>
-            <input className={`search-input ${isDarkMode ? "dark" : ""}`} type="text" placeholder="type seach value" onChange={handleInputChange}/>
+            <label className="search-label">Search: </label>
+            <input className="search-input" type="text" placeholder="type seach value" onChange={handleInputChange}/>
         </div>
         {/*if input value is not empty show the filtered posts on the article cards
         else show only the posts you loaded with the load more*/}
@@ -47,7 +44,7 @@ export function ArticleCardList({postsBySubject}) {
         {/*hide the load more button if the counter is larger or equal to the postBySubject length and
         when typing a value in the input bar*/}
         {(loadMoreCounter < postsBySubject.length && inputValue === "" ) &&
-        <div className={`more-articles-block ${isDarkMode ? "dark" : ""}`}>
+        <div className="more-articles-block">
             <a className="more-articles-button" onClick={() => setLoadMoreCounter(loadMoreCounter + 3)}>Load More</a>
         </div>}
     </div>

@@ -8,7 +8,6 @@ import {DarkContext} from "../Providers/DarkProvider";
 
 // this component gets the subject as param from its father component and based on it
 export function ThreeCardsList({subject}) {
-    const {isDarkMode} = useContext(DarkContext);
     // posts array from the BlogContext
     const {posts} = useContext(BlogContext);
     const [threePosts, setThreePosts] = useState([]);
@@ -31,7 +30,7 @@ export function ThreeCardsList({subject}) {
     return (
         <div className="article-section">
             <div className="header-view-all">
-                <h3 className={`article-section-header ${isDarkMode ? "dark" : ""}`}>{articleHeaders[subject]}</h3>
+                <h3 className="article-section-header">{articleHeaders[subject]}</h3>
                 <ViewAllButton subject={subject}/>
             </div>
             {/* to display each post in the threePosts, we map each post to an ArticleCard component and sending

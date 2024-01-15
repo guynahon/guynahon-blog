@@ -45,11 +45,11 @@
 }
 
 /*Dark Mode*/
-.home-header.dark {
+.dark .home-header {
     background-color: #1c1c1c;
 }
 
-.home-header-tag.dark {
+.dark .home-header-tag {
     color: white;
     background-color: #383838;
 }

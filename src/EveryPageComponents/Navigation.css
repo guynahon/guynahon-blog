@@ -188,7 +188,7 @@ a.active {
     }
 
     /*Dark Mode under 768px*/
-    .nav-menu.dark {
+    .dark .nav-menu {
         background-color: rgba(60, 60, 60, 0.25);
     }
 
@@ -245,61 +245,59 @@ a.active {
 
 /*Dark Mode*/
 
-.navigation.dark {
+.dark .navigation {
     background-color: #1c1c1c;
     color: white;
     box-shadow: 0 4px 70px 0 rgba(255, 255, 255, 0.1);
 }
 
-.blog-logo.dark {
+.dark .blog-logo {
     color: white;
 }
 
-.nav-link.dark {
+.dark .nav-link {
     color: white;
 }
 
-.sign-in-btn.dark {
+.dark .sign-in-btn {
     background: linear-gradient(270deg, #b633ff 4.8%, #2eea28 100%);
     color: #FFF;
     transition: box-shadow 0.5s;
 }
 
-.sign-in-btn.dark:hover {
+.dark .sign-in-btn:hover {
     box-shadow: inset 0 0 10px #3e3e3e;
 }
 
-.sup.dark {
+.dark .sup {
     color: white;
     background: none;
 }
 
-.nav-link.dark:hover {
+.dark .nav-link:hover {
     background: linear-gradient(270deg, #b633ff 4.8%, #2eea28 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-a.active.dark {
+.dark a.active {
     background: linear-gradient(270deg, #b633ff 4.8%, #2eea28 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-.bar.dark {
+.dark .bar {
     background-color: #ffffff;
 }
 
-.sub-button.dark {
+.dark .sub-button {
     background: linear-gradient(270deg, #b633ff 4.8%, #2eea28 100%);
     color: #FFF;
     transition: box-shadow 0.5s;
 }
 
-.sub-button.dark:hover {
+.dark .sub-button:hover {
     box-shadow: inset 0 0 10px #3e3e3e;
 }
-
-

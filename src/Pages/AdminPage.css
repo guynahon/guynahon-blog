@@ -123,62 +123,62 @@
 
 
 /*Dark Mode*/
-.admin.dark {
+.dark .admin {
     background: #121212;
 
 }
 
-.all-admin.dark {
+.dark .all-admin {
     background-color: #2f2f2f;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.form-btn.dark {
+.dark .form-btn {
     background: linear-gradient(270deg, #b633ff 4.8%, #2eea28 100%);
     transition: box-shadow 0.5s;
 }
 
-.form-btn:hover.dark {
+.dark .form-btn:hover {
     box-shadow: inset 0 0 10px #3e3e3e;
 }
 
-.admin-headers.dark {
+.dark .admin-headers {
     color: #e5e5e5;
 }
 
-.admin.dark label {
+.dark .admin label {
     color: white;
 }
 
-.admin.dark textarea {
+.dark .admin textarea {
     border: 1px solid #373737;
     background: #282828;
     color: white;
 }
 
-.admin.dark textarea:focus {
+.dark .admin textarea:focus {
     border: 1px solid #717171;
 }
 
-.admin.dark input {
+.dark .admin input {
     border: 1px solid #373737;
     background: #282828;
     color: white;
 }
 
-.admin.dark select {
+.dark .admin select {
     border: 1px solid #373737;
     background: #282828;
     color: white;
 }
 
-.pls-log-in-back.dark {
+.dark .pls-log-in-back {
     width: 100%;
     background: #121212;
 }
 
-.pls-log-in.dark {
+.dark .pls-log-in {
     background: linear-gradient(290deg, #b633ff 30%, #2eea28 100%);
     background-clip: text;
     -webkit-background-clip: text;

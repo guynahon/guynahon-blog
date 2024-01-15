@@ -63,37 +63,37 @@
 
 /*Dark Mode*/
 
-.subject.dark {
+.dark .subject {
     background: #121212;
 }
 
-.search-label.dark {
+.dark .search-label {
     color: white;
 }
 
-.search-input.dark {
+.dark .search-input {
     border: 1px solid #545454;
     background: #373737;
     color: white;
 }
 
-.search-input.dark::placeholder {
+.dark .search-input::placeholder {
     color: #868686;
 }
 
-.search-input.dark:focus {
+.dark .search-input:focus {
     border: 1px solid #a4a4a4;
 }
 
-.more-articles-block.dark {
+.dark .more-articles-block {
     border: 1px solid #484848;
     background: #2c2c2c;
 }
 
-.more-articles-block.dark:hover {
+.dark .more-articles-block:hover {
     border: 1px solid #7d7d7d;
 }
 
-.more-articles-block.dark a {
+.dark .more-articles-block a {
     color: #ffffff;
 }

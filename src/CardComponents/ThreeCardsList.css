@@ -32,6 +32,6 @@
 
 
 /*Dark Mode*/
-.article-section-header.dark {
+.dark .article-section-header {
     color: #ffffff;
 }

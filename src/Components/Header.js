@@ -2,13 +2,11 @@ import './Header.css'
 import {useLocation, useParams} from "react-router-dom";
 import {useContext, useEffect, useState} from "react";
 import {BlogContext} from "../Providers/BlogProvider";
-import {DarkContext} from "../Providers/DarkProvider";
 
 // this component provides a number of pages with a dynamic header based on their route
 export function Header () {
     // posts array from the BlogContext
     const {posts} = useContext(BlogContext);
-    const {isDarkMode} = useContext(DarkContext);
 
     // header and paragraph dynamic variables
     const [pageHeader, setPageHeader] = useState(null);
@@ -62,9 +60,9 @@ export function Header () {
     }, [location, posts]);
 
     return (
-        <div className={`main-header ${isDarkMode ? "dark" : ""}`}>
-            <div className={`page-header ${isDarkMode ? "dark" : ""}`}>{pageHeader}</div>
-            {pageParagraph && <p className={`page-paragraph ${isDarkMode ? "dark" : ""}`}>{pageParagraph}</p>}
+        <div className="main-header">
+            <div className="page-header">{pageHeader}</div>
+            {pageParagraph && <p className="page-paragraph">{pageParagraph}</p>}
         </div>
     );
 }

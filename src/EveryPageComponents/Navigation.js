@@ -33,33 +33,33 @@ export function Navigation() {
     }
 
     return (
-        <div className={`navigation ${isDarkMode ? "dark" : ""}`}>
+        <div className="navigation">
             <nav className="navbar">
-                <h1><Link to="/" className={`blog-logo ${isDarkMode ? "dark" : ""}`} onClick={scrollToTop}>Guy's Blog</Link></h1>
+                <h1><Link to="/" className="blog-logo" onClick={scrollToTop}>Guy's Blog</Link></h1>
                 <div className="dark-user">
-                    {user ? <span className={`sup ${isDarkMode ? "dark" : ""}`}>{`Hello, ${user.userName}`}</span> : <button className={`sign-in-btn ${isDarkMode ? "dark" : ""}`} onClick={signIn}>Sign In</button>}
+                    {user ? <span className="sup">{`Hello, ${user.userName}`}</span> : <button className={`sign-in-btn ${isDarkMode ? "dark" : ""}`} onClick={signIn}>Sign In</button>}
                     <input className="dark-mode-btn" type="checkbox" onChange={toggleDarkMode} checked={isDarkMode}/>
                 </div>
-                <ul className={`nav-menu ${isMenuActive ? "active" : ""} ${isDarkMode ? "dark" : ""}`}>
+                <ul className={`nav-menu ${isMenuActive ? "active" : ""}`}>
                     <li className="nav-item">
-                        <NavLink to="/subjects/dailydigest" className={`nav-link ${isDarkMode ? "dark" : ""}`} onClick={closeMenuAndScrollToTop}>Daily Digest</NavLink>
+                        <NavLink to="/subjects/dailydigest" className="nav-link" onClick={closeMenuAndScrollToTop}>Daily Digest</NavLink>
                     </li>
                     <li className="nav-item">
-                        <NavLink to="/subjects/designtools" className={`nav-link ${isDarkMode ? "dark" : ""}`} onClick={closeMenuAndScrollToTop}>Design Tools</NavLink>
+                        <NavLink to="/subjects/designtools" className="nav-link" onClick={closeMenuAndScrollToTop}>Design Tools</NavLink>
                     </li>
                     <li className="nav-item">
-                        <NavLink to="/subjects/tutorials" className={`nav-link ${isDarkMode ? "dark" : ""}`} onClick={closeMenuAndScrollToTop}>Tutorials</NavLink>
+                        <NavLink to="/subjects/tutorials" className="nav-link" onClick={closeMenuAndScrollToTop}>Tutorials</NavLink>
                     </li>
                     {/*if we signed in we can now see the admin panel link*/}
                     {user && <li className="nav-item">
-                        <NavLink to="/admin" className={`nav-link ${isDarkMode ? "dark" : ""}`} onClick={closeMenuAndScrollToTop}>Admin</NavLink>
+                        <NavLink to="/admin" className="nav-link" onClick={closeMenuAndScrollToTop}>Admin</NavLink>
                     </li>}
                 </ul>
-                <a className={`sub-button ${isDarkMode ? "dark" : ""}`}>Subscribe</a>
+                <a className="sub-button">Subscribe</a>
                 <div className={`hamburger ${isMenuActive ? "active" : ""}`} onClick={toggleMenu}>
-                    <span className={`bar ${isDarkMode ? "dark" : ""}`}></span>
-                    <span className={`bar ${isDarkMode ? "dark" : ""}`}></span>
-                    <span className={`bar ${isDarkMode ? "dark" : ""}`}></span>
+                    <span className="bar"></span>
+                    <span className="bar"></span>
+                    <span className="bar"></span>
                 </div>
             </nav>
         </div>

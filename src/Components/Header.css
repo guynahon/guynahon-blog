@@ -50,17 +50,17 @@
 }
 /*Dark Mode*/
 
-.main-header.dark {
+.dark .main-header {
     background-color: #1c1c1c;
 }
 
-.page-header.dark{
+.dark .page-header{
     background: linear-gradient(97deg, #40f36b 4.8%, #9c28ea 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-.page-paragraph.dark{
+.dark .page-paragraph{
     color: white;
 }

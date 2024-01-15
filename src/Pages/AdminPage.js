@@ -4,11 +4,9 @@ import {AuthContext} from "../Providers/AuthProvider";
 import {BlogContext} from "../Providers/BlogProvider";
 import {useForm} from "react-hook-form";
 import {useNavigate} from "react-router-dom";
-import {DarkContext} from "../Providers/DarkProvider";
 
 export function Admin() {
 
-    const {isDarkMode} = useContext(DarkContext);
 
     // getting the user in order to confirm log in (to use the admin panel)
     const {user} = useContext(AuthContext);
@@ -43,7 +41,7 @@ export function Admin() {
 
     // checking if the user is logged in, if not, we return this message tag
     if (!user) {
-        return (<div className={`pls-log-in-back ${isDarkMode ? "dark" : ""}`}><span className={`pls-log-in ${isDarkMode ? "dark" : ""}`}>Please Log in !</span></div>);
+        return (<div className="pls-log-in-back"><span className="pls-log-in">Please Log in !</span></div>);
     }
 
 
@@ -74,14 +72,14 @@ export function Admin() {
     };
 
     return (
-        <div className={`admin ${isDarkMode ? "dark" : ""}`}>
-            <div className={`all-admin ${isDarkMode ? "dark" : ""}`}>
+        <div className="admin">
+            <div className="all-admin">
                 {/*onsubmit calling the handleSubmit function from react-hook-form and passing it the
                 handleAddOrEditPost function, the react-form function allows as to get the data from
                  the inputs as an argument*/}
                 <form className="admin-form" onSubmit={handleSubmit(handleAddOrEditPost)}>
                     {/*this helps the user know if he's in add or edit mode*/}
-                    <span className={`admin-headers ${isDarkMode ? "dark" : ""}`}>{selectedPost ? "Edit" : "Add"} a post</span>
+                    <span className="admin-headers">{selectedPost ? "Edit" : "Add"} a post</span>
 
                     <div className="form-title">
                         <label htmlFor="title">Title:</label>
@@ -140,12 +138,12 @@ export function Admin() {
                     </div>
 
                     {/*a submit button, if selectedPost is null (add-mode) its says Add else Save (edit-mode)*/}
-                    <button className={`form-btn submit-form ${isDarkMode ? "dark" : ""}`} type="submit">{selectedPost ? "Save" : "Add"}</button>
+                    <button className="form-btn submit-form" type="submit">{selectedPost ? "Save" : "Add"}</button>
 
                 </form>
                 {/*if we are in add-mode we can see that clear posts (default admin panel)
                 if we are in edit mode clearPosts is hidden*/}
-                {!selectedPost && <button className={`form-btn ${isDarkMode ? "dark" : ""}`} onClick={clearPosts}>Clear Posts</button>}
+                {!selectedPost && <button className="form-btn" onClick={clearPosts}>Clear Posts</button>}
             </div>
         </div>
     );

@@ -10,6 +10,6 @@
 }
 
 /*Dark Mode*/
-.articles.dark {
+.dark .articles {
     background: #121212;
 }
