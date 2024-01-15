@@ -55,7 +55,7 @@ export function ArticleCardList({subject}) {
         fetchSubjectsPosts();
     }, [subject, inputValue]);
 
-    
+
 
     return (
     <div className="subject">
@@ -69,7 +69,7 @@ export function ArticleCardList({subject}) {
         
         {(loadMoreCounter <= postsBySubject.length && inputValue === "" ) &&
         <div className="more-articles-block">
-            <a className="more-articles-button" onClick={() => fetchSubjectsPosts(true)}>Load More</a>
+            <button className="more-articles-button" onClick={() => fetchSubjectsPosts(true)}>Load More</button>
         </div>}
     </div>
     );
