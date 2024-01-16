@@ -11,6 +11,7 @@ export function ArticleCardList({subject}) {
     const [loadMoreCounter, setLoadMoreCounter] = useState(3);
     const [postsBySubject, setPostsBySubject] = useState([]);
     const [postsByFilter, setPostsByFilter] = useState([]);
+    const [isMorePosts, setIsMorePosts] = useState(false);
 
 
 
@@ -34,9 +35,14 @@ export function ArticleCardList({subject}) {
         try {
             const url = `http://localhost:5000/post?subject=${subject}`;
             if (inputValue === "") {
-                const response = await fetch(`${url}&from=${loadCounter-2}&to=${loadCounter}`);
+                const response = await fetch(`${url}&from=${loadCounter-2}&to=${loadCounter+1}`);
                 const jsonData = await response.json();
-                setPostsBySubject(prevPosts => [...prevPosts, ...jsonData]);
+                if (JSON.stringify(jsonData) === JSON.stringify(jsonData.slice(0,3))) {
+                    setIsMorePosts(false);
+                } else {
+                    setIsMorePosts(true);
+                }
+                setPostsBySubject(prevPosts => [...prevPosts, ...jsonData.slice(0,3)]);
                 setPostsByFilter([]);
             } else {
                 const response = await fetch(`${url}&filterBy=${inputValue}`);
@@ -50,7 +56,7 @@ export function ArticleCardList({subject}) {
     };
 
 
-
+    
     useEffect(() => {
         fetchSubjectsPosts();
     }, [subject, inputValue]);
@@ -66,8 +72,8 @@ export function ArticleCardList({subject}) {
         
         {inputValue === "" ? postsBySubject.map(post => <ArticleCard singlePost={post} key={post.id} />) : 
         postsByFilter.map(post => <ArticleCard singlePost={post} key={post.id} />)}
-        
-        {(loadMoreCounter <= postsBySubject.length && inputValue === "" ) &&
+        {console.log(loadMoreCounter)}
+        {(isMorePosts && inputValue === "" ) &&
         <div className="more-articles-block">
             <button className="more-articles-button" onClick={() => fetchSubjectsPosts(true)}>Load More</button>
         </div>}
