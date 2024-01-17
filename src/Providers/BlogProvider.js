@@ -6,11 +6,6 @@ export const BlogContext = createContext(null);
 export function BlogProvider({children}) {
 
     const [selectedPost, setSelectedPost] = useState(null);
-    const [postsBySubject, setPostsBySubject] = useState([]);
-    const [postsByFilter, setPostsByFilter] = useState([]);
-    const [loadMoreCounter, setLoadMoreCounter] = useState(3);
-
-
 
 
     const addPost = async (singlePost) => {
@@ -88,8 +83,7 @@ export function BlogProvider({children}) {
     }
 
     // the values to pass to BlogProvider's children (useContext(BlogContext))
-    const value = {postsBySubject, setPostsBySubject, postsByFilter, setPostsByFilter, loadMoreCounter, setLoadMoreCounter,
-        selectedPost, setSelectedPost, addPost, removePost, clearPosts, editPost, updatePost}
+    const value = {selectedPost, setSelectedPost, addPost, removePost, clearPosts, editPost, updatePost};
     return (
         <BlogContext.Provider value = {value}>
             {children}
