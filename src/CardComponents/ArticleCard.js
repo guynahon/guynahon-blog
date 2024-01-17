@@ -16,7 +16,7 @@ export function ArticleCard({singlePost}) {
     const route = `/article/${id}`;
 
     // getting the removePost and editPost functions so we can click on button/link and we will execute them.
-    const {removePost, editPost} = useContext(BlogContext);
+    const {editPost} = useContext(BlogContext);
 
     // getting the user value to check if he is signed in, if we aren't signed in we won't be able to see
     // the edit-post/remove-post link/button
@@ -51,15 +51,11 @@ export function ArticleCard({singlePost}) {
                 </div>
                 <div className="card-footer">
                     <div className={"read-more"} onClick={scrollToTop}><NavLink to={route}>Read More</NavLink></div>
-                    {/*displays the edit and remove only if user logged in*/}
+                    {/*displays the edit only if user logged in*/}
                     {user && (
                         <div className="admin-btns">
                             <div className={"card-edit-btn"}>
                                 <NavLink to="/admin" onClick={handlePostEditClick}>Edit Post</NavLink>
-                            </div>
-                            <div className={"card-remove-btn"}>
-                                {/*calling the remove function onClick with the posts id*/}
-                                <button onClick={() => removePost(id)}>X</button>
                             </div>
                         </div>
                     )}

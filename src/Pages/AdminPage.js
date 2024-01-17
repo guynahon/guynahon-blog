@@ -12,7 +12,7 @@ export function Admin() {
     const {user} = useContext(AuthContext);
 
     // getting the needed methods and states that we'll use in the panel
-    const {addPost, clearPosts, selectedPost, setSelectedPost, updatePost} = useContext(BlogContext);
+    const {removePost, addPost, clearPosts, selectedPost, setSelectedPost, updatePost} = useContext(BlogContext);
 
     // from the react-hook-form library importing the methods we will use
     const {register, handleSubmit, formState, watch} = useForm();
@@ -69,6 +69,11 @@ export function Admin() {
             // reset all input fields
             event.target.reset();
         }
+    };
+
+    const handleRemovePost = (id, subject) => {
+        removePost(id);
+        navigate(`/subjects/${subject}`);
     };
 
     return (
@@ -143,6 +148,7 @@ export function Admin() {
                 </form>
                 {/*if we are in add-mode we can see that clear posts (default admin panel)
                 if we are in edit mode clearPosts is hidden*/}
+                {selectedPost && <button className="form-btn" onClick={() => handleRemovePost(selectedPost.id, selectedPost.subject)}>Remove Post</button>}
                 {!selectedPost && <button className="form-btn" onClick={clearPosts}>Clear Posts</button>}
             </div>
         </div>

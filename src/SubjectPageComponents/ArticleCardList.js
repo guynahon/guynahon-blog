@@ -1,6 +1,7 @@
 import './ArticleCardList.css'
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {ArticleCard} from "../CardComponents/ArticleCard";
+import { BlogContext } from '../Providers/BlogProvider';
 
 export function ArticleCardList({subject}) {
 
@@ -8,9 +9,7 @@ export function ArticleCardList({subject}) {
     const [inputValue, setInputValue] = useState("");
 
     // useState for counter the helps us use the Load More function, which loads 3 posts more on each click
-    const [loadMoreCounter, setLoadMoreCounter] = useState(3);
-    const [postsBySubject, setPostsBySubject] = useState([]);
-    const [postsByFilter, setPostsByFilter] = useState([]);
+    const {postsBySubject, setPostsBySubject, postsByFilter, setPostsByFilter, loadMoreCounter, setLoadMoreCounter} = useContext(BlogContext);
     const [isMorePosts, setIsMorePosts] = useState(false);
 
 
