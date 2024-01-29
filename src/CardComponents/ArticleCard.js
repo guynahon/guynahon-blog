@@ -20,7 +20,7 @@ export function ArticleCard({singlePost}) {
 
     // getting the user value to check if he is signed in, if we aren't signed in we won't be able to see
     // the edit-post/remove-post link/button
-    const {user} = useContext(AuthContext);
+    const {user, isAdmin} = useContext(AuthContext);
 
     // parsing the date in the way we want to display it
     const currentDate = singlePost.date.split("-");
@@ -52,7 +52,7 @@ export function ArticleCard({singlePost}) {
                 <div className="card-footer">
                     <div className={"read-more"} onClick={scrollToTop}><NavLink to={route}>Read More</NavLink></div>
                     {/*displays the edit only if user logged in*/}
-                    {user && (
+                    {isAdmin && (
                         <div className="admin-btns">
                             <div className={"card-edit-btn"}>
                                 <NavLink to="/admin" onClick={handlePostEditClick}>Edit Post</NavLink>

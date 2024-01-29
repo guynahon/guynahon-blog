@@ -24,8 +24,6 @@ export function SingleArticlePage() {
         fetchPost();
     }, [id]);
 
-    console.log(singlePost);
-
     return (
         <>
             <Header singlePost={singlePost}/>

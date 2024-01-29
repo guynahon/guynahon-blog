@@ -11,7 +11,7 @@ import {ProfilePicSignOut} from './ProfilePicSignOut';
 export function Navigation() {
     // the user var and signIn fn are taken from the AuthContext in order to preform sign-in
     // that will allow us to view the hidden admin panel/page
-    const {user, signIn} = useContext(AuthContext);
+    const {user, isAdmin} = useContext(AuthContext);
     const {isDarkMode, setIsDarkMode} = useContext(DarkContext);
 
     const [isMenuActive, setIsMenuActive] = useState(false);
@@ -81,7 +81,7 @@ export function Navigation() {
                         <NavLink to="/subjects/tutorials" className="nav-link" onClick={closeMenuAndScrollToTop}>Tutorials</NavLink>
                     </li>
                     {/*if we signed in we can now see the admin panel link*/}
-                    {user && <li className="nav-item">
+                    {isAdmin && <li className="nav-item">
                         <NavLink to="/admin" className="nav-link" onClick={closeMenuAndScrollToTop}>Admin</NavLink>
                     </li>}
                 </ul>

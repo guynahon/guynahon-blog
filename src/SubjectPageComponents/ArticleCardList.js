@@ -72,7 +72,6 @@ export function ArticleCardList({subject}) {
         
         {inputValue === "" ? postsBySubject.map(post => <ArticleCard singlePost={post} key={post.id} />) : 
         postsByFilter.map(post => <ArticleCard singlePost={post} key={post.id} />)}
-        {console.log(loadMoreCounter)}
         {(isMorePosts && inputValue === "" ) &&
         <div className="more-articles-block">
             <button className="more-articles-button" onClick={() => fetchSubjectsPosts(true)}>Load More</button>

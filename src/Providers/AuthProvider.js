@@ -6,6 +6,7 @@ export const AuthContext = createContext(null);
 export function AuthProvider({children}) {
 
     const [user, setUser] = useState(null);
+    const [isAdmin, setIsAdmin] = useState(false);
 
     const signIn = ({userName, password}) => {
         setUser({userName: "Guy"})
@@ -23,10 +24,28 @@ export function AuthProvider({children}) {
         if (theUser && !theUser.includes("undefined")) {
           setUser(JSON.parse(theUser));
         }
-      }, []);
+    }, []);
+
+    const checkAdmin = async () => {
+        try {
+            if (user) {
+                const userRes = await fetch(`http://localhost:5000/users/${user.id}`);
+                const theUser = await userRes.json();
+                setIsAdmin(theUser.admin)
+            }
+            } catch (err) {
+                console.error(err.message);
+            }
+    };
+
+    useEffect(() => {
+        checkAdmin();
+    }, [user]);
+    
 
 
-    const value = {user, signIn, signOut};
+
+    const value = {user, signIn, signOut, isAdmin};
 
     return (
         <AuthContext.Provider value={value}>

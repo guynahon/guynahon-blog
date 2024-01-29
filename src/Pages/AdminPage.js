@@ -9,7 +9,7 @@ export function Admin() {
 
 
     // getting the user in order to confirm log in (to use the admin panel)
-    const {user} = useContext(AuthContext);
+    const {user, isAdmin} = useContext(AuthContext);
 
     // getting the needed methods and states that we'll use in the panel
     const {removePost, addPost, clearPosts, selectedPost, setSelectedPost, updatePost} = useContext(BlogContext);
@@ -40,8 +40,8 @@ export function Admin() {
     }, [selectedPost]);
 
     // checking if the user is logged in, if not, we return this message tag
-    if (!user) {
-        return (<div className="pls-log-in-back"><span className="pls-log-in">Please Log in !</span></div>);
+    if (!isAdmin) {
+        return (<div className="pls-log-in-back"><span className="pls-log-in">You are not an Admin !</span></div>);
     }
 
 
@@ -58,7 +58,6 @@ export function Admin() {
             // navigating automatically to the subject the post was added to.
             navigate(`/subjects/${data.subject}`);
         } else {
-            console.log(typeof data.createdAt);
             // calling addPost to add a new post
             addPost({
                 title: data.title,
