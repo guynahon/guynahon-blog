@@ -13,6 +13,7 @@ export function Navigation() {
     // that will allow us to view the hidden admin panel/page
     const {user, isAdmin} = useContext(AuthContext);
     const {isDarkMode, setIsDarkMode} = useContext(DarkContext);
+    const [isMobile, setIsMobile] = useState(false);
 
     const [isMenuActive, setIsMenuActive] = useState(false);
 
@@ -48,9 +49,9 @@ export function Navigation() {
         });
     
         google.accounts.id.renderButton(document.getElementById("signUpDiv"), {
-            // type: "standard",
+            type: `${isMobile ? "icon" : "standard"}`,
             theme: `filled_${isDarkMode ? "black" : "white"}`,
-            // size: "small",
+            size: "large",
             text: "continue_with",
             shape: "pill",
         });
@@ -58,6 +59,19 @@ export function Navigation() {
         // google.accounts.id.prompt()
         }
     }, [handleGoogle]);
+
+
+    useEffect(() => {
+      const mediaQuery = window.matchMedia('(max-width: 768px)');
+      setIsMobile(mediaQuery.matches);
+      const handleResize = () => {
+        setIsMobile(mediaQuery.matches);
+      };
+      mediaQuery.addEventListener('change', handleResize);
+      return () => {
+        mediaQuery.removeEventListener('change', handleResize);
+      };
+    }, []);
 
     return (
         <div className="navigation">

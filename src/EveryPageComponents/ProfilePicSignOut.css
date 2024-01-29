@@ -27,3 +27,16 @@
     -webkit-text-fill-color: transparent;
     cursor: pointer;
 }
+
+/* Dark Mode */
+
+.dark .logout-btn {
+    color: white;
+}
+
+.dark .logout-btn:hover {
+    background: linear-gradient(270deg, #b633ff 4.8%, #2eea28 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
