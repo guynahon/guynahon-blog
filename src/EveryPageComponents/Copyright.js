@@ -1,5 +1,5 @@
 import './Copyright.css'
-import {useContext} from "react";
+
 export function Copyright() {
 
     // static copyright and social media (git-hub, instagram and linked-in) component

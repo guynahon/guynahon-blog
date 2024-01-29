@@ -1,9 +1,11 @@
 import './Navigation.css'
 import {Link, NavLink} from "react-router-dom";
-import {useContext, useState} from "react";
+import {useContext, useState, useEffect} from "react";
 import {AuthContext} from "../Providers/AuthProvider";
 import {DarkContext} from "../Providers/DarkProvider";
 import {scrollToTop} from "../helper-functions/scrollToTop";
+import useFetch from "../hooks/useFetch";
+import {ProfilePicSignOut} from './ProfilePicSignOut';
 
 // we use this component as the navigation bar in all pages at the top of each page
 export function Navigation() {
@@ -16,29 +18,57 @@ export function Navigation() {
 
     const toggleMenu = () => {
         setIsMenuActive(!isMenuActive);
-    }
+    };
 
     const closeMenu = () => {
         setIsMenuActive(false);
-    }
+    };
 
     const toggleDarkMode = () => {
         setIsDarkMode(!isDarkMode);
         localStorage.setItem("darkMode", JSON.stringify(!isDarkMode));
-    }
+    };
 
     const closeMenuAndScrollToTop = () => {
         closeMenu();
         scrollToTop();
-    }
+    };
+
+
+    const { handleGoogle, loading, error } = useFetch(
+        "http://localhost:5000/auth"
+      );
+    
+    useEffect(() => {
+        /* global google */
+        if (window.google) {
+        google.accounts.id.initialize({
+            client_id: "166760931981-fu6nqqi51c5uqnuc2d65f31cvncpg507.apps.googleusercontent.com",
+            callback: handleGoogle,
+        });
+    
+        google.accounts.id.renderButton(document.getElementById("signUpDiv"), {
+            // type: "standard",
+            theme: `filled_${isDarkMode ? "black" : "white"}`,
+            // size: "small",
+            text: "continue_with",
+            shape: "pill",
+        });
+    
+        // google.accounts.id.prompt()
+        }
+    }, [handleGoogle]);
 
     return (
         <div className="navigation">
             <nav className="navbar">
                 <h1><Link to="/" className="blog-logo" onClick={scrollToTop}>Guy's Blog</Link></h1>
                 <div className="dark-user">
-                    {user ? <span className="sup">{`Hello, ${user.userName}`}</span> : <button className={`sign-in-btn ${isDarkMode ? "dark" : ""}`} onClick={signIn}>Sign In</button>}
-                    <input className="dark-mode-btn" type="checkbox" onChange={toggleDarkMode} checked={isDarkMode}/>
+                    {loading ? (
+                            <div>Loading....</div>
+                        ) : (user ? <ProfilePicSignOut /> :
+                            <div id="signUpDiv" data-text="signup_with"></div>
+                        )}
                 </div>
                 <ul className={`nav-menu ${isMenuActive ? "active" : ""}`}>
                     <li className="nav-item">
@@ -55,7 +85,7 @@ export function Navigation() {
                         <NavLink to="/admin" className="nav-link" onClick={closeMenuAndScrollToTop}>Admin</NavLink>
                     </li>}
                 </ul>
-                <a className="sub-button">Subscribe</a>
+                <input className="dark-mode-btn" type="checkbox" onChange={toggleDarkMode} checked={isDarkMode}/>
                 <div className={`hamburger ${isMenuActive ? "active" : ""}`} onClick={toggleMenu}>
                     <span className="bar"></span>
                     <span className="bar"></span>
