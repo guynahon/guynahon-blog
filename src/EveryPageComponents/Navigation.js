@@ -44,7 +44,7 @@ export function Navigation() {
         /* global google */
         if (window.google) {
         google.accounts.id.initialize({
-            client_id: process.nextTick.REACT_APP_GOOGLE_CLIENT_ID,
+            client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
             callback: handleGoogle,
         });
     
