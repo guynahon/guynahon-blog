@@ -44,7 +44,7 @@ export function Navigation() {
         /* global google */
         if (window.google) {
         google.accounts.id.initialize({
-            client_id: "166760931981-fu6nqqi51c5uqnuc2d65f31cvncpg507.apps.googleusercontent.com",
+            client_id: process.nextTick.REACT_APP_GOOGLE_CLIENT_ID,
             callback: handleGoogle,
         });
     
@@ -60,7 +60,7 @@ export function Navigation() {
         }
     }, [handleGoogle]);
 
-
+    // check if im on mobile size
     useEffect(() => {
       const mediaQuery = window.matchMedia('(max-width: 768px)');
       setIsMobile(mediaQuery.matches);
