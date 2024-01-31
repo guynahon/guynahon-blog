@@ -13,7 +13,7 @@ export function SingleArticlePage() {
     useEffect(() => {
         const fetchPost = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/post/${id}`);
+                const response = await fetch(`${process.env.REACT_APP_SERVER_ROUTE}/post/${id}`);
                 const jsonData = await response.json();
                 setSinglePost(jsonData);
             } catch (error) {

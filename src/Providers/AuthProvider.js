@@ -29,7 +29,7 @@ export function AuthProvider({children}) {
     const checkAdmin = async () => {
         try {
             if (user) {
-                const userRes = await fetch(`http://localhost:5000/users/${user.id}`);
+                const userRes = await fetch(`${process.env.REACT_APP_SERVER_ROUTE}/users/${user.id}`);
                 const theUser = await userRes.json();
                 setIsAdmin(theUser.admin)
             }

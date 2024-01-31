@@ -33,7 +33,7 @@ export function ArticleCardList({subject}) {
         setLoadMoreCounter(loadCounter);
 
         try {
-            const url = `http://localhost:5000/post?subject=${subject}`;
+            const url = `${process.env.REACT_APP_SERVER_ROUTE}/post?subject=${subject}`;
             if (inputValue === "") {
                 const response = await fetch(`${url}&from=${loadCounter-2}&to=${loadCounter+1}`);
                 const jsonData = await response.json();

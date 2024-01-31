@@ -13,7 +13,7 @@ export function ThreeCardsList({subject}) {
     useEffect(() => {
         const fetchHomePagePosts = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/post?subject=${subject}&from=1&to=3`);
+                const response = await fetch(`${process.env.REACT_APP_SERVER_ROUTE}/post?subject=${subject}&from=1&to=3`);
                 const jsonData = await response.json();
                 setThreePosts(jsonData);
             } catch (error) {

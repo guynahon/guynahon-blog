@@ -17,7 +17,7 @@ export function BlogProvider({children}) {
                 "date": singlePost.date
             }
 
-            await fetch(`http://localhost:5000/post/`, {
+            await fetch(`${process.env.REACT_APP_SERVER_ROUTE}/post/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -35,7 +35,7 @@ export function BlogProvider({children}) {
 
     const removePost = async (postId) => {
         try {
-            await fetch(`http://localhost:5000/post/${postId}/`, {method: 'DELETE'});
+            await fetch(`${process.env.REACT_APP_SERVER_ROUTE}/post/${postId}/`, {method: 'DELETE'});
         } catch(error) {
             console.log(`error removing post number ${postId} : (${error})`);
         }
@@ -46,7 +46,7 @@ export function BlogProvider({children}) {
 
     const clearPosts = async () => {
         try {
-            await fetch("http://localhost:5000/post/clear/", {method: 'DELETE'});
+            await fetch(`${process.env.REACT_APP_SERVER_ROUTE}/post/clear/`, {method: 'DELETE'});
         } catch(error) {
                 console.log("error clearing all posts from DB");
         }
@@ -68,7 +68,7 @@ export function BlogProvider({children}) {
                 "date": data.createdAt
             }
 
-            const response = await fetch(`http://localhost:5000/post/${selectedPost.id}/`, {
+            const response = await fetch(`${process.env.REACT_APP_SERVER_ROUTE}/post/${selectedPost.id}/`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
