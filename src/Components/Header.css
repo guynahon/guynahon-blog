@@ -5,29 +5,62 @@
     align-items: center;
     gap: 20px;
     padding: 120px 0 30px 0;
+    overflow-wrap: anywhere;
+    width: 100%;
+    /*word-break: keep-all;*/
 }
 
+
 .page-header {
-    width: 970px;
+    width: 100%;
     min-height: 100px;
     text-align: center;
     font-size: 76px;
     font-style: normal;
     font-weight: 700;
-    line-height: 120%;
-    letter-spacing: -2.28px;
     background: linear-gradient(97deg, #C41740 4.8%, #EA9C28 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    padding: 0 20px;
 }
 
+
 .page-paragraph {
-    width: 690px;
+    /*width: 690px;*/
     color: #475467;
     text-align: center;
     font-size: 28px;
     font-style: normal;
     font-weight: 400;
     line-height: 150%; /* 42px */
+}
+
+@media(max-width: 768px) {
+    .main-header {
+        margin: 0 20px;
+        padding-top: 90px;
+    }
+}
+
+
+/*DARK MODE*/
+.main-header {
+    color: white;
+}
+/*Dark Mode*/
+
+.dark .main-header {
+    background-color: #1c1c1c;
+}
+
+.dark .page-header{
+    background: linear-gradient(97deg, #40f36b 4.8%, #9c28ea 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.dark .page-paragraph{
+    color: white;
 }

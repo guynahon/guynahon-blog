@@ -1,25 +1,51 @@
-import {createContext, useState} from "react";
+import {createContext, useState, useEffect} from "react";
 
 // create AuthContext as context
 export const AuthContext = createContext(null);
 
 export function AuthProvider({children}) {
 
-    // user initial value set to null
     const [user, setUser] = useState(null);
+    const [isAdmin, setIsAdmin] = useState(false);
 
-    // this method is hard coded sign in the user as "Guy"
     const signIn = ({userName, password}) => {
         setUser({userName: "Guy"})
     };
 
-    // this method is signing out the user
     const signOut = () => {
         setUser(null);
     };
 
-    // the values to pass to AuthProvider's children (useContext(AuthContext))
-    const value = {user, signIn, signOut};
+    //google OAuth
+
+    useEffect(() => {
+        const theUser = localStorage.getItem("user");
+    
+        if (theUser && !theUser.includes("undefined")) {
+          setUser(JSON.parse(theUser));
+        }
+    }, []);
+
+    const checkAdmin = async () => {
+        try {
+            if (user) {
+                const userRes = await fetch(`${process.env.REACT_APP_SERVER_ROUTE}/users/${user.id}`);
+                const theUser = await userRes.json();
+                setIsAdmin(theUser.admin)
+            }
+            } catch (err) {
+                console.error(err.message);
+            }
+    };
+
+    useEffect(() => {
+        checkAdmin();
+    }, [user]);
+    
+
+
+
+    const value = {user, signIn, signOut, isAdmin};
 
     return (
         <AuthContext.Provider value={value}>
