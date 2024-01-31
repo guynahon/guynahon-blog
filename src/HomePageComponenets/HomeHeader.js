@@ -3,10 +3,10 @@ import './HomeHeader.css'
 export function HomeHeader() {
     // the Header of the homepage, built from a Header component and a static mainheader a tag
     return (
-        <div id="home-header">
-            <div id="home-header-block">
-                <div id="home-header-tag">
-                    <a id="main-header-button">👋 Meet Personally</a>
+        <div className="home-header">
+            <div className="home-header-block">
+                <div className="home-header-tag">
+                    <a className="main-header-button">👋 Meet Personally</a>
                 </div>
                 <Header />
             </div>

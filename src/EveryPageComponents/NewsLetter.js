@@ -1,5 +1,10 @@
 import './NewsLetter.css'
+import {useContext} from "react";
+import {DarkContext} from "../Providers/DarkProvider";
 export function NewsLetter() {
+
+    const {isDarkMode} = useContext(DarkContext);
+
     // static newsletter component
     return (
         <div className="news-letter">

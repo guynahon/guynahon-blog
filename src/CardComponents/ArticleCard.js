@@ -16,11 +16,11 @@ export function ArticleCard({singlePost}) {
     const route = `/article/${id}`;
 
     // getting the removePost and editPost functions so we can click on button/link and we will execute them.
-    const {removePost, editPost} = useContext(BlogContext);
+    const {editPost} = useContext(BlogContext);
 
     // getting the user value to check if he is signed in, if we aren't signed in we won't be able to see
     // the edit-post/remove-post link/button
-    const {user} = useContext(AuthContext);
+    const {user, isAdmin} = useContext(AuthContext);
 
     // parsing the date in the way we want to display it
     const currentDate = singlePost.date.split("-");
@@ -42,31 +42,30 @@ export function ArticleCard({singlePost}) {
     };
 
     return (
-        <div className="card">
+        <div className={"card"}>
             <div className="card-content-frame">
-                <h5 className="card-date">{cardDate}</h5>
+                <h5 className={"card-date"}>{cardDate}</h5>
                 <div className="card-text">
-                    <h3 className="card-header">{singlePost.title}</h3>
-                    <p className="card-paragraph">{singlePost.body}</p>
+                    <h3 className={"card-header"}>{singlePost.title}</h3>
+                    <p className={"card-paragraph"}>{singlePost.body}</p>
                 </div>
                 <div className="card-footer">
-                    <div className="read-more" onClick={scrollToTop}><NavLink to={route}>Read More</NavLink></div>
-                    {/*displays the edit and remove only if user logged in*/}
-                    {user && (
-                        <>
-                            <div className="card-edit-btn">
+                    <div className={"read-more"} onClick={scrollToTop}><NavLink to={route}>Read More</NavLink></div>
+                    {/*displays the edit only if user logged in*/}
+                    {isAdmin && (
+                        <div className="admin-btns">
+                            <div className={"card-edit-btn"}>
                                 <NavLink to="/admin" onClick={handlePostEditClick}>Edit Post</NavLink>
                             </div>
-                            <div className="card-remove-btn">
-                                {/*calling the remove function onClick with the posts id*/}
-                                <button onClick={() => removePost(id)}>X</button>
-                            </div>
-                        </>
+                        </div>
                     )}
                 </div>
             </div>
             {/*an image tag with a src that is api that displays random images*/}
-            <img src={`https://picsum.photos/300/300?${singlePost.id}`} alt={"random-picture "+id}/>
+            <div className="img-div">
+                <img src={`https://picsum.photos/300/300?${singlePost.id}`} alt={"random-picture "+id}/>
+            </div>
+
         </div>
     );
 }

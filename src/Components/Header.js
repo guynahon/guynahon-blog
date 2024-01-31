@@ -1,24 +1,17 @@
 import './Header.css'
-import {useLocation, useParams} from "react-router-dom";
-import {useContext, useEffect, useState} from "react";
-import {BlogContext} from "../Providers/BlogProvider";
+import {useLocation} from "react-router-dom";
+import {useEffect, useState} from "react";
 
 // this component provides a number of pages with a dynamic header based on their route
-export function Header () {
+export function Header ({singlePost}) {
     // posts array from the BlogContext
-    const {posts} = useContext(BlogContext);
 
     // header and paragraph dynamic variables
     const [pageHeader, setPageHeader] = useState(null);
     const [pageParagraph, setPageParagraph] = useState(null);
 
-    // id from the route parameters (dynamic routes)
-    const {id} = useParams();
-
     // we use useLocation.pathname to get a string with the route we are currently in
     const location = useLocation().pathname;
-
-
     // use Effect helps with executing the switch statement every time the location or posts change
     // we need to track the location in order to know where we currently are and based on that information
     // update the header, and we need to track posts because we are getting the posts from the local storage
@@ -49,15 +42,14 @@ export function Header () {
                     "Be as expressive as possible, but in brief.");
                 break;
 
-            case `/article/${id}`:
-                const post = posts.find(p => p.id === Number(id));
-                if (post) {
-                    setPageHeader(post.title);
+            case `/article/${singlePost?.id}`:
+                if (singlePost) {
+                    setPageHeader(singlePost.title);
                     setPageParagraph(null);
                 }
                 break;
         }
-    }, [location, posts]);
+    }, [location, singlePost]);
 
     return (
         <div className="main-header">
