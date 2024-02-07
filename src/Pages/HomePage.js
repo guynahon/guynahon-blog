@@ -1,5 +1,5 @@
-import {HomeHeader} from "../HomePageComponenets/HomeHeader";
-import {ArticlesBySubjects} from "../CardComponents/ArticlesBySubjects";
+import {HomeHeader} from "../Components/HomeHeader"
+import {ArticlesBySubjects} from "../Components/ArticlesBySubjects";
 
 export function HomePage() {
     // these components build the HomePage component

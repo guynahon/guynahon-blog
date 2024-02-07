@@ -1,5 +1,5 @@
 import {Header} from "../Components/Header";
-import {ArticleCardList} from "../SubjectPageComponents/ArticleCardList";
+import {ArticleCardList} from "../Components/ArticleCardList";
 import {useParams} from "react-router-dom";
 
 // this component helps us display the posts by subject

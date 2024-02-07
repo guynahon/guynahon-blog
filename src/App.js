@@ -1,7 +1,7 @@
 import './App.css';
-import {Navigation} from "./EveryPageComponents/Navigation";
-import {NewsLetter} from "./EveryPageComponents/NewsLetter";
-import {Copyright} from "./EveryPageComponents/Copyright";
+import {Navigation} from "./Components/Navigation";
+import {NewsLetter} from "./Components/NewsLetter";
+import {Copyright} from "./Components/Copyright";
 import {Outlet} from "react-router-dom";
 import { useContext } from 'react';
 import { DarkContext } from './Providers/DarkProvider';

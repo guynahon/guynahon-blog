@@ -1,6 +1,6 @@
 import './ArticleCardList.css'
 import {useEffect, useState} from "react";
-import {ArticleCard} from "../CardComponents/ArticleCard";
+import {ArticleCard} from "./ArticleCard";
 
 export function ArticleCardList({subject}) {
 

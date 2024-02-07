@@ -1,4 +1,4 @@
-import {SingleArticle} from "../SingleArticleComponents/SingleArticle";
+import {SingleArticle} from "../Components/SingleArticle";
 import {Header} from "../Components/Header";
 import {useState, useEffect} from "react";
 import {useParams} from "react-router-dom";

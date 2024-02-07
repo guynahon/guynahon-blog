@@ -1,4 +1,4 @@
-import {ViewAllButton} from "../Components/ViewAllButton";
+import {ViewAllButton} from "./ViewAllButton";
 import './ThreeCardsList.css'
 import {ArticleCard} from "./ArticleCard";
 import {useContext, useEffect, useState} from "react";
