@@ -1,4 +1,5 @@
 import {createContext, useState, useEffect} from "react";
+import { jwtDecode } from 'jwt-decode';
 
 // create AuthContext as context
 export const AuthContext = createContext(null);
@@ -8,10 +9,6 @@ export function AuthProvider({children}) {
     const [user, setUser] = useState(null);
     const [isAdmin, setIsAdmin] = useState(false);
 
-    const signIn = ({userName, password}) => {
-        setUser({userName: "Guy"})
-    };
-
     const logOut = () => {
         localStorage.removeItem("user");
         window.location.reload();
@@ -20,10 +17,10 @@ export function AuthProvider({children}) {
     //google OAuth
 
     useEffect(() => {
-        const theUser = localStorage.getItem("user");
-    
-        if (theUser && !theUser.includes("undefined")) {
-          setUser(JSON.parse(theUser));
+        const theToken = localStorage.getItem("user");
+        if (theToken && !theToken.includes('undefined')) {
+            const theUser = jwtDecode(JSON.parse(theToken).token);
+            setUser(theUser);
         }
     }, []);
 
@@ -46,7 +43,7 @@ export function AuthProvider({children}) {
 
 
 
-    const value = {user, signIn, isAdmin, logOut};
+    const value = {user, isAdmin, logOut};
 
     return (
         <AuthContext.Provider value={value}>

@@ -35,7 +35,6 @@ export function Navigation() {
         scrollToTop();
     };
 
-    console.log(process.env.REACT_APP_SERVER_ROUTE, process.env.REACT_APP_GOOGLE_CLIENT_ID);
     const { handleGoogle, loading, error } = useFetch(
         `${process.env.REACT_APP_SERVER_ROUTE}/auth`
       );
