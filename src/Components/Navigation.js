@@ -7,10 +7,7 @@ import {scrollToTop} from "../helper-functions/scrollToTop";
 import useFetch from "../hooks/useFetch";
 import {ProfilePicSignOut} from './ProfilePicSignOut';
 
-// we use this component as the navigation bar in all pages at the top of each page
 export function Navigation() {
-    // the user var and signIn fn are taken from the AuthContext in order to preform sign-in
-    // that will allow us to view the hidden admin panel/page
     const {user, isAdmin} = useContext(AuthContext);
     const {isDarkMode, setIsDarkMode} = useContext(DarkContext);
     const [isMobile, setIsMobile] = useState(false);
@@ -93,7 +90,7 @@ export function Navigation() {
                     <li className="nav-item">
                         <NavLink to="/subjects/tutorials" className="nav-link" onClick={closeMenuAndScrollToTop}>Tutorials</NavLink>
                     </li>
-                    {/*if we signed in we can now see the admin panel link*/}
+                    {/*if we signed in and have permissions we can now see the admin panel link*/}
                     {isAdmin && <li className="nav-item">
                         <NavLink to="/admin" className="nav-link" onClick={closeMenuAndScrollToTop}>Admin</NavLink>
                     </li>}
