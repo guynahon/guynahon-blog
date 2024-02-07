@@ -12,9 +12,10 @@ export function AuthProvider({children}) {
         setUser({userName: "Guy"})
     };
 
-    const signOut = () => {
-        setUser(null);
-    };
+    const logOut = () => {
+        localStorage.removeItem("user");
+        window.location.reload();
+      };
 
     //google OAuth
 
@@ -45,7 +46,7 @@ export function AuthProvider({children}) {
 
 
 
-    const value = {user, signIn, signOut, isAdmin};
+    const value = {user, signIn, isAdmin, logOut};
 
     return (
         <AuthContext.Provider value={value}>

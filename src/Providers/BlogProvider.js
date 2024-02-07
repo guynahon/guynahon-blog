@@ -1,4 +1,5 @@
-import {createContext, useState} from "react";
+import {createContext, useCallback, useContext, useState} from "react";
+import { AuthContext } from "./AuthProvider";
 
 // create BlogContext as context
 export const BlogContext = createContext(null);
@@ -6,6 +7,7 @@ export const BlogContext = createContext(null);
 export function BlogProvider({children}) {
 
     const [selectedPost, setSelectedPost] = useState(null);
+    const {logOut} = useContext(AuthContext);
 
 
     const addPost = async (singlePost) => {
@@ -35,7 +37,17 @@ export function BlogProvider({children}) {
 
     const removePost = async (postId) => {
         try {
-            await fetch(`${process.env.REACT_APP_SERVER_ROUTE}/post/${postId}/`, {method: 'DELETE'});
+            const response = await fetch(`${process.env.REACT_APP_SERVER_ROUTE}/post/${postId}/`, {
+                method: 'DELETE',
+                headers: {
+                    'token': `${JSON.parse(localStorage.getItem("user")).token}`
+                }
+            });
+            const responseText = await response.text();
+            if (responseText === 'Unauthorized') {
+                alert('session expried, you are being logged out');
+                logOut();
+            }
         } catch(error) {
             console.log(`error removing post number ${postId} : (${error})`);
         }
@@ -46,7 +58,17 @@ export function BlogProvider({children}) {
 
     const clearPosts = async () => {
         try {
-            await fetch(`${process.env.REACT_APP_SERVER_ROUTE}/post/clear/`, {method: 'DELETE'});
+            const response = await fetch(`${process.env.REACT_APP_SERVER_ROUTE}/post/clear/`, {
+                method: 'DELETE',
+                headers: {
+                    'token': `${JSON.parse(localStorage.getItem("user")).token}`
+                }
+            });
+            const responseText = await response.text();
+            if (responseText === 'Unauthorized') {
+                alert('session expried, you are being logged out');
+                logOut();
+            }
         } catch(error) {
                 console.log("error clearing all posts from DB");
         }
@@ -67,15 +89,20 @@ export function BlogProvider({children}) {
                 "subject": data.subject,
                 "date": data.createdAt
             }
-
+            
             const response = await fetch(`${process.env.REACT_APP_SERVER_ROUTE}/post/${selectedPost.id}/`, {
                 method: 'PUT',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'token': `${JSON.parse(localStorage.getItem("user")).token}`
                 },
                 body: JSON.stringify(dataToUpdate)
             });
-            
+            const responseText = await response.text();
+            if (responseText === 'Unauthorized') {
+                alert('session expried, you are being logged out');
+                logOut();
+            } 
         } catch (error) {
             console.error("error in editing", error);
         }
