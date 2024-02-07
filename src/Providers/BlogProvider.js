@@ -16,7 +16,8 @@ export function BlogProvider({children}) {
                 "title": singlePost.title,
                 "body": singlePost.body,
                 "subject": singlePost.subject,
-                "date": singlePost.date
+                "date": singlePost.date,
+                "posted_by": singlePost.posted_by
             }
 
             await fetch(`${process.env.REACT_APP_SERVER_ROUTE}/post/`, {
@@ -87,7 +88,8 @@ export function BlogProvider({children}) {
                 "title": data.title,
                 "body": data.body,
                 "subject": data.subject,
-                "date": data.createdAt
+                "date": data.createdAt,
+                "posted_by": data.posted_by
             }
             
             const response = await fetch(`${process.env.REACT_APP_SERVER_ROUTE}/post/${selectedPost.id}/`, {
