@@ -3,6 +3,8 @@ import { AuthContext } from "../Providers/AuthProvider";
 import './SubMenu.css';
 import profileImage from '../images/profile.png';
 import logoutImage from '../images/logout.png';
+import { useParams, Link } from "react-router-dom";
+
 
 
 export const SubMenu = () => {
@@ -13,6 +15,12 @@ export const SubMenu = () => {
     const toggleMenu = () => {
         setSubMenu(!subMenu);
     };
+
+    const closeMenu = () => {
+        setSubMenu(false);
+    };
+
+    const profileRoute = `/profile/${user.id}`;
 
     return (
         <div className="hero">
@@ -31,11 +39,11 @@ export const SubMenu = () => {
                     
                     <hr/>
 
-                    <a href="#" className="sub-menu-link">
+                    <Link to={profileRoute} className="sub-menu-link" onClick={closeMenu}>
                         <img src={profileImage}/>
                         <p>My Posts</p>
                         <span>{"•"}</span>
-                    </a>
+                    </Link>
 
                     <button href="#" className="sub-menu-button" onClick={logOut}>
                         <img src={logoutImage}/>

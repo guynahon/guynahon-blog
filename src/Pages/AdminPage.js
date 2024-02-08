@@ -58,7 +58,6 @@ export function Admin() {
             navigate(`/subjects/${data.subject}`);
         } else {
             // calling addPost to add a new post
-            console.log(data.image);
             addPost({
                 title: data.title,
                 body: data.body,

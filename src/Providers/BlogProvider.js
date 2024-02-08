@@ -1,6 +1,7 @@
 import {createContext, useCallback, useContext, useState} from "react";
 import { AuthContext } from "./AuthProvider";
 
+
 // create BlogContext as context
 export const BlogContext = createContext(null);
 
@@ -14,10 +15,14 @@ export function BlogProvider({children}) {
     const responseTextHandler = (responseText) => {
         if (responseText === 'Unauthorized') {
             alert('You are not authorized to do that!');
-        } else if (responseText === 'Expired Token') {
+            return "Unauthorized";
+        } else if (responseText === 'jwt expired') {
             alert('Session Expired. please sign in again.');
             logOut();
-        };
+        } else if (responseText === 'invalid token') {
+            alert('Can not authenticate user. please sign in again.');
+            logOut();
+        }
     }
 
 
@@ -120,7 +125,7 @@ export function BlogProvider({children}) {
     }
 
     // the values to pass to BlogProvider's children (useContext(BlogContext))
-    const value = {selectedPost, setSelectedPost, addPost, removePost, clearPosts, editPost, updatePost};
+    const value = {selectedPost, setSelectedPost, addPost, removePost, clearPosts, editPost, updatePost, responseTextHandler};
     return (
         <BlogContext.Provider value = {value}>
             {children}

@@ -1,6 +1,7 @@
 import './Header.css'
 import {useLocation} from "react-router-dom";
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
+import { AuthContext } from '../Providers/AuthProvider';
 
 // this component provides a number of pages with a dynamic header based on their route
 export function Header ({singlePost}) {
@@ -9,7 +10,7 @@ export function Header ({singlePost}) {
     // header and paragraph dynamic variables
     const [pageHeader, setPageHeader] = useState(null);
     const [pageParagraph, setPageParagraph] = useState(null);
-
+    const {user} = useContext(AuthContext);
     // we use useLocation.pathname to get a string with the route we are currently in
     const location = useLocation().pathname;
     // use Effect helps with executing the switch statement every time the location or posts change
@@ -41,6 +42,10 @@ export function Header ({singlePost}) {
                 setPageParagraph("A description of the respective category goes right here. " +
                     "Be as expressive as possible, but in brief.");
                 break;
+            
+            case `/profile/${user?.id}`:
+                setPageHeader(`${user.firstName} ${user.lastName}'s alltime posts!`);
+                setPageParagraph(null);
 
             case `/article/${singlePost?.id}`:
                 if (singlePost) {
@@ -49,7 +54,7 @@ export function Header ({singlePost}) {
                 }
                 break;
         }
-    }, [location, singlePost]);
+    }, [location, singlePost, user]);
 
     return (
         <div className="main-header">
