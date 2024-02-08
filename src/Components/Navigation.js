@@ -6,6 +6,7 @@ import {DarkContext} from "../Providers/DarkProvider";
 import {scrollToTop} from "../helper-functions/scrollToTop";
 import useFetch from "../hooks/useFetch";
 import {ProfilePicSignOut} from './ProfilePicSignOut';
+import { SubMenu } from './SubMenu';
 
 export function Navigation() {
     const {user, isAdmin} = useContext(AuthContext);
@@ -76,7 +77,7 @@ export function Navigation() {
                 <div className="dark-user">
                     {loading ? (
                             <div>Loading....</div>
-                        ) : (user ? <ProfilePicSignOut /> :
+                        ) : (user ? <SubMenu/> :
                             <div id="signUpDiv" data-text="signup_with"></div>
                         )}
                 </div>

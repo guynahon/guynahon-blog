@@ -1,0 +1,175 @@
+.sub-menu-nav {
+    width: 100%;
+    padding: 10px 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.user-pic {
+    width: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    /* margin-left: 30px; */
+}
+
+.sub-menu-nav ul {
+    width: 100%;
+    text-align: right;
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px;
+}
+
+
+.sub-menu-wrap {
+    position: absolute;
+    top: 100%;
+    left: 10%;
+    width: 320px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s;
+}
+
+.sub-menu-wrap.open-menu {
+    max-height: 400px;
+}
+
+.sub-menu {
+    background-color: #f7f7f7;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-info h3 {
+    font-weight: 500;
+    color: #1a1a1a;
+}
+
+.user-info img {
+    width: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.sub-menu hr {
+    border: 0;
+    height: 1px;
+    width: 100%;
+    background: #ccc;
+    margin: 15px 0 10px;
+}
+
+.sub-menu-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #525252;
+    margin: 12px 0;
+    background: transparent;
+    font-size: 16px;
+}
+
+.sub-menu-link p {
+    width: 100%;
+    transition: 0.5s;
+}
+
+.sub-menu-link img {
+    width: 40px;
+    background-color: #e5e5e5;
+    border-radius: 50%;
+    padding: 8px;
+    margin-right: 15px;
+}
+
+.sub-menu-link span {
+    font-size: 22px; 
+    transition: transform 0.5s;
+}
+
+.sub-menu-link:hover span {
+    transform: translateX(5px);
+}
+
+.sub-menu-link:hover p {
+    font-weight: 600;
+}
+
+.sub-menu-button {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #525252;
+    margin: 12px 0;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    padding: 0;
+    text-align: left;
+    font-size: 16px;
+}
+
+.sub-menu-button p {
+    width: 100%;
+    transition: 0.5s;
+}
+
+.sub-menu-button img {
+    width: 40px;
+    background-color: #cecece;
+    border-radius: 50%;
+    padding: 8px;
+    margin-right: 15px;
+}
+
+.sub-menu-button span {
+    font-size: 22px; 
+    transition: transform 0.5s;
+}
+
+.sub-menu-button:hover span {
+    transform: translateX(5px);
+}
+
+.sub-menu-button:hover p {
+    font-weight: 600;
+}
+
+@media(max-width: 768px) {
+    .sub-menu-wrap {
+        left: -344%;
+    }
+}
+
+
+/* Dark Mode */
+
+.dark .sub-menu {
+    background-color: #141414;
+}
+
+.dark .user-info h3 {
+    color: #ffffff;
+}
+
+.dark .sub-menu hr {
+    background: #d4d4d4;
+}
+
+.dark .sub-menu-link {
+    color: #ffffff;
+}
+
+.dark .sub-menu-button {
+    color: #ffffff;
+}
