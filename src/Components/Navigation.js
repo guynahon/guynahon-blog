@@ -5,7 +5,6 @@ import {AuthContext} from "../Providers/AuthProvider";
 import {DarkContext} from "../Providers/DarkProvider";
 import {scrollToTop} from "../helper-functions/scrollToTop";
 import useFetch from "../hooks/useFetch";
-import {ProfilePicSignOut} from './ProfilePicSignOut';
 import { SubMenu } from './SubMenu';
 
 export function Navigation() {
