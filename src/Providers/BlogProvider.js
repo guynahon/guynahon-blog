@@ -9,7 +9,7 @@ export function BlogProvider({children}) {
     const [selectedPost, setSelectedPost] = useState(null);
     const {logOut} = useContext(AuthContext);
 
-    
+
 
     const responseTextHandler = (responseText) => {
         if (responseText === 'Unauthorized') {
@@ -28,6 +28,7 @@ export function BlogProvider({children}) {
                 "body": singlePost.body,
                 "subject": singlePost.subject,
                 "date": singlePost.date,
+                "image_url": singlePost.image_url,
                 "posted_by": singlePost.posted_by
             }
 
@@ -97,6 +98,7 @@ export function BlogProvider({children}) {
                 "body": data.body,
                 "subject": data.subject,
                 "date": data.createdAt,
+                "image_url": data.image_url,
                 "posted_by": data.posted_by
             }
             

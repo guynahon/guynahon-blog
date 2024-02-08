@@ -1,12 +1,11 @@
 import './AdminPage.css'
-import {useContext, useEffect} from "react";
+import {useContext, useEffect, useState} from "react";
 import {AuthContext} from "../Providers/AuthProvider";
 import {BlogContext} from "../Providers/BlogProvider";
 import {useForm} from "react-hook-form";
 import {useNavigate} from "react-router-dom";
 
 export function Admin() {
-
 
     // getting the user in order to confirm log in (to use the admin panel)
     const {user, isAdmin} = useContext(AuthContext);
@@ -59,11 +58,13 @@ export function Admin() {
             navigate(`/subjects/${data.subject}`);
         } else {
             // calling addPost to add a new post
+            console.log(data.image);
             addPost({
                 title: data.title,
                 body: data.body,
                 subject: data.subject,
                 date: data.createdAt,
+                image_url: data.image,
                 posted_by: user?.id
             });
             // reset all input fields
@@ -79,20 +80,14 @@ export function Admin() {
     return (
         <div className="admin">
             <div className="all-admin">
-                {/*onsubmit calling the handleSubmit function from react-hook-form and passing it the
-                handleAddOrEditPost function, the react-form function allows as to get the data from
-                 the inputs as an argument*/}
+
                 <form className="admin-form" onSubmit={handleSubmit(handleAddOrEditPost)}>
                     {/*this helps the user know if he's in add or edit mode*/}
                     <span className="admin-headers">{selectedPost ? "Edit" : "Add"} a post</span>
 
                     <div className="form-title">
                         <label htmlFor="title">Title:</label>
-                        {/* title text area - we pass the ...register the restrictions we want on that textarea named -
-                        title. we require a title to each post, between 5-100 characters that only allows english
-                        letters, numbers and punctuations and display the relevant messages.
-                        additionally we check if selectedPost is null, if not it means we are in edit-mode, and
-                        we will automatically fill the title*/}
+
                         <textarea {...register("title", {
                             required: true,
                             pattern: /[A-Za-z\d.,!?;:'"\s\t-]/,
@@ -104,10 +99,7 @@ export function Admin() {
                         {formState.errors.title?.type === "maxLength" && <span className="error-msg">maximum 100 characters</span>}
                     </div>
 
-                    {/* content text area - we pass the ...register the restrictions we want on that textarea named -
-                    content. we require a content to each post, minimum of 5 characters.
-                    additionally we check if selectedPost is null, if not it means we are in edit-mode, and
-                    we will automatically fill the content*/}
+
                     <div className="form-content">
                         <label htmlFor="body">Content:</label>
                         <textarea {...register("body", {
@@ -117,10 +109,17 @@ export function Admin() {
                         {formState.errors.body?.type === "minLength" && <span className="error-msg">minimum 5 characters</span>}
                     </div>
 
-                    {/* date input - we pass the ...register the restrictions we want on that input named -
-                    title. we require a date to each post, and that the date will be today's date or higher.
-                    additionally we check if selectedPost is null, if not it means we are in edit-mode, and
-                    we will automatically fill the date*/}
+                    <div className="form-image">
+                        <label htmlFor="image">Image URL:</label>
+                        <input {...register("image", {
+                            required: true,
+                            pattern : /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*\.(jpg|jpeg|gif|png|webp|svg))/   
+                        })} type="text" defaultValue={selectedPost ? selectedPost.image_url : ""}/>
+                        {formState.errors.image?.type === "required" && <span className="error-msg">an image is required!</span>}
+                        {formState.errors.image?.type === "pattern" && <span className="error-msg">not a valid image url!</span>}
+                    </div>
+
+
                     <div className="form-date">
                         <label htmlFor="date">Date:</label>
                         <input type="date" {...register("createdAt", {
@@ -129,10 +128,6 @@ export function Admin() {
                         {(new Date(dateWatcher) < new Date(year, month, day)) && (<span className="error-msg">Date is invalid!</span>)}
                     </div>
 
-                    {/* subject select - we pass the ...register the restrictions we want on that select named -
-                    subject. we require a subject to each post.
-                    additionally we check if selectedPost is null, if not it means we are in edit-mode, and
-                    we will automatically fill the subject*/}
                     <div className="form-subject">
                         <label htmlFor="subject">Article Subject:</label>
                         <select {...register("subject")} defaultValue={selectedPost ? selectedPost.subject : ""}>

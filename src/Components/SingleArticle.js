@@ -8,7 +8,7 @@ export function SingleArticle({singlePost}) {
                 { singlePost ? (
                     <>
                         <div className="image-container">
-                            <img className="larger-img" src={`https://picsum.photos/300/300?${singlePost.id}`} alt={"random-picture "+singlePost.id}/>
+                            <img className="larger-img" src={singlePost.image_url} alt={"picture "+singlePost.id}/>
                         </div>
                         <div className="article-paragraphs">
                             <p className="single-paragraph">{singlePost.body}</p>
