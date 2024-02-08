@@ -98,9 +98,10 @@ export function BlogProvider({children}) {
                 "body": data.body,
                 "subject": data.subject,
                 "date": data.createdAt,
-                "image_url": data.image_url,
-                "posted_by": data.posted_by
+                "image_url": data.image
             }
+
+            console.log(dataToUpdate);
             
             const response = await fetch(`${process.env.REACT_APP_SERVER_ROUTE}/post/${selectedPost.id}/`, {
                 method: 'PUT',

@@ -46,10 +46,10 @@ export function Admin() {
 
     // when we submit a form this function is called in order to handle our submit, if selectedPost null (add mode)
     // we add a new post. if selectedPost is not null we edit the selectedPost (edit mode).
-    const handleAddOrEditPost = (data, event) => {
+    const handleAddOrEditPost = async (data, event) => {
         if (selectedPost) {
-            // this function handles the update of the posts array after editing a post
-            updatePost(selectedPost, data);
+            // this function handles the update of the posts array after editing a post add await so it will update and then transfrer me to the page
+            await updatePost(selectedPost, data);
             // reset all the input fields
             event.target.reset();
             // setting selectedPost back to null because we finished editing (returning admin panel to add mode)
