@@ -64,7 +64,7 @@ export function Admin() {
                 body: data.body,
                 subject: data.subject,
                 date: data.createdAt,
-                posted_by: user.id
+                posted_by: user?.id
             });
             // reset all input fields
             event.target.reset();

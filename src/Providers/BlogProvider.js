@@ -9,6 +9,17 @@ export function BlogProvider({children}) {
     const [selectedPost, setSelectedPost] = useState(null);
     const {logOut} = useContext(AuthContext);
 
+    
+
+    const responseTextHandler = (responseText) => {
+        if (responseText === 'Unauthorized') {
+            alert('You are not authorized to do that!');
+        } else if (responseText === 'Expired Token') {
+            alert('Session Expired. please sign in again.');
+            logOut();
+        };
+    }
+
 
     const addPost = async (singlePost) => {
         try {
@@ -20,13 +31,16 @@ export function BlogProvider({children}) {
                 "posted_by": singlePost.posted_by
             }
 
-            await fetch(`${process.env.REACT_APP_SERVER_ROUTE}/post/`, {
+            const response = await fetch(`${process.env.REACT_APP_SERVER_ROUTE}/post/`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'token': `${JSON.parse(localStorage.getItem("user"))?.token}`
                 },
                 body: JSON.stringify(newPost)
             });
+            const responseText = await response.text();
+            responseTextHandler(responseText);
         } catch (error) {
             console.error("error in adding post", error);
         }
@@ -45,12 +59,9 @@ export function BlogProvider({children}) {
                 }
             });
             const responseText = await response.text();
-            if (responseText === 'Unauthorized') {
-                alert('session expried, you are being logged out');
-                logOut();
-            }
+            responseTextHandler(responseText);
         } catch(error) {
-            console.log(`error removing post number ${postId} : (${error})`);
+            console.error(`error removing post number ${postId} : (${error})`);
         }
     };
 
@@ -66,12 +77,9 @@ export function BlogProvider({children}) {
                 }
             });
             const responseText = await response.text();
-            if (responseText === 'Unauthorized') {
-                alert('session expried, you are being logged out');
-                logOut();
-            }
+            responseTextHandler(responseText);
         } catch(error) {
-                console.log("error clearing all posts from DB");
+                console.error("error clearing all posts from DB");
         }
     };
 
@@ -101,10 +109,7 @@ export function BlogProvider({children}) {
                 body: JSON.stringify(dataToUpdate)
             });
             const responseText = await response.text();
-            if (responseText === 'Unauthorized') {
-                alert('session expried, you are being logged out');
-                logOut();
-            } 
+            responseTextHandler(responseText);
         } catch (error) {
             console.error("error in editing", error);
         }
