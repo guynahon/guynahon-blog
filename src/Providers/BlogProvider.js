@@ -14,6 +14,7 @@ export function BlogProvider({children}) {
 
     const responseTextHandler = (responseText) => {
         if (responseText === 'Unauthorized') {
+            window.location.replace('/');
             alert('You are not authorized to do that!');
             return "Unauthorized";
         } else if (responseText === 'jwt expired') {

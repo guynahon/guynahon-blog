@@ -39,6 +39,8 @@ export function AuthProvider({children}) {
     useEffect(() => {
         checkAdmin();
     }, [user]);
+
+    console.log(user);
     
 
 

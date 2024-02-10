@@ -45,9 +45,9 @@ export function ArticlesById({id}) {
                 } catch (error) {
                     data = await clonedResponse.text();
                     const res = responseTextHandler(data);
-                    if (res === "Unauthorized") {
-                        navigate(`/`);
-                    }
+                    // if (res) {
+                    //     navigate(`/`);
+                    // }
                     throw new Error;
                 }
                 
