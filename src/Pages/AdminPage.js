@@ -38,7 +38,7 @@ export function Admin() {
             setSelectedPost(null);
             navigate(`/subjects/${data.subject}`);
         } else {
-            addPost({
+            await addPost({
                 title: data.title,
                 body: data.body,
                 subject: data.subject,
@@ -51,8 +51,8 @@ export function Admin() {
         }
     };
 
-    const handleRemovePost = (id, subject) => {
-        removePost(id);
+    const handleRemovePost = async (id, subject) => {
+        await removePost(id);
         navigate(`/subjects/${subject}`);
     };
 
