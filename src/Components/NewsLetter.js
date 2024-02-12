@@ -1,4 +1,4 @@
-import './NewsLetter.css'
+import '../Styles/newsletter.css'
 import {useContext} from "react";
 import {DarkContext} from "../Providers/DarkProvider";
 export function NewsLetter() {

@@ -1,7 +1,6 @@
-import './ViewAllButton.css'
+import '../Styles/view-all-button.css'
 import {Link} from "react-router-dom";
 import {scrollToTop} from "../helper-functions/scrollToTop";
-import {useContext} from "react";
 
 // view all button component - for linking to the subject page
 export function ViewAllButton({subject}) {

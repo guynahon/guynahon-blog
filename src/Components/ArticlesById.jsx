@@ -1,33 +1,26 @@
-import './ArticleCardList.css'
+import '../Styles/article-card-list.css'
 import {useContext, useEffect, useState} from "react";
 import {ArticleCard} from "./ArticleCard";
 import { BlogContext } from '../Providers/BlogProvider';
 import { useNavigate } from 'react-router-dom';
 
 export function ArticlesById({id}) {
-    // useState for the value from the input bar that update onChange
+
     const [inputValue, setInputValue] = useState("");
     const {responseTextHandler} = useContext(BlogContext);
-
-    // useState for counter the helps us use the Load More function, which loads 3 posts more on each click
     const [postsById, setPostsById] = useState([]);
     const [postsByFilter, setPostsByFilter] = useState([]);
     const [loadMoreCounter, setLoadMoreCounter] = useState(3);
     const [isMorePosts, setIsMorePosts] = useState(false);
     const navigate = useNavigate();
 
-
     useEffect(() => {
         setPostsById([]);
     }, [id]);
 
-
-
     const handleInputChange = (event) => {
         setInputValue(event.target.value.trim());
     };
-
-
 
     const fetchIdPosts = async (clickedLoadMore) => {
 
@@ -45,9 +38,6 @@ export function ArticlesById({id}) {
                 } catch (error) {
                     data = await clonedResponse.text();
                     const res = responseTextHandler(data);
-                    // if (res) {
-                    //     navigate(`/`);
-                    // }
                     throw new Error;
                 }
                 
@@ -76,13 +66,9 @@ export function ArticlesById({id}) {
         }
     };
 
-
-    
     useEffect(() => {
         fetchIdPosts();
     }, [id, inputValue]);
-
-
 
     return (
     <div className="subject">

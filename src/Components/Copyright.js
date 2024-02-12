@@ -1,4 +1,4 @@
-import './Copyright.css'
+import '../Styles/copyright.css'
 
 export function Copyright() {
 

@@ -15,7 +15,6 @@ export function AuthProvider({children}) {
       };
 
     //google OAuth
-
     useEffect(() => {
         const theToken = localStorage.getItem("user");
         if (theToken && !theToken.includes('undefined')) {
@@ -39,11 +38,6 @@ export function AuthProvider({children}) {
     useEffect(() => {
         checkAdmin();
     }, [user]);
-
-    console.log(user);
-    
-
-
 
     const value = {user, isAdmin, logOut};
 

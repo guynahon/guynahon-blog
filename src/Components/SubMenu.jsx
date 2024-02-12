@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
-import './SubMenu.css';
+import '../Styles/sub-menu.css';
 import profileImage from '../images/profile.png';
 import logoutImage from '../images/logout.png';
 import { useParams, Link } from "react-router-dom";

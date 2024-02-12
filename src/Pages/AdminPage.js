@@ -1,5 +1,5 @@
-import './AdminPage.css'
-import {useContext, useEffect, useState} from "react";
+import '../Styles/admin-page.css'
+import {useContext, useEffect} from "react";
 import {AuthContext} from "../Providers/AuthProvider";
 import {BlogContext} from "../Providers/BlogProvider";
 import {useForm} from "react-hook-form";
@@ -7,26 +7,14 @@ import {useNavigate} from "react-router-dom";
 
 export function Admin() {
 
-    // getting the user in order to confirm log in (to use the admin panel)
     const {user, isAdmin} = useContext(AuthContext);
-
-    // getting the needed methods and states that we'll use in the panel
     const {removePost, addPost, clearPosts, selectedPost, setSelectedPost, updatePost} = useContext(BlogContext);
-
-    // from the react-hook-form library importing the methods we will use
     const {register, handleSubmit, formState, watch} = useForm();
-
-    // from react-router setting navigate to useNavigate(), with this variable we can navigate by command.
     const navigate = useNavigate();
-
-    // dateWatcher - watching the createdAt input (type: date) meaning we can track its value
     const dateWatcher = watch("createdAt");
-
-    // day, month and year - getting the current ones according to today's date.
     const day = new Date().getDate();
     const month = new Date().getMonth();
     const year = new Date().getFullYear();
-
 
     // ** Attention - this useEffect won't work with React.StrictMode On **
     // when unmounting the Admin component, setting the selectedPost to null, we do this because when we are
@@ -43,21 +31,13 @@ export function Admin() {
         return (<div className="pls-log-in-back"><span className="pls-log-in">You are not an Admin !</span></div>);
     }
 
-
-    // when we submit a form this function is called in order to handle our submit, if selectedPost null (add mode)
-    // we add a new post. if selectedPost is not null we edit the selectedPost (edit mode).
     const handleAddOrEditPost = async (data, event) => {
         if (selectedPost) {
-            // this function handles the update of the posts array after editing a post add await so it will update and then transfrer me to the page
             await updatePost(selectedPost, data);
-            // reset all the input fields
             event.target.reset();
-            // setting selectedPost back to null because we finished editing (returning admin panel to add mode)
             setSelectedPost(null);
-            // navigating automatically to the subject the post was added to.
             navigate(`/subjects/${data.subject}`);
         } else {
-            // calling addPost to add a new post
             addPost({
                 title: data.title,
                 body: data.body,
@@ -81,7 +61,6 @@ export function Admin() {
             <div className="all-admin">
 
                 <form className="admin-form" onSubmit={handleSubmit(handleAddOrEditPost)}>
-                    {/*this helps the user know if he's in add or edit mode*/}
                     <span className="admin-headers">{selectedPost ? "Edit" : "Add"} a post</span>
 
                     <div className="form-title">
@@ -136,7 +115,6 @@ export function Admin() {
                         </select>
                     </div>
 
-                    {/*a submit button, if selectedPost is null (add-mode) its says Add else Save (edit-mode)*/}
                     <button className="form-btn submit-form" type="submit">{selectedPost ? "Save" : "Add"}</button>
 
                 </form>

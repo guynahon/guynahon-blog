@@ -1,4 +1,4 @@
-import './SingleArticle.css'
+import '../Styles/single-article.css'
 
 
 export function SingleArticle({singlePost}) {

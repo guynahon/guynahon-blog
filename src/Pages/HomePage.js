@@ -1,12 +1,16 @@
 import {HomeHeader} from "../Components/HomeHeader"
-import {ArticlesBySubjects} from "../Components/ArticlesBySubjects";
+import {ThreeCardsList} from "../Components/ThreeCardsList";
+import '../Styles/home-page.css'
 
 export function HomePage() {
-    // these components build the HomePage component
     return (
         <>
             <HomeHeader/>
-            <ArticlesBySubjects/>
+            <div className="articles">
+                <ThreeCardsList subject={"dailydigest"} />
+                <ThreeCardsList subject={"designtools"}/>
+                <ThreeCardsList subject={"tutorials"}/>
+            </div>
         </>
     );
 }

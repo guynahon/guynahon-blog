@@ -1,12 +1,20 @@
 import {SingleArticle} from "../Components/SingleArticle";
 import {Header} from "../Components/Header";
-import {useState, useEffect} from "react";
+import {useState, useEffect, useContext} from "react";
 import {useParams} from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
 
-//this component displays a single article by id
 export function SingleArticlePage() {
 
     const [singlePost, setSinglePost] = useState(null);
+    const {user} = useContext(AuthContext);
+    const [header, setHeader] = useState(null);
+    const [paragraph, setParagraph] = useState(null);
+    
+    useEffect(() => {
+        setHeader(singlePost?.title);
+        setParagraph(null);
+    },[user, singlePost]);
 
     const {id} = useParams();
 
@@ -24,9 +32,11 @@ export function SingleArticlePage() {
         fetchPost();
     }, [id]);
 
+    const props = {header, paragraph}
+
     return (
         <>
-            <Header singlePost={singlePost}/>
+            <Header props={props}/>
             <SingleArticle singlePost={singlePost}/>
         </>
     );

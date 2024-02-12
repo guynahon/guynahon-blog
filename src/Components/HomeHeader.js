@@ -1,14 +1,27 @@
 import {Header} from "./Header";
-import './HomeHeader.css'
+import '../Styles/home-header.css'
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../Providers/AuthProvider";
+
 export function HomeHeader() {
-    // the Header of the homepage, built from a Header component and a static mainheader a tag
+    const {user} = useContext(AuthContext);
+    const [header, setHeader] = useState(null);
+    const [paragraph, setParagraph] = useState(null);
+    
+    useEffect(() => {
+        setHeader("Welcome to Guy's blog!");
+        setParagraph("The only place you will find happiness!");
+    },[user]);
+
+    const props = {header, paragraph}
+
     return (
         <div className="home-header">
             <div className="home-header-block">
                 <div className="home-header-tag">
                     <a className="main-header-button">👋 Meet Personally</a>
                 </div>
-                <Header />
+                <Header props={props}/>
             </div>
         </div>
     );

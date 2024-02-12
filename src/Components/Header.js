@@ -1,65 +1,14 @@
-import './Header.css'
-import {useLocation} from "react-router-dom";
-import {useContext, useEffect, useState} from "react";
-import { AuthContext } from '../Providers/AuthProvider';
+import '../Styles/header.css'
 
 // this component provides a number of pages with a dynamic header based on their route
-export function Header ({singlePost}) {
-    // posts array from the BlogContext
+export function Header ({props}) {
 
-    // header and paragraph dynamic variables
-    const [pageHeader, setPageHeader] = useState(null);
-    const [pageParagraph, setPageParagraph] = useState(null);
-    const {user} = useContext(AuthContext);
-    // we use useLocation.pathname to get a string with the route we are currently in
-    const location = useLocation().pathname;
-    // use Effect helps with executing the switch statement every time the location or posts change
-    // we need to track the location in order to know where we currently are and based on that information
-    // update the header, and we need to track posts because we are getting the posts from the local storage
-    // and because of the delay we will get an empty array in the first second so if we don't
-    // track it won't have a header in the dynamic routes after refresh
-    useEffect(() => {
-        switch (location) {
-            case "/":
-                setPageHeader("Welcome to Guy's blog!");
-                setPageParagraph("The only place you will find happiness!");
-                break;
-
-            case "/subjects/dailydigest":
-                setPageHeader("Daily Digest");
-                setPageParagraph("A description of the respective category goes right here." +
-                    " Be as expressive as possible, but in brief.");
-                break;
-
-            case "/subjects/designtools":
-                setPageHeader("Design Tools");
-                setPageParagraph("A description of the respective category goes right here. " +
-                    "Be as expressive as possible, but in brief.");
-                break;
-
-            case "/subjects/tutorials":
-                setPageHeader("Tutorials");
-                setPageParagraph("A description of the respective category goes right here. " +
-                    "Be as expressive as possible, but in brief.");
-                break;
-            
-            case `/profile/${user?.id}`:
-                setPageHeader(`${user.firstName} ${user.lastName}'s alltime posts!`);
-                setPageParagraph(null);
-
-            case `/article/${singlePost?.id}`:
-                if (singlePost) {
-                    setPageHeader(singlePost.title);
-                    setPageParagraph(null);
-                }
-                break;
-        }
-    }, [location, singlePost, user]);
+    const {header, paragraph} = props;
 
     return (
         <div className="main-header">
-            <div className="page-header">{pageHeader}</div>
-            {pageParagraph && <p className="page-paragraph">{pageParagraph}</p>}
+            <div className="page-header">{header}</div>
+            {paragraph && <p className="page-paragraph">{paragraph}</p>}
         </div>
     );
 }

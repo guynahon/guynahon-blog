@@ -1,5 +1,5 @@
 import {ViewAllButton} from "./ViewAllButton";
-import './ThreeCardsList.css'
+import '../Styles/three-cards-list.css'
 import {ArticleCard} from "./ArticleCard";
 import {useContext, useEffect, useState} from "react";
 import {BlogContext} from "../Providers/BlogProvider";

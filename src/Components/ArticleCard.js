@@ -1,4 +1,4 @@
-import './ArticleCard.css'
+import '../Styles/article-card.css'
 import {NavLink} from "react-router-dom";
 import {useContext} from "react";
 import {BlogContext} from "../Providers/BlogProvider";
@@ -9,18 +9,10 @@ import {scrollToTop} from "../helper-functions/scrollToTop";
 // gets a singlePost param from its father component and displays that posts as a card in the ui
 export function ArticleCard({singlePost}) {
 
-    // to use removePost function later we assign the post id to a const id
     const id = singlePost.id;
-
-    // we will use this route to link us to the cards related article link
     const route = `/article/${id}`;
-
-    // getting the removePost and editPost functions so we can click on button/link and we will execute them.
     const {editPost} = useContext(BlogContext);
-
-    // getting the user value to check if he is signed in, if we aren't signed in we won't be able to see
-    // the edit-post/remove-post link/button
-    const {user, isAdmin} = useContext(AuthContext);
+    const {isAdmin} = useContext(AuthContext);
 
     // parsing the date in the way we want to display it
     const currentDate = singlePost.date.split("-");
@@ -34,8 +26,6 @@ export function ArticleCard({singlePost}) {
         editPost(singlePost);
     }
 
-    // when we press the edit-post link this function is called, it calls the handlePostEdit that calls the
-    // editPost with the singlePost to edit, and scroll to top which scroll the page back up
     const handlePostEditClick = () => {
         handlePostEdit();
         scrollToTop();

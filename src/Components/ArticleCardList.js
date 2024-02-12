@@ -1,31 +1,22 @@
-import './ArticleCardList.css'
+import '../Styles/article-card-list.css'
 import {useEffect, useState} from "react";
 import {ArticleCard} from "./ArticleCard";
 
 export function ArticleCardList({subject}) {
 
-    // useState for the value from the input bar that update onChange
     const [inputValue, setInputValue] = useState("");
-
-    // useState for counter the helps us use the Load More function, which loads 3 posts more on each click
     const [postsBySubject, setPostsBySubject] = useState([]);
     const [postsByFilter, setPostsByFilter] = useState([]);
     const [loadMoreCounter, setLoadMoreCounter] = useState(3);
     const [isMorePosts, setIsMorePosts] = useState(false);
 
-
-
     useEffect(() => {
         setPostsBySubject([]);
     }, [subject]);
 
-
-
     const handleInputChange = (event) => {
         setInputValue(event.target.value.trim());
     };
-
-
 
     const fetchSubjectsPosts = async (clickedLoadMore) => {
 
@@ -55,13 +46,9 @@ export function ArticleCardList({subject}) {
         }
     };
 
-
-    
     useEffect(() => {
         fetchSubjectsPosts();
     }, [subject, inputValue]);
-
-
 
     return (
     <div className="subject">
