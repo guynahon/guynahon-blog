@@ -4,13 +4,11 @@ import {useContext, useState, useEffect} from "react";
 import {AuthContext} from "../Providers/AuthProvider";
 import {DarkContext} from "../Providers/DarkProvider";
 import {scrollToTop} from "../helper-functions/scrollToTop";
-import useFetch from "../hooks/useFetch";
 import { SubMenu } from './SubMenu';
 
 export function Navigation() {
-    const {user, isAdmin} = useContext(AuthContext);
+    const {user, isAdmin, loading} = useContext(AuthContext);
     const {isDarkMode, setIsDarkMode} = useContext(DarkContext);
-    const [isMobile, setIsMobile] = useState(false);
 
     const [isMenuActive, setIsMenuActive] = useState(false);
 
@@ -31,43 +29,6 @@ export function Navigation() {
         closeMenu();
         scrollToTop();
     };
-
-    const { handleGoogle, loading, error } = useFetch(
-        `${process.env.REACT_APP_SERVER_ROUTE}/auth`
-      );
-    
-    useEffect(() => {
-        /* global google */
-        if (window.google) {
-        google.accounts.id.initialize({
-            client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-            callback: handleGoogle,
-        });
-    
-        google.accounts.id.renderButton(document.getElementById("signUpDiv"), {
-            type: `${isMobile ? "icon" : "standard"}`,
-            theme: `filled_${isDarkMode ? "black" : "white"}`,
-            size: "large",
-            text: "continue_with",
-            shape: "pill",
-        });
-    
-        // google.accounts.id.prompt()
-        }
-    }, [handleGoogle]);
-
-    // check if im on mobile size
-    useEffect(() => {
-      const mediaQuery = window.matchMedia('(max-width: 768px)');
-      setIsMobile(mediaQuery.matches);
-      const handleResize = () => {
-        setIsMobile(mediaQuery.matches);
-      };
-      mediaQuery.addEventListener('change', handleResize);
-      return () => {
-        mediaQuery.removeEventListener('change', handleResize);
-      };
-    }, []);
 
     return (
         <div className="navigation">
